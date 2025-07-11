@@ -1,93 +1,723 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anas-Updy Personal-Profile</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="Anas Updy (1).jpeg" type="image/x-icon">
-  <meta name="google-site-verification" content="MlAQCp5--G6QEzgsE9GD8Fz8fMomdRWseWo9CcZbIOc" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anas Updy | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #f72585;
+      --dark: #14213d;
+      --light: #f8f9fa;
+      --text: #2b2d42;
+      --card-bg: rgba(255, 255, 255, 0.9);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 8px;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .lang-btn.active {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      margin-bottom: -50px;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--dark);
+      position: relative;
+      font-size: 2.2rem;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      margin: 15px auto;
+      border-radius: 3px;
+    }
+
+    /* About Section */
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin-top: 2rem;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .profile-img {
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      transform: rotate(-3deg);
+      transition: all 0.5s ease;
+    }
+
+    .profile-img:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
+
+    .profile-decor {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px dashed var(--primary);
+      border-radius: 20px;
+      top: -15px;
+      left: -15px;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+
+    .skill-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-card h3 i {
+      color: var(--accent);
+    }
+
+    /* CV Section */
+    .cv-container {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin-top: 2rem;
+    }
+
+    .cv-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .cv-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+    }
+
+    .cv-image img:hover {
+      transform: scale(1.03);
+    }
+
+    .cv-text {
+      flex: 1;
+      text-align: center;
+    }
+
+    .cv-text h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      margin-top: 1.5rem;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+    }
+
+    /* Contact Section */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.1rem;
+    }
+
+    .contact-item i {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .contact-item a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* RTL Support */
+    [lang="ar"] body {
+      direction: rtl;
+      font-family: 'Tahoma', sans-serif;
+    }
+
+    [lang="ar"] .about-container,
+    [lang="ar"] .cv-container {
+      flex-direction: row-reverse;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-container,
+      .cv-container {
+        flex-direction: column;
+      }
+
+      header {
+        padding: 5rem 0 3rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      nav ul {
+        gap: 0.8rem;
+      }
+
+      .profile-img {
+        width: 250px;
+        height: 250px;
+      }
+
+      .lang-switcher {
+        top: 15px;
+        right: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Language Switcher -->
+  <div class="lang-switcher animate__animated animate__fadeIn">
+    <button class="lang-btn active" onclick="changeLanguage('en')">
+      <i class="fas fa-language"></i> English
+    </button>
+    <button class="lang-btn" onclick="changeLanguage('so')">
+      <i class="fas fa-language"></i> Somali
+    </button>
+    <button class="lang-btn" onclick="changeLanguage('ar')">
+      <i class="fas fa-language"></i> العربية
+    </button>
+  </div>
 
-  <header>
-    <h1>Personal-Profile</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#cv">C.V</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#socialmedia">Social Media</a></li>
-      </ul>
-    </nav>
+  <!-- Header -->
+  <header class="animate__animated animate__fadeIn">
+    <div class="header-content">
+      <h1 id="header-title">Personal Profile</h1>
+      <nav>
+        <ul>
+          <li><a href="#about" id="nav-about"><i class="fas fa-user"></i> <span>About</span></a></li>
+          <li><a href="#skills" id="nav-skills"><i class="fas fa-code"></i> <span>Skills</span></a></li>
+          <li><a href="#cv" id="nav-cv"><i class="fas fa-file-alt"></i> <span>C.V</span></a></li>
+          <li><a href="#contact" id="nav-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section id="about" class="section about-section">
-    <div class="about-container">
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title animate-on-scroll" id="about-title">About Me</h2>
+    <div class="about-container animate-on-scroll">
       <div class="about-text">
-        <h2>About Me</h2>
-        <p>👋 Hi, I'm <strong>Anas Abdiwahid Hussein Warsame</strong>— a passionate university student, creative content creator, and a future software engineer. I love bringing ideas to life through code and creativity. Whether I’m building websites, editing vlogs, or designing visuals, I put my heart into every detail. My mission? To learn, share, and inspire.</p>
+        <p id="about-text">👋 Hi, I'm Anas Abdiwahid - a passionate university student and future software engineer. I specialize in creating beautiful, functional digital experiences. With expertise in both design and development, I bridge the gap between aesthetics and functionality.</p>
+        <p id="about-text2">My journey in tech started 3 years ago, and since then I've worked on numerous projects that have helped businesses establish their online presence. I believe in clean, efficient code and user-centered design.</p>
       </div>
       <div class="about-image">
-        <img src="Anas Updy (1).jpeg" alt="Anas Abdiwahid" />
+        <div class="profile-decor"></div>
+        <img src="profile.jpg" alt="Profile Picture" class="profile-img floating">
       </div>
     </div>
   </section>
 
-  <section id="skills" class="section">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Front-End Development - Example Sites: 
-        <a href="https://buugtabiye.netlify.app/" target="_blank">BuugTabiye</a>, 
-        <a href="https://eymanvesion.netlify.app/" target="_blank">Eyman-Vesion</a>, 
-        <a href="https://samoflix.site/" target="_blank">SamoFlix</a>
-      </li>
-      <li>JavaScript</li>
-      <li>Video Editing (Premiere Pro)</li>
-      <li>Logo Design</li>
-      <li>PowerPoint Transition</li>
-      <li>Graphic Design (Photoshop / Illustrator)</li>
-    </ul>
-    <div class="skills-images">
-      <img src="desing.jpeg" alt="">
-      <img src="Printable_Restaurant_Menu_Template___PSD_Free_Download_-_Pikbest-removebg-preview.png" alt="">
-      <img src="How to Make a Stunning Burger Graphic for Your Social Media Feed.jpeg" alt="">
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title animate-on-scroll" id="skills-title">My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-card animate-on-scroll">
+        <h3><i class="fas fa-laptop-code"></i> <span id="skill1-title">Front-End Development</span></h3>
+        <p id="skill1-text">Building responsive, interactive websites using HTML, CSS, and JavaScript. Check out my projects: <a href="https://buugtabiye.netlify.app/" target="_blank">BuugTabiye</a>, <a href="https://eymanvesion.netlify.app/" target="_blank">Eyman-Vesion</a></p>
+      </div>
+      
+      <div class="skill-card animate-on-scroll">
+        <h3><i class="fas fa-film"></i> <span id="skill2-title">Video Editing</span></h3>
+        <p id="skill2-text">Professional video editing with Adobe Premiere Pro. Specializing in vlogs, promotional videos, and social media content.</p>
+      </div>
+      
+      <div class="skill-card animate-on-scroll">
+        <h3><i class="fas fa-paint-brush"></i> <span id="skill3-title">Graphic Design</span></h3>
+        <p id="skill3-text">Creating visually appealing designs for logos, social media, and marketing materials using Photoshop and Illustrator.</p>
+      </div>
     </div>
   </section>
 
-  <section id="cv" class="section">
-    <div class="cv-container">
+  <!-- CV Section -->
+  <section id="cv">
+    <h2 class="section-title animate-on-scroll" id="cv-title">My Resume</h2>
+    <div class="cv-container animate-on-scroll">
       <div class="cv-image">
-        <img src="Cv  Anas updyy copy.jpg" alt="My CV" />
+        <img src="cv-image.jpg" alt="My CV" id="cv-image">
       </div>
       <div class="cv-text">
-        <h2>My Personal CV</h2>
-        <p>You can download my CV below.</p>
-        <br>
-        <br>
-        <a href="Cv  Anas updyy Pdf.pdf" download class="btn" target="_blank">Download CV</a>
+        <h3 id="cv-subtitle">Professional Experience</h3>
+        <p id="cv-text">Download my complete resume to view my education, work experience, and professional achievements in detail.</p>
+        <a href="cv.pdf" download class="download-btn" id="download-cv">
+          <i class="fas fa-download"></i> Download CV
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:anasrk85@gmail.com">anasrk85@gmail.com</a></p>
-    <p>Phone: <a href="tel:+252613496943">+252 613496943</a></p>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title animate-on-scroll" id="contact-title">Contact Me</h2>
+    <div class="contact-info animate-on-scroll">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:anasrk85@gmail.com" id="contact-email">anasrk85@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <a href="tel:+252613496943" id="contact-phone">+252 613496943</a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <h3>Social Media Links</h3>
-    <div id="socialmedia">
-      <a href="https://wa.me/+252613496943"><img src="whatsapp.png" alt=""></a>
-      <a href="https://www.facebook.com/share/163c1X5z5D/"><img src="facebook.png" alt=""></a>
-      <a href="#"><img src="twitter.png" alt=""></a>
-      <a href="https://www.tiktok.com/@anazz_updyy?_t=ZM-8vnvljJgOLG&_r=1"><img src="social-media.png" alt=""></a>
-      <img src="social.png" alt="">
+  <!-- Footer -->
+  <footer class="animate__animated animate__fadeInUp">
+    <h3 id="footer-title">Connect With Me</h3>
+    <div class="social-links">
+      <a href="https://wa.me/+252613496943" class="social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/163c1X5z5D/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.tiktok.com/@anazz_updyy" class="social-link"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
     </div>
-    <p>© 2025 I'm Anas. All rights reserved.</p>
+    <p class="copyright" id="copyright">© 2023 Anas Updy. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Translations Database
+    const translations = {
+      en: {
+        "header-title": "Personal Profile",
+        "nav-about": "About",
+        "nav-skills": "Skills",
+        "nav-cv": "C.V",
+        "nav-contact": "Contact",
+        "about-title": "About Me",
+        "about-text": "👋 Hi, I'm Anas Abdiwahid - a passionate university student and future software engineer. I specialize in creating beautiful, functional digital experiences. With expertise in both design and development, I bridge the gap between aesthetics and functionality.",
+        "about-text2": "My journey in tech started 3 years ago, and since then I've worked on numerous projects that have helped businesses establish their online presence. I believe in clean, efficient code and user-centered design.",
+        "skills-title": "My Skills",
+        "skill1-title": "Front-End Development",
+        "skill1-text": "Building responsive, interactive websites using HTML, CSS, and JavaScript. Check out my projects: BuugTabiye, Eyman-Vesion",
+        "skill2-title": "Video Editing",
+        "skill2-text": "Professional video editing with Adobe Premiere Pro. Specializing in vlogs, promotional videos, and social media content.",
+        "skill3-title": "Graphic Design",
+        "skill3-text": "Creating visually appealing designs for logos, social media, and marketing materials using Photoshop and Illustrator.",
+        "cv-title": "My Resume",
+        "cv-subtitle": "Professional Experience",
+        "cv-text": "Download my complete resume to view my education, work experience, and professional achievements in detail.",
+        "download-cv": "Download CV",
+        "contact-title": "Contact Me",
+        "contact-email": "anasrk85@gmail.com",
+        "contact-phone": "+252 613496943",
+        "footer-title": "Connect With Me",
+        "copyright": "© 2023 Anas Updy. All rights reserved."
+      },
+      so: {
+        "header-title": "Faahfaahin Shakhsiyeed",
+        "nav-about": "Ku Saabsan",
+        "nav-skills": "Xirfadaha",
+        "nav-cv": "CV",
+        "nav-contact": "Xiriir",
+        "about-title": "Aniga",
+        "about-text": "👋 Salaam, waxaan ahay Anas Cabdiwahiid - arday jaamacad ah oo injineer software mustaqbalka ah. Waxaan khaasa u leeyahay abuuritaanka tajribooyinka digital ee qurux badan iyo wax ku ool ah.",
+        "about-text2": "Safarkayga teknolojiyada waxuu bilaabay 3 sano ka hor, waxanaan ka shaqeynayey mashruuco badan oo ka caawiyey ganacsatada inay helaan meel internetka. Waxaan rumeynayaa code nadiif ah iyo naqshadeynta isticmaalaha.",
+        "skills-title": "Xirfadahayga",
+        "skill1-title": "Horudhisme Front-End",
+        "skill1-text": "Dhisidda bogagga internetka ee iswaafajiya iyo isdhexgalka leh adoo isticmaalaya HTML, CSS, iyo JavaScript. Eeg mashruucayga: BuugTabiye, Eyman-Vesion",
+        "skill2-title": "Tafatiirka Fiidiyowyada",
+        "skill2-text": "Tafatiir fiidiyowyada xirfadeed iyadoo la adeegsanayo Adobe Premiere Pro. Khaaska u leh fiidiyowyada vlog-ka, kor u qaadista, iyo waxyaabaha warbaahinta bulshada.",
+        "skill3-title": "Naqshadaynta Sawirka",
+        "skill3-text": "Abuuritaanka naqshadaha quruxda badan ee calaamadaha, warbaahinta bulshada, iyo qalabka suuqgeynta iyadoo la adeegsanayo Photoshop iyo Illustrator.",
+        "cv-title": "CVgayga",
+        "cv-subtitle": "Khibrad Shaqo",
+        "cv-text": "Soo dejiso CVga oo dhan si aad u eegto waxbarashadayda, khibradda shaqada, iyo guulaha xirfadeyda si faahfaahsan.",
+        "download-cv": "Soo Dejiso CV",
+        "contact-title": "Ilaal Xiriir",
+        "contact-email": "anasrk85@gmail.com",
+        "contact-phone": "+252 613496943",
+        "footer-title": "Isku Xidh Aniga",
+        "copyright": "© 2023 Anas Updy. Dhammaan xuquuqdu waa la ilaaliyay."
+      },
+      ar: {
+        "header-title": "الملف الشخصي",
+        "nav-about": "معلومات عني",
+        "nav-skills": "المهارات",
+        "nav-cv": "السيرة الذاتية",
+        "nav-contact": "اتصل بي",
+        "about-title": "معلومات عني",
+        "about-text": "👋 مرحباً، أنا أنس عبد الوحيد - طالب جامعي ومهندس برمجيات مستقبلي. أتخصص في إنشاء تجارب رقمية جميلة وعملية. مع خبرة في كل من التصميم والبرمجة، أقوم بربط الجماليات بالوظائف.",
+        "about-text2": "بدأت رحلتي في التكنولوجيا منذ 3 سنوات، ومنذ ذلك الحين عملت على العديد من المشاريع التي ساعدت الشركات على إنشاء وجودها على الإنترنت. أؤمن بالبرمجة النظيفة الفعالة والتصميم المرتكز على المستخدم.",
+        "skills-title": "مهاراتي",
+        "skill1-title": "تطوير الواجهات الأمامية",
+        "skill1-text": "بناء مواقع ويب متجاوبة وتفاعلية باستخدام HTML و CSS و JavaScript. تحقق من مشاريعي: BuugTabiye، Eyman-Vesion",
+        "skill2-title": "تحرير الفيديو",
+        "skill2-text": "تحرير فيديو احترافي باستخدام Adobe Premiere Pro. متخصص في مدونات الفيديو، الفيديوهات الترويجية، ومحتوى وسائل التواصل الاجتماعي.",
+        "skill3-title": "التصميم الجرافيكي",
+        "skill3-text": "إنشاء تصاميم جذابة للشعارات، وسائل التواصل الاجتماعي، ومواد التسويق باستخدام Photoshop و Illustrator.",
+        "cv-title": "سيرتي الذاتية",
+        "cv-subtitle": "الخبرة المهنية",
+        "cv-text": "قم بتنزيل سيرتي الذاتية الكاملة لعرض تعليمي، خبرتي العملية، وإنجازاتي المهنية بالتفصيل.",
+        "download-cv": "تحميل السيرة الذاتية",
+        "contact-title": "اتصل بي",
+        "contact-email": "anasrk85@gmail.com",
+        "contact-phone": "+252 613496943",
+        "footer-title": "تواصل معي",
+        "copyright": "© 2023 أنس أبدي. جميع الحقوق محفوظة."
+      }
+    };
+
+    // Language Change Function
+    function changeLanguage(lang) {
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if ((lang === 'en' && btn.textContent.includes('English')) ||
+            (lang === 'so' && btn.textContent.includes('Somali')) ||
+            (lang === 'ar' && btn.textContent.includes('العربية'))) {
+          btn.classList.add('active');
+        }
+      });
+
+      // Update all translatable elements
+      for (const [id, text] of Object.entries(translations[lang])) {
+        const elements = document.querySelectorAll(`[id="${id}"]`);
+        elements.forEach(el => {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+      }
+
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+
+      // RTL for Arabic
+      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+
+      // Save preference
+      localStorage.setItem('lang', lang);
+    }
+
+    // Initialize with saved language or browser preference
+    function initLanguage() {
+      const savedLang = localStorage.getItem('lang');
+      const browserLang = navigator.language.slice(0, 2);
+      
+      if (savedLang) {
+        changeLanguage(savedLang);
+      } else if (['en', 'so', 'ar'].includes(browserLang)) {
+        changeLanguage(browserLang);
+      } else {
+        changeLanguage('en');
+      }
+    }
+
+    // Scroll animations
+    function setupAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', () => {
+      initLanguage();
+      setupAnimations();
+    });
+  </script>
 </body>
 </html>
