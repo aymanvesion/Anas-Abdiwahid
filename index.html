@@ -1,724 +1,1369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anas Updy | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" href="Anas Updy (1).jpeg" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <style>
-    :root {
-      --primary: #4361ee;
-      --secondary: #3a0ca3;
-      --accent: #f72585;
-      --dark: #14213d;
-      --light: #f8f9fa;
-      --text: #2b2d42;
-      --card-bg: rgba(255, 255, 255, 0.9);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anas Updy | Creative Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="anas.jpeg" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #0A192F;
+            --secondary: #64FFDA;
+            --accent: #FF6B6B;
+            --text-light: #CCD6F6;
+            --text-dark: #8892B0;
+            --card-bg: rgba(10, 25, 47, 0.8);
+            --glass-bg: rgba(17, 34, 64, 0.7);
+            --gradient: linear-gradient(135deg, #0A192F 0%, #112240 100%);
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gradient);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* Language Switcher */
-    .lang-switcher {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      z-index: 1000;
-      display: flex;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      padding: 8px;
-      border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 5px;
+        }
 
-    .lang-btn {
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 8px;
+            display: flex;
+            gap: 5px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            animation: slideIn 0.6s ease-out;
+        }
 
-    .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-    .lang-btn.active {
-      background: white;
-      color: var(--primary);
-    }
+        .lang-btn:hover {
+            color: var(--secondary);
+        }
 
-    /* Header */
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 6rem 0 4rem;
-      text-align: center;
-      position: relative;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-      margin-bottom: -50px;
-    }
+        .lang-btn.active {
+            background: var(--secondary);
+            color: var(--primary);
+        }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .header-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+        }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
 
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
+        .hero-subtitle {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1.2rem;
-      border-radius: 30px;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-3px);
-    }
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
 
-    /* Sections */
-    section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      color: var(--dark);
-      position: relative;
-      font-size: 2.2rem;
-    }
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 5px;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      margin: 15px auto;
-      border-radius: 3px;
-    }
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+            border: 2px solid var(--secondary);
+        }
 
-    /* About Section */
-    .about-container {
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-      background: var(--card-bg);
-      padding: 3rem;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      margin-top: 2rem;
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
 
-    .about-text {
-      flex: 1;
-    }
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
 
-    .about-text p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
+        .btn-secondary:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
 
-    .about-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      position: relative;
-    }
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .profile-img {
-      width: 300px;
-      height: 300px;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 5px solid white;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      transform: rotate(-3deg);
-      transition: all 0.5s ease;
-    }
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    .profile-img:hover {
-      transform: rotate(0deg) scale(1.05);
-    }
+        .nav-dot:hover {
+            background: var(--secondary);
+            transform: scale(1.2);
+        }
 
-    .profile-decor {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 2px dashed var(--primary);
-      border-radius: 20px;
-      top: -15px;
-      left: -15px;
-      z-index: -1;
-      opacity: 0.5;
-    }
+        .nav-dot.active {
+            background: var(--secondary);
+            transform: scale(1.2);
+        }
 
-    /* Skills Section */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+        .nav-dot::after {
+            content: attr(data-section);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
 
-    .skill-card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+        .nav-dot:hover::after {
+            opacity: 1;
+        }
 
-    .skill-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
 
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--primary), var(--accent));
-    }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            position: relative;
+            padding-bottom: 1rem;
+        }
 
-    .skill-card h3 {
-      margin-bottom: 1rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+        }
 
-    .skill-card h3 i {
-      color: var(--accent);
-    }
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
 
-    /* CV Section */
-    .cv-container {
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-      background: var(--card-bg);
-      padding: 3rem;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      margin-top: 2rem;
-    }
+        .about-image {
+            position: relative;
+        }
 
-    .cv-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+        .image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
 
-    .cv-image img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.5s ease;
-    }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-    .cv-image img:hover {
-      transform: scale(1.03);
-    }
+        .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
 
-    .cv-text {
-      flex: 1;
-      text-align: center;
-    }
+        .about-text p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
 
-    .cv-text h3 {
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
 
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      color: white;
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-      margin-top: 1.5rem;
-    }
+        .skill-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
-    }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.1);
+        }
 
-    /* Contact Section */
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-size: 1.1rem;
-    }
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
 
-    .contact-item i {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
+        .skill-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
 
-    .contact-item a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
 
-    .contact-item a:hover {
-      color: var(--accent);
-    }
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 3rem 0;
-      margin-top: 4rem;
-    }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
 
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
 
-    .social-link {
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      transition: all 0.3s ease;
-    }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-    .social-link:hover {
-      background: var(--accent);
-      transform: translateY(-5px);
-    }
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
 
-    .copyright {
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
+        .project-content {
+            padding: 2rem;
+        }
 
-    /* Animations */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
 
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .project-content p {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
 
-    .floating {
-      animation: float 3s ease-in-out infinite;
-    }
+        .project-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
 
-    /* RTL Support */
-    [lang="ar"] body {
-      direction: rtl;
-      font-family: 'Tahoma', sans-serif;
-    }
+        .project-link:hover {
+            color: var(--text-light);
+        }
 
-    [lang="ar"] .about-container,
-    [lang="ar"] .cv-container {
-      flex-direction: row-reverse;
-    }
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .about-container,
-      .cv-container {
-        flex-direction: column;
-      }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-      header {
-        padding: 5rem 0 3rem;
-        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-      }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
+        }
 
-      header h1 {
-        font-size: 2.2rem;
-      }
+        .contact-item:hover {
+            transform: translateX(10px);
+            border-color: var(--secondary);
+        }
 
-      nav ul {
-        gap: 0.8rem;
-      }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
 
-      .profile-img {
-        width: 250px;
-        height: 250px;
-      }
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
 
-      .lang-switcher {
-        top: 15px;
-        right: 15px;
-      }
-    }
-  </style>
+        .contact-details a, .contact-details p {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--secondary);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 25, 47, 0.6);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        .form-status {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            display: block;
+        }
+
+        .form-status.error {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 4rem 10% 2rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(10, 25, 47, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-dark);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        /* Date Display */
+        .current-date {
+            display: inline-block;
+            margin-left: 5px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .image-wrapper {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 0 5%;
+            }
+            
+            section {
+                padding: 80px 5%;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-dots {
+                display: none;
+            }
+            
+            .lang-switcher {
+                top: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Language Switcher -->
-  <div class="lang-switcher animate__animated animate__fadeIn">
-    <button class="lang-btn active" onclick="changeLanguage('en')">
-      <i class="fas fa-language"></i> English
-    </button>
-    <button class="lang-btn" onclick="changeLanguage('so')">
-      <i class="fas fa-language"></i> Somali
-    </button>
-    <button class="lang-btn" onclick="changeLanguage('ar')">
-      <i class="fas fa-language"></i> العربية
-    </button>
-  </div>
-
-  <!-- Header -->
-  <header class="animate__animated animate__fadeIn">
-    <div class="header-content">
-      <h1 id="header-title">Personal Profile</h1>
-      <nav>
-        <ul>
-          <li><a href="#about" id="nav-about"><i class="fas fa-user"></i> <span>About</span></a></li>
-          <li><a href="#skills" id="nav-skills"><i class="fas fa-code"></i> <span>Skills</span></a></li>
-          <li><a href="#cv" id="nav-cv"><i class="fas fa-file-alt"></i> <span>C.V</span></a></li>
-          <li><a href="#contact" id="nav-contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav>
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="changeLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="changeLanguage('so')">SO</button>
+        <button class="lang-btn" onclick="changeLanguage('ar')">AR</button>
     </div>
-  </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2 class="section-title animate-on-scroll" id="about-title">About Me</h2>
-    <div class="about-container animate-on-scroll">
-      <div class="about-text">
-        <p id="about-text">👋 Hi, I'm Anas Abdiwahid - a passionate university student and future software engineer. I specialize in creating beautiful, functional digital experiences. With expertise in both design and development, I bridge the gap between aesthetics and functionality.</p>
-        <p id="about-text2">My journey in tech started 3 years ago, and since then I've worked on numerous projects that have helped businesses establish their online presence. I believe in clean, efficient code and user-centered design.</p>
-      </div>
-      <div class="about-image">
-        <div class="profile-decor"></div>
-        <img src="Anas Updy (1).jpeg" alt="Profile Picture" class="profile-img floating">
-      </div>
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="Home" onclick="scrollToSection('hero')"></div>
+        <div class="nav-dot" data-section="About" onclick="scrollToSection('about')"></div>
+        <div class="nav-dot" data-section="Skills" onclick="scrollToSection('skills')"></div>
+        <div class="nav-dot" data-section="Projects" onclick="scrollToSection('projects')"></div>
+        <div class="nav-dot" data-section="Contact" onclick="scrollToSection('contact')"></div>
     </div>
-  </section>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2 class="section-title animate-on-scroll" id="skills-title">My Skills</h2>
-    <div class="skills-container">
-      <div class="skill-card animate-on-scroll">
-        <h3><i class="fas fa-laptop-code"></i> <span id="skill1-title">Front-End Development</span></h3>
-        <p id="skill1-text">Building responsive, interactive websites using HTML, CSS, and JavaScript. Check out my projects: <a href="https://buugtabiye.netlify.app/" target="_blank">BuugTabiye</a>, <a href="https://eymanvesion.netlify.app/" target="_blank">Eyman-Vesion</a></p>
-      </div>
-      
-      <div class="skill-card animate-on-scroll">
-        <h3><i class="fas fa-film"></i> <span id="skill2-title">Video Editing</span></h3>
-        <p id="skill2-text">Professional video editing with Adobe Premiere Pro. Specializing in vlogs, promotional videos, and social media content.</p>
-      </div>
-      
-      <div class="skill-card animate-on-scroll">
-        <h3><i class="fas fa-paint-brush"></i> <span id="skill3-title">Graphic Design</span></h3>
-        <p id="skill3-text">Creating visually appealing designs for logos, social media, and marketing materials using Photoshop and Illustrator.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content animate">
+            <div class="hero-subtitle" id="hero-subtitle">Hello, I'm</div>
+            <h1 class="hero-title" id="hero-title">Anas Abdiwahid</h1>
+            <p class="hero-description" id="hero-description">
+                A passionate Software Engineer & Creative Developer crafting digital experiences that blend innovation with aesthetics.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary" id="contact-btn">
+                    <i class="fas fa-paper-plane"></i> Get In Touch
+                </a>
+                <a href="Cv Anas updyy Pdf.pdf" download class="btn btn-secondary" id="cv-btn">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <!-- CV Section -->
-  <section id="cv">
-    <h2 class="section-title animate-on-scroll" id="cv-title">My Resume</h2>
-    <div class="cv-container animate-on-scroll">
-      <div class="cv-image">
-        <img src="Cv  Anas updyy copy.jpg" alt="My CV" id="cv-image">
-      </div>
-      <div class="cv-text">
-        <h3 id="cv-subtitle">Professional Experience</h3>
-        <p id="cv-text">Download my complete resume to view my education, work experience, and professional achievements in detail.</p>
-        <a href="Cv  Anas updyy Pdf.pdf" download class="download-btn" id="download-cv">
-          <i class="fas fa-download"></i> Download CV
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <h2 class="section-title" id="about-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image animate">
+                    <div class="image-wrapper">
+                        <img src="anas.jpeg" alt="Anas Updy">
+                    </div>
+                </div>
+                <div class="about-text animate">
+                    <p id="about-text-1">
+                        I'm Anas Abdiwahid, a Computer Science student and software engineer passionate about creating innovative digital solutions. With 3+ years of experience in web development and design.
+                    </p>
+                    <p id="about-text-2">
+                        My expertise spans across frontend development, backend systems, creative design, and IoT projects. I believe in building products that are not only functional but also provide exceptional user experiences.
+                    </p>
+                    <p id="about-text-3">
+                        Currently pursuing my degree while working on various freelance projects, I'm always eager to take on new challenges and expand my skill set.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2 class="section-title animate-on-scroll" id="contact-title">Contact Me</h2>
-    <div class="contact-info animate-on-scroll">
-      <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:anasrk85@gmail.com" id="contact-email">anasrk85@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-phone"></i>
-        <a href="tel:+252613496943" id="contact-phone">+252 613496943</a>
-      </div>
-    </div>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-container">
+            <h2 class="section-title" id="skills-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 id="skill-1-title">Web Development</h3>
+                    <p id="skill-1-desc">HTML5, CSS3, JavaScript, PHP, React, Node.js. Building responsive and interactive web applications.</p>
+                </div>
+                
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 id="skill-2-title">Creative Design</h3>
+                    <p id="skill-2-desc">Adobe Creative Suite, UI/UX Design, Graphic Design, Video Editing with Premiere Pro.</p>
+                </div>
+                
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 id="skill-3-title">Arduino & IoT</h3>
+                    <p id="skill-3-desc">Microcontroller programming, embedded systems, IoT projects, and automation solutions.</p>
+                   
+                </div>
+                
+                <div class="skill-card animate">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 id="skill-4-title">Full Stack</h3>
+                    <p id="skill-4-desc">End-to-end web development, database management, REST APIs, and cloud deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="animate__animated animate__fadeInUp">
-    <h3 id="footer-title">Connect With Me</h3>
-    <div class="social-links">
-      <a href="https://wa.me/+252613496943" class="social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/share/163c1X5z5D/" class="social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.tiktok.com/@anazz_updyy" class="social-link"><i class="fab fa-tiktok"></i></a>
-      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-    </div>
-    <p class="copyright" id="copyright">© 2023 Anas Updy. All rights reserved.</p>
-  </footer>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-container">
+            <h2 class="section-title" id="projects-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card animate">
+                    <div class="project-image">
+                        <img src="Screenshot 2026-02-03 144548.png" alt="BuugTabiye">
+                    </div>
+                    <div class="project-content">
+                        <h3 id="project-1-title">BuugTabiye</h3>
+                        <p id="project-1-desc">Educational platform for Somali students providing interactive learning materials and resources.</p>
+                        <div class="project-links">
+                            <a href="https://buugtabiye.netlify.app/" target="_blank" class="project-link" id="project-1-link">
+                                <i class="fas fa-external-link-alt"></i> Visit Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Eyman Vesion">
+                    </div>
+                    <div class="project-content">
+                        <h3 id="project-2-title">Eyman Vesion</h3>
+                        <p id="project-2-desc">Creative portfolio website showcasing innovative design concepts and development work.</p>
+                        <div class="project-links">
+                            <a href="https://eymanvesion.netlify.app/" target="_blank" class="project-link" id="project-2-link">
+                                <i class="fas fa-external-link-alt"></i> Visit Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate">
+                    <div class="project-image">
+                         <img src="QUIZ TIME ✨_Which type of signal is used by most sensors in embedded systems to communicate with microcontrollers__a) Analog_b) Digital_c) Both Analog and Digital_d) Optical.jpg" 
+                         alt="Arduino Quiz" 
+                         style="width: 100%; margin-top: 15px; border-radius: 8px; border: 2px solid var(--secondary);">
+                    </div>
+                    <div class="project-content">
+                        <h3 id="project-3-title">Arduino Projects</h3>
+                        <p id="project-3-desc">Collection of web applications, design works, and IoT projects showcasing diverse skills.</p>
+                        <div class="project-links">
+                            <a href="#contact" class="project-link" id="project-3-link">
+                                <i class="fas fa-envelope"></i> Request Portfolio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Translations Database
-    const translations = {
-      en: {
-        "header-title": "Personal Profile",
-        "nav-about": "About",
-        "nav-skills": "Skills",
-        "nav-cv": "C.V",
-        "nav-contact": "Contact",
-        "about-title": "About Me",
-        "about-text": "👋 Hi, I'm Anas Abdiwahid - a passionate university student and future software engineer. I specialize in creating beautiful, functional digital experiences. With expertise in both design and development, I bridge the gap between aesthetics and functionality.",
-        "about-text2": "My journey in tech started 3 years ago, and since then I've worked on numerous projects that have helped businesses establish their online presence. I believe in clean, efficient code and user-centered design.",
-        "skills-title": "My Skills",
-        "skill1-title": "Front-End Development",
-        "skill1-text": "Building responsive, interactive websites using HTML, CSS, and JavaScript. Check out my projects: BuugTabiye, Eyman-Vesion",
-        "skill2-title": "Video Editing",
-        "skill2-text": "Professional video editing with Adobe Premiere Pro. Specializing in vlogs, promotional videos, and social media content.",
-        "skill3-title": "Graphic Design",
-        "skill3-text": "Creating visually appealing designs for logos, social media, and marketing materials using Photoshop and Illustrator.",
-        "cv-title": "My Resume",
-        "cv-subtitle": "Professional Experience",
-        "cv-text": "Download my complete resume to view my education, work experience, and professional achievements in detail.",
-        "download-cv": "Download CV",
-        "contact-title": "Contact Me",
-        "contact-email": "anasrk85@gmail.com",
-        "contact-phone": "+252 613496943",
-        "footer-title": "Connect With Me",
-        "copyright": "© 2023 Anas Updy. All rights reserved."
-      },
-      so: {
-        "header-title": "Faahfaahin Shakhsiyeed",
-        "nav-about": "Ku Saabsan",
-        "nav-skills": "Xirfadaha",
-        "nav-cv": "CV",
-        "nav-contact": "Xiriir",
-        "about-title": "Aniga",
-        "about-text": "👋 Salaam, waxaan ahay Anas Cabdiwahiid - arday jaamacad ah oo injineer software mustaqbalka ah. Waxaan khaasa u leeyahay abuuritaanka tajribooyinka digital ee qurux badan iyo wax ku ool ah.",
-        "about-text2": "Safarkayga teknolojiyada waxuu bilaabay 3 sano ka hor, waxanaan ka shaqeynayey mashruuco badan oo ka caawiyey ganacsatada inay helaan meel internetka. Waxaan rumeynayaa code nadiif ah iyo naqshadeynta isticmaalaha.",
-        "skills-title": "Xirfadahayga",
-        "skill1-title": "Horudhisme Front-End",
-        "skill1-text": "Dhisidda bogagga internetka ee iswaafajiya iyo isdhexgalka leh adoo isticmaalaya HTML, CSS, iyo JavaScript. Eeg mashruucayga: BuugTabiye, Eyman-Vesion",
-        "skill2-title": "Tafatiirka Fiidiyowyada",
-        "skill2-text": "Tafatiir fiidiyowyada xirfadeed iyadoo la adeegsanayo Adobe Premiere Pro. Khaaska u leh fiidiyowyada vlog-ka, kor u qaadista, iyo waxyaabaha warbaahinta bulshada.",
-        "skill3-title": "Naqshadaynta Sawirka",
-        "skill3-text": "Abuuritaanka naqshadaha quruxda badan ee calaamadaha, warbaahinta bulshada, iyo qalabka suuqgeynta iyadoo la adeegsanayo Photoshop iyo Illustrator.",
-        "cv-title": "CVgayga",
-        "cv-subtitle": "Khibrad Shaqo",
-        "cv-text": "Soo dejiso CVga oo dhan si aad u eegto waxbarashadayda, khibradda shaqada, iyo guulaha xirfadeyda si faahfaahsan.",
-        "download-cv": "Soo Dejiso CV",
-        "contact-title": "Ilaal Xiriir",
-        "contact-email": "anasrk85@gmail.com",
-        "contact-phone": "+252 613496943",
-        "footer-title": "Isku Xidh Aniga",
-        "copyright": "© 2023 Anas Updy. Dhammaan xuquuqdu waa la ilaaliyay."
-      },
-      ar: {
-        "header-title": "الملف الشخصي",
-        "nav-about": "معلومات عني",
-        "nav-skills": "المهارات",
-        "nav-cv": "السيرة الذاتية",
-        "nav-contact": "اتصل بي",
-        "about-title": "معلومات عني",
-        "about-text": "👋 مرحباً، أنا أنس عبد الوحيد - طالب جامعي ومهندس برمجيات مستقبلي. أتخصص في إنشاء تجارب رقمية جميلة وعملية. مع خبرة في كل من التصميم والبرمجة، أقوم بربط الجماليات بالوظائف.",
-        "about-text2": "بدأت رحلتي في التكنولوجيا منذ 3 سنوات، ومنذ ذلك الحين عملت على العديد من المشاريع التي ساعدت الشركات على إنشاء وجودها على الإنترنت. أؤمن بالبرمجة النظيفة الفعالة والتصميم المرتكز على المستخدم.",
-        "skills-title": "مهاراتي",
-        "skill1-title": "تطوير الواجهات الأمامية",
-        "skill1-text": "بناء مواقع ويب متجاوبة وتفاعلية باستخدام HTML و CSS و JavaScript. تحقق من مشاريعي: BuugTabiye، Eyman-Vesion",
-        "skill2-title": "تحرير الفيديو",
-        "skill2-text": "تحرير فيديو احترافي باستخدام Adobe Premiere Pro. متخصص في مدونات الفيديو، الفيديوهات الترويجية، ومحتوى وسائل التواصل الاجتماعي.",
-        "skill3-title": "التصميم الجرافيكي",
-        "skill3-text": "إنشاء تصاميم جذابة للشعارات، وسائل التواصل الاجتماعي، ومواد التسويق باستخدام Photoshop و Illustrator.",
-        "cv-title": "سيرتي الذاتية",
-        "cv-subtitle": "الخبرة المهنية",
-        "cv-text": "قم بتنزيل سيرتي الذاتية الكاملة لعرض تعليمي، خبرتي العملية، وإنجازاتي المهنية بالتفصيل.",
-        "download-cv": "تحميل السيرة الذاتية",
-        "contact-title": "اتصل بي",
-        "contact-email": "anasrk85@gmail.com",
-        "contact-phone": "+252 613496943",
-        "footer-title": "تواصل معي",
-        "copyright": "© 2023 أنس أبدي. جميع الحقوق محفوظة."
-      }
-    };
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 class="section-title" id="contact-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item animate">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 id="contact-email-title">Email</h4>
+                            <a href="mailto:anasrk85@gmail.com" id="contact-email">anasrk85@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item animate">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 id="contact-phone-title">Phone</h4>
+                            <a href="tel:+252613496943" id="contact-phone">+252 613496943</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item animate">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 id="contact-location-title">Location</h4>
+                            <p id="contact-location">Somalia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label" id="name-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label" id="email-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label" id="subject-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label" id="message-label">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" required></textarea>
+                        </div>
+                        
+                        <div class="form-status" id="formStatus"></div>
+                        
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span id="submit-text">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Language Change Function
-    function changeLanguage(lang) {
-      // Update active button
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if ((lang === 'en' && btn.textContent.includes('English')) ||
-            (lang === 'so' && btn.textContent.includes('Somali')) ||
-            (lang === 'ar' && btn.textContent.includes('العربية'))) {
-          btn.classList.add('active');
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://wa.me/+252613496943" class="social-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.facebook.com/share/163c1X5z5D/" class="social-link" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.tiktok.com/@anazz_updyy" class="social-link" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <p class="copyright" id="copyright">
+                © <span id="current-year">2023</span> - <span id="current-month"></span> Anas Abdiwahid. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations Database
+        const translations = {
+            en: {
+                // Hero Section
+                "hero-subtitle": "Hello, I'm",
+                "hero-title": "Anas Updy",
+                "hero-description": "A passionate Software Engineer & Creative Developer crafting digital experiences that blend innovation with aesthetics.",
+                "contact-btn": "Get In Touch",
+                "cv-btn": "Download CV",
+                
+                // About Section
+                "about-title": "About Me",
+                "about-text-1": "I'm Anas Abdiwahid, a Computer Science student and software engineer passionate about creating innovative digital solutions. With 3+ years of experience in web development and design.",
+                "about-text-2": "My expertise spans across frontend development, backend systems, creative design, and IoT projects. I believe in building products that are not only functional but also provide exceptional user experiences.",
+                "about-text-3": "Currently pursuing my degree while working on various freelance projects, I'm always eager to take on new challenges and expand my skill set.",
+                
+                // Skills Section
+                "skills-title": "My Skills",
+                "skill-1-title": "Web Development",
+                "skill-1-desc": "HTML5, CSS3, JavaScript, PHP, React, Node.js. Building responsive and interactive web applications.",
+                "skill-2-title": "Creative Design",
+                "skill-2-desc": "Adobe Creative Suite, UI/UX Design, Graphic Design, Video Editing with Premiere Pro.",
+                "skill-3-title": "Arduino & IoT",
+                "skill-3-desc": "Microcontroller programming, embedded systems, IoT projects, and automation solutions.",
+                "skill-4-title": "Full Stack",
+                "skill-4-desc": "End-to-end web development, database management, REST APIs, and cloud deployment.",
+                
+                // Projects Section
+                "projects-title": "Featured Projects",
+                "project-1-title": "BuugTabiye",
+                "project-1-desc": "Educational platform for Somali students providing interactive learning materials and resources.",
+                "project-1-link": "Visit Live",
+                "project-2-title": "Eyman Vesion",
+                "project-2-desc": "Creative portfolio website showcasing innovative design concepts and development work.",
+                "project-2-link": "Visit Live",
+                "project-3-title": "Various Projects",
+                "project-3-desc": "Collection of web applications, design works, and IoT projects showcasing diverse skills.",
+                "project-3-link": "Request Portfolio",
+                
+                // Contact Section
+                "contact-title": "Get In Touch",
+                "contact-email-title": "Email",
+                "contact-email": "anasrk85@gmail.com",
+                "contact-phone-title": "Phone",
+                "contact-phone": "+252 613496943",
+                "contact-location-title": "Location",
+                "contact-location": "Somalia",
+                "name-label": "Name",
+                "email-label": "Email",
+                "subject-label": "Subject",
+                "message-label": "Message",
+                "submit-text": "Send Message",
+                
+                // Footer
+                "copyright": "© 2023 - [MONTH] Anas Updy. All rights reserved."
+            },
+            so: {
+                // Hero Section
+                "hero-subtitle": "Salaan, Aniga waa",
+                "hero-title": "Anas Updy",
+                "hero-description": "Injineer Software & Horumariye Farshaxan oo abuuraya tajribooyinka digital ee isku duba ridaya horumarin iyo qurxoonida.",
+                "contact-btn": "Isku Xiriir",
+                "cv-btn": "Soo Dejiso CV",
+                
+                // About Section
+                "about-title": "Aniga",
+                "about-text-1": "Waxaan ahay Anas Cabdiwahiid, arday Computer Science ah iyo injineer software oo xiiseynaya abuurista xalladaha digital ee cusub. Waan leeyahay 3+ sano khibrad ku saabsan horumarinta webka iyo naqshadeynta.",
+                "about-text-2": "Khibradeydu waxay ku dhex fidsan tahay horumarinta frontend, nidaamada backend, naqshadeynta farshaxan, iyo mashruucyada IoT. Waxaan rumeynayaa dhisidda alaabta aan kaliya wax ku oolayn, balse ay bixiyaan tajribooyinka isticmaale ee gaarka ah.",
+                "about-text-3": "Hadda waxaan ku dhex socdaa shahaadadeyda iyo shaqeynta mashruucyada freelance kala duwan, waxaan had iyo jeer raadinayaa cijibaadaha cusub iyo ballaarinta xirfadeyda.",
+                
+                // Skills Section
+                "skills-title": "Xirfadahayga",
+                "skill-1-title": "Horumarinta Webka",
+                "skill-1-desc": "HTML5, CSS3, JavaScript, PHP, React, Node.js. Dhisidda codsiyada webka is-waafajiya iyo is-dhexgalka leh.",
+                "skill-2-title": "Naqshadeynta Farshaxan",
+                "skill-2-desc": "Adobe Creative Suite, Naqshadeynta UI/UX, Naqshadeynta Sawirka, Tafatiirka Fiidiyowyada iyo Premiere Pro.",
+                "skill-3-title": "Arduino & IoT",
+                "skill-3-desc": "Barmijinta Microcontroller, nidaamyaasha garaacda, mashruucyada IoT, iyo xalladaha otomaatiko.",
+                "skill-4-title": "Full Stack",
+                "skill-4-desc": "Horumarinta webka ilaa dhamaadka, maamulka database, REST APIs, iyo deynta daruurta.",
+                
+                // Projects Section
+                "projects-title": "Mashruucayga Loo Soo Bandhigay",
+                "project-1-title": "BuugTabiye",
+                "project-1-desc": "Platform waxbarasho oo loogu talagalay ardayda Soomaaliyeed oo bixisa qalabka waxbarashada is-dhexgalka leh iyo khayraadka.",
+                "project-1-link": "Booqo Goobta",
+                "project-2-title": "Eyman Vesion",
+                "project-2-desc": "Website portfolio farshaxan oo bandhigaya fikradaha naqshadeynta cusub iyo shaqada horumarinta.",
+                "project-2-link": "Booqo Goobta",
+                "project-3-title": "Mashruucyo Kala Duwan",
+                "project-3-desc": "Ururinta codsiyada webka, shaqooyinka naqshadeynta, iyo mashruucyada IoT ee bandhigaya xirfado kala duwan.",
+                "project-3-link": "Codso Portfolio",
+                
+                // Contact Section
+                "contact-title": "Isku Xiriir",
+                "contact-email-title": "Iimayl",
+                "contact-email": "anasrk85@gmail.com",
+                "contact-phone-title": "Telefoon",
+                "contact-phone": "+252 613496943",
+                "contact-location-title": "Goobta",
+                "contact-location": "Soomaaliya",
+                "name-label": "Magaca",
+                "email-label": "Iimaylka",
+                "subject-label": "Mawduuca",
+                "message-label": "Farriinta",
+                "submit-text": "Dir Farriinta",
+                
+                // Footer
+                "copyright": "© 2023 - [BISHA] Anas Updy. Dhammaan xuquuqdu waa la ilaaliyay."
+            },
+            ar: {
+                // Hero Section
+                "hero-subtitle": "مرحباً، أنا",
+                "hero-title": "أنس أبدي",
+                "hero-description": "مهندس برمجيات ومطور إبداعي شغوف يصمم تجارب رقمية تدمج بين الابتكار والجماليات.",
+                "contact-btn": "تواصل معي",
+                "cv-btn": "تحميل السيرة الذاتية",
+                
+                // About Section
+                "about-title": "معلومات عني",
+                "about-text-1": "أنا أنس عبد الوحيد، طالب علوم حاسوب ومهندس برمجيات شغوف بإنشاء حلول رقمية مبتكرة. لدي خبرة تزيد عن 3 سنوات في تطوير الويب والتصميم.",
+                "about-text-2": "تمتد خبرتي عبر تطوير الواجهات الأمامية، الأنظمة الخلفية، التصميم الإبداعي، ومشاريع إنترنت الأشياء. أؤمن ببناء منتجات لا تكون وظيفية فحسب، بل توفر أيضًا تجارب مستخدم استثنائية.",
+                "about-text-3": "أتابع حالياً دراستي بينما أعمل على مشاريع عمل حر متنوعة، وأنا دائماً حريص على مواجهة تحديات جديدة وتوسيع مجموعة مهاراتي.",
+                
+                // Skills Section
+                "skills-title": "مهاراتي",
+                "skill-1-title": "تطوير الويب",
+                "skill-1-desc": "HTML5, CSS3, JavaScript, PHP, React, Node.js. بناء تطبيقات ويب متجاوبة وتفاعلية.",
+                "skill-2-title": "التصميم الإبداعي",
+                "skill-2-desc": "Adobe Creative Suite, تصميم واجهات المستخدم/تجربة المستخدم, التصميم الجرافيكي, تحرير الفيديو باستخدام Premiere Pro.",
+                "skill-3-title": "Arduino وإنترنت الأشياء",
+                "skill-3-desc": "برمجة المتحكمات الدقيقة, الأنظمة المدمجة, مشاريع إنترنت الأشياء, وحلول الأتمتة.",
+                "skill-4-title": "تطوير كامل",
+                "skill-4-desc": "تطوير الويب من البداية للنهاية, إدارة قواعد البيانات, واجهات برمجة التطبيقات REST, ونشر الحلول السحابية.",
+                
+                // Projects Section
+                "projects-title": "المشاريع المميزة",
+                "project-1-title": "بوغ تبيه",
+                "project-1-desc": "منصة تعليمية للطلاب الصوماليين توفر مواد تعليمية تفاعلية وموارد متنوعة.",
+                "project-1-link": "زيارة الموقع",
+                "project-2-title": "إيمان فيجن",
+                "project-2-desc": "موقع محفظة إبداعي يعرض مفاهيم تصميم مبتكرة وأعمال تطوير.",
+                "project-2-link": "زيارة الموقع",
+                "project-3-title": "مشاريع متنوعة",
+                "project-3-desc": "مجموعة من تطبيقات الويب، أعمال التصميم، ومشاريع إنترنت الأشياء تعرض مهارات متنوعة.",
+                "project-3-link": "طلب المحفظة",
+                
+                // Contact Section
+                "contact-title": "تواصل معي",
+                "contact-email-title": "البريد الإلكتروني",
+                "contact-email": "anasrk85@gmail.com",
+                "contact-phone-title": "الهاتف",
+                "contact-phone": "+252 613496943",
+                "contact-location-title": "الموقع",
+                "contact-location": "الصومال",
+                "name-label": "الاسم",
+                "email-label": "البريد الإلكتروني",
+                "subject-label": "الموضوع",
+                "message-label": "الرسالة",
+                "submit-text": "إرسال الرسالة",
+                
+                // Footer
+                "copyright": "© 2023 - [الشهر] أنس أبدي. جميع الحقوق محفوظة."
+            }
+        };
+
+        // Get current date
+        function getCurrentDate() {
+            const now = new Date();
+            const months = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            
+            const monthsSo = [
+                'Janaayo', 'Febraayo', 'Maarso', 'Abriil', 'Maajo', 'Juun',
+                'Luuliyo', 'Ogosto', 'Sebtembar', 'Oktoobar', 'Nofembar', 'Desembar'
+            ];
+            
+            const monthsAr = [
+                'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+                'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+            ];
+            
+            const year = now.getFullYear();
+            const monthIndex = now.getMonth();
+            
+            return {
+                year: year,
+                month: months[monthIndex],
+                monthSo: monthsSo[monthIndex],
+                monthAr: monthsAr[monthIndex]
+            };
         }
-      });
 
-      // Update all translatable elements
-      for (const [id, text] of Object.entries(translations[lang])) {
-        const elements = document.querySelectorAll(`[id="${id}"]`);
-        elements.forEach(el => {
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.value = text;
-          } else {
-            el.textContent = text;
-          }
+        // Update copyright with current year and month
+        function updateCopyrightDate() {
+            const date = getCurrentDate();
+            const currentYear = document.getElementById('current-year');
+            const currentMonth = document.getElementById('current-month');
+            
+            if (currentYear) {
+                currentYear.textContent = date.year;
+            }
+            
+            if (currentMonth) {
+                // Get current language
+                const lang = document.documentElement.lang || 'en';
+                
+                switch(lang) {
+                    case 'so':
+                        currentMonth.textContent = date.monthSo;
+                        break;
+                    case 'ar':
+                        currentMonth.textContent = date.monthAr;
+                        break;
+                    default:
+                        currentMonth.textContent = date.month;
+                }
+            }
+        }
+
+        // Language Change Function
+        function changeLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update all translatable elements
+            for (const [id, text] of Object.entries(translations[lang])) {
+                const element = document.getElementById(id);
+                if (element) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = text;
+                    } else {
+                        // Replace [MONTH] placeholder with actual month
+                        const date = getCurrentDate();
+                        let updatedText = text;
+                        
+                        if (lang === 'so') {
+                            updatedText = text.replace('[BISHA]', date.monthSo);
+                        } else if (lang === 'ar') {
+                            updatedText = text.replace('[الشهر]', date.monthAr);
+                        } else {
+                            updatedText = text.replace('[MONTH]', date.month);
+                        }
+                        
+                        element.textContent = updatedText;
+                    }
+                }
+            }
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Update copyright date with correct month
+            updateCopyrightDate();
+            
+            // RTL for Arabic
+            if (lang === 'ar') {
+                document.body.style.direction = 'rtl';
+                // Adjust section titles for RTL
+                document.querySelectorAll('.section-title').forEach(title => {
+                    title.style.textAlign = 'right';
+                });
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelectorAll('.section-title').forEach(title => {
+                    title.style.textAlign = 'left';
+                });
+            }
+            
+            // Save preference
+            localStorage.setItem('lang', lang);
+        }
+
+        // Initialize language
+        function initLanguage() {
+            const savedLang = localStorage.getItem('lang');
+            const browserLang = navigator.language.slice(0, 2);
+            
+            if (savedLang) {
+                changeLanguage(savedLang);
+            } else if (['en', 'so', 'ar'].includes(browserLang)) {
+                changeLanguage(browserLang);
+            } else {
+                changeLanguage('en');
+            }
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Update active nav dot
+        function updateActiveNavDot() {
+            const sections = document.querySelectorAll('section');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    navDots.forEach(dot => dot.classList.remove('active'));
+                    navDots[index].classList.add('active');
+                }
+            });
+        }
+
+        // Contact form handling
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            const formStatus = document.getElementById('formStatus');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Validate form
+                if (!data.name || !data.email || !data.subject || !data.message) {
+                    formStatus.textContent = 'Please fill in all fields';
+                    formStatus.className = 'form-status error';
+                    return;
+                }
+                
+                // Create mailto link
+                const subject = encodeURIComponent(data.subject);
+                const body = encodeURIComponent(
+                    `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}\n\n---\nSent from Anas Updy's Portfolio Website`
+                );
+                
+                // Open email client
+                window.location.href = `mailto:anasrk85@gmail.com?subject=${subject}&body=${body}`;
+                
+                // Show success message
+                formStatus.textContent = 'Email client opened! Please send your message.';
+                formStatus.className = 'form-status success';
+                
+                // Reset form
+                form.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            });
+        }
+
+        // Initialize animations on scroll
+        function initAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.animate').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            // First update copyright date
+            updateCopyrightDate();
+            
+            // Then initialize language (which will also update copyright again)
+            initLanguage();
+            
+            // Setup other features
+            setupContactForm();
+            initAnimations();
+            
+            // Update nav dots on scroll
+            window.addEventListener('scroll', updateActiveNavDot);
+            
+            // Initial update
+            updateActiveNavDot();
         });
-      }
-
-      // Update HTML lang attribute
-      document.documentElement.lang = lang;
-
-      // RTL for Arabic
-      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-
-      // Save preference
-      localStorage.setItem('lang', lang);
-    }
-
-    // Initialize with saved language or browser preference
-    function initLanguage() {
-      const savedLang = localStorage.getItem('lang');
-      const browserLang = navigator.language.slice(0, 2);
-      
-      if (savedLang) {
-        changeLanguage(savedLang);
-      } else if (['en', 'so', 'ar'].includes(browserLang)) {
-        changeLanguage(browserLang);
-      } else {
-        changeLanguage('en');
-      }
-    }
-
-    // Scroll animations
-    function setupAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-      });
-    }
-
-    // Initialize everything
-    document.addEventListener('DOMContentLoaded', () => {
-      initLanguage();
-      setupAnimations();
-    });
-  </script>
+    </script>
 </body>
 </html>
