@@ -1,1369 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Updy | Creative Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="anas.jpeg" type="image/x-icon">
-    <style>
-        :root {
-            --primary: #0A192F;
-            --secondary: #64FFDA;
-            --accent: #FF6B6B;
-            --text-light: #CCD6F6;
-            --text-dark: #8892B0;
-            --card-bg: rgba(10, 25, 47, 0.8);
-            --glass-bg: rgba(17, 34, 64, 0.7);
-            --gradient: linear-gradient(135deg, #0A192F 0%, #112240 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--gradient);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--primary);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 5px;
-        }
-
-        /* Language Switcher */
-        .lang-switcher {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 8px;
-            display: flex;
-            gap: 5px;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            animation: slideIn 0.6s ease-out;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-light);
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn:hover {
-            color: var(--secondary);
-        }
-
-        .lang-btn.active {
-            background: var(--secondary);
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-
-        .hero-subtitle {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        .hero-title {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-light) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-description {
-            font-size: 1.3rem;
-            color: var(--text-dark);
-            margin-bottom: 3rem;
-            max-width: 600px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--primary);
-            border: 2px solid var(--secondary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Navigation Dots */
-        .nav-dots {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-dot:hover {
-            background: var(--secondary);
-            transform: scale(1.2);
-        }
-
-        .nav-dot.active {
-            background: var(--secondary);
-            transform: scale(1.2);
-        }
-
-        .nav-dot::after {
-            content: attr(data-section);
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--secondary);
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-dot:hover::after {
-            opacity: 1;
-        }
-
-        /* Sections */
-        section {
-            min-height: 100vh;
-            padding: 100px 10%;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--text-light);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .image-wrapper {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid var(--secondary);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .image-wrapper:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text p {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2.5rem;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.1);
-        }
-
-        .skill-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.05));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-
-        .skill-card p {
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-        }
-
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-
-        .project-content p {
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--text-light);
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            border-color: var(--secondary);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.05));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--secondary);
-        }
-
-        .contact-details h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-        }
-
-        .contact-details a, .contact-details p {
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: var(--secondary);
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 3rem;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(10, 25, 47, 0.6);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 8px;
-            color: var(--text-light);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--secondary);
-            color: var(--primary);
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
-        }
-
-        .form-status {
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            text-align: center;
-            display: none;
-        }
-
-        .form-status.success {
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
-            display: block;
-        }
-
-        .form-status.error {
-            background: rgba(255, 107, 107, 0.1);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 4rem 10% 2rem;
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: rgba(10, 25, 47, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            color: var(--text-dark);
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        /* Date Display */
-        .current-date {
-            display: inline-block;
-            margin-left: 5px;
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .image-wrapper {
-                width: 300px;
-                height: 300px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 0 5%;
-            }
-            
-            section {
-                padding: 80px 5%;
-            }
-            
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .nav-dots {
-                display: none;
-            }
-            
-            .lang-switcher {
-                top: 20px;
-                right: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-description {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form {
-                padding: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anas Abdiwahid --  Portfolio</title>
+  <meta name="description"
+    content="Personal portfolio of Anas Abdiwahid Hussein – Full Stack Developer & Multimedia Specialist based at Hormuud University." />
+  <link rel="icon" type="image/png" href="Sawir Logo.png" />
+  <link rel="apple-touch-icon" href="Sawir Logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+  
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+SC:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <button class="lang-btn active" onclick="changeLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="changeLanguage('so')">SO</button>
-        <button class="lang-btn" onclick="changeLanguage('ar')">AR</button>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#home" class="nav-logo">
+          <img src="Sawir Logo.png" alt="Anas logo" class="logo-img" />
+          <span class="logo-text">Anas<span class="accent">.</span></span>
+        </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active" data-i18n="nav.home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+        <li><a href="#cv" class="nav-link" data-i18n="nav.cv">CV</a></li>
+        <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#portfolio" class="nav-link" data-i18n="nav.portfolio">Portfolio</a></li>
+        <li><a href="#education" class="nav-link" data-i18n="nav.education">Education</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria-label="ui.language">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23B22234'/><rect y='2' width='30' height='2' fill='%23FFFFFF'/><rect y='6' width='30' height='2' fill='%23FFFFFF'/><rect y='10' width='30' height='2' fill='%23FFFFFF'/><rect y='14' width='30' height='2' fill='%23FFFFFF'/><rect y='18' width='30' height='2' fill='%23FFFFFF'/><rect width='12' height='10' fill='%233C3B6E'/></svg>" alt="" class="flag-icon" id="langFlag" />
+          <span id="langLabel">English</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <ul class="lang-menu" id="langMenu" role="listbox">
+          <li class="lang-option" data-lang="en" data-label="English" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23B22234'/><rect y='2' width='30' height='2' fill='%23FFFFFF'/><rect y='6' width='30' height='2' fill='%23FFFFFF'/><rect y='10' width='30' height='2' fill='%23FFFFFF'/><rect y='14' width='30' height='2' fill='%23FFFFFF'/><rect y='18' width='30' height='2' fill='%23FFFFFF'/><rect width='12' height='10' fill='%233C3B6E'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23B22234'/><rect y='2' width='30' height='2' fill='%23FFFFFF'/><rect y='6' width='30' height='2' fill='%23FFFFFF'/><rect y='10' width='30' height='2' fill='%23FFFFFF'/><rect y='14' width='30' height='2' fill='%23FFFFFF'/><rect y='18' width='30' height='2' fill='%23FFFFFF'/><rect width='12' height='10' fill='%233C3B6E'/></svg>" alt="" class="flag-icon" />
+            English
+          </li>
+          <li class="lang-option" data-lang="so" data-label="Soomaali" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><rect width='100' height='60' fill='%234189dd'/><polygon points='50,10 61,25 78,25 64,36 70,52 50,42 30,52 36,36 22,25 39,25' fill='white'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><rect width='100' height='60' fill='%234189dd'/><polygon points='50,10 61,25 78,25 64,36 70,52 50,42 30,52 36,36 22,25 39,25' fill='white'/></svg>" alt="" class="flag-icon" />
+            Soomaali
+          </li>
+          <li class="lang-option" data-lang="ar" data-label="العربية" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23006C35'/><rect x='6' y='9' width='18' height='2' fill='white'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23006C35'/><rect x='6' y='9' width='18' height='2' fill='white'/></svg>" alt="" class="flag-icon" />
+            العربية
+          </li>
+          <li class="lang-option" data-lang="fr" data-label="Français" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='10' height='20' fill='%230055A4'/><rect x='10' width='10' height='20' fill='%23FFFFFF'/><rect x='20' width='10' height='20' fill='%23EF4135'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='10' height='20' fill='%230055A4'/><rect x='10' width='10' height='20' fill='%23FFFFFF'/><rect x='20' width='10' height='20' fill='%23EF4135'/></svg>" alt="" class="flag-icon" />
+            Français
+          </li>
+          <li class="lang-option" data-lang="es" data-label="Español" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23C60B1E'/><rect y='5' width='30' height='10' fill='%23FFC400'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23C60B1E'/><rect y='5' width='30' height='10' fill='%23FFC400'/></svg>" alt="" class="flag-icon" />
+            Español
+          </li>
+          <li class="lang-option" data-lang="tr" data-label="Türkçe" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23E30A17'/><circle cx='12' cy='10' r='5' fill='white'/><circle cx='13.5' cy='10' r='4' fill='%23E30A17'/><polygon points='18,10 22,8 21,12' fill='white'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23E30A17'/><circle cx='12' cy='10' r='5' fill='white'/><circle cx='13.5' cy='10' r='4' fill='%23E30A17'/><polygon points='18,10 22,8 21,12' fill='white'/></svg>" alt="" class="flag-icon" />
+            Türkçe
+          </li>
+          <li class="lang-option" data-lang="zh" data-label="中文" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23DE2910'/><polygon points='6,3 7.5,7 11.5,7 8.2,9.3 9.5,13 6,10.5 2.5,13 3.8,9.3 0.5,7 4.5,7' fill='%23FFDE00'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='%23DE2910'/><polygon points='6,3 7.5,7 11.5,7 8.2,9.3 9.5,13 6,10.5 2.5,13 3.8,9.3 0.5,7 4.5,7' fill='%23FFDE00'/></svg>" alt="" class="flag-icon" />
+            中文
+          </li>
+          <li class="lang-option" data-lang="hi" data-label="हिन्दी" data-flag="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='white'/><rect width='30' height='6.7' fill='%23FF9933'/><rect y='13.3' width='30' height='6.7' fill='%23138808'/><circle cx='15' cy='10' r='2.5' fill='%23000088'/></svg>">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'><rect width='30' height='20' fill='white'/><rect width='30' height='6.7' fill='%23FF9933'/><rect y='13.3' width='30' height='6.7' fill='%23138808'/><circle cx='15' cy='10' r='2.5' fill='%23000088'/></svg>" alt="" class="flag-icon" />
+            हिन्दी
+          </li>
+        </ul>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-i18n-aria-label="ui.toggleDark">
+        <span class="theme-icon sun"><i class="fas fa-sun"></i></span>
+        <span class="theme-icon moon"><i class="fas fa-moon"></i></span>
+      </button>
+      <a href="#contact" class="btn btn-primary nav-cta" data-i18n="nav.cta">Let's Talk</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" data-i18n-aria-label="ui.openMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <!-- Navigation Dots -->
-    <div class="nav-dots">
-        <div class="nav-dot active" data-section="Home" onclick="scrollToSection('hero')"></div>
-        <div class="nav-dot" data-section="About" onclick="scrollToSection('about')"></div>
-        <div class="nav-dot" data-section="Skills" onclick="scrollToSection('skills')"></div>
-        <div class="nav-dot" data-section="Projects" onclick="scrollToSection('projects')"></div>
-        <div class="nav-dot" data-section="Contact" onclick="scrollToSection('contact')"></div>
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="dots dots-top"></div>
+      <div class="dots dots-bottom"></div>
     </div>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-content animate">
-            <div class="hero-subtitle" id="hero-subtitle">Hello, I'm</div>
-            <h1 class="hero-title" id="hero-title">Anas Abdiwahid</h1>
-            <p class="hero-description" id="hero-description">
-                A passionate Software Engineer & Creative Developer crafting digital experiences that blend innovation with aesthetics.
-            </p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary" id="contact-btn">
-                    <i class="fas fa-paper-plane"></i> Get In Touch
-                </a>
-                <a href="Cv Anas updyy Pdf.pdf" download class="btn btn-secondary" id="cv-btn">
-                    <i class="fas fa-download"></i> Download CV
-                </a>
-            </div>
+    <div class="hero-container">
+      <div class="hero-text">
+        <p class="hero-greeting" data-i18n="hero.greeting">Hi I am</p>
+        <h1 class="hero-title">
+          <span class="line1" data-i18n="hero.line1">Full Stack</span>
+          <span class="line2" data-i18n="hero.line2">&amp; Multimedia</span>
+          <span class="line3" data-i18n="hero.line3">Developer</span>
+        </h1>
+        <div class="hero-badge">
+          <div class="badge-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+              class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <span data-i18n="hero.badge">20K+ Happy Clients</span>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="section-container">
-            <h2 class="section-title" id="about-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image animate">
-                    <div class="image-wrapper">
-                        <img src="anas.jpeg" alt="Anas Updy">
-                    </div>
-                </div>
-                <div class="about-text animate">
-                    <p id="about-text-1">
-                        I'm Anas Abdiwahid, a Computer Science student and software engineer passionate about creating innovative digital solutions. With 3+ years of experience in web development and design.
-                    </p>
-                    <p id="about-text-2">
-                        My expertise spans across frontend development, backend systems, creative design, and IoT projects. I believe in building products that are not only functional but also provide exceptional user experiences.
-                    </p>
-                    <p id="about-text-3">
-                        Currently pursuing my degree while working on various freelance projects, I'm always eager to take on new challenges and expand my skill set.
-                    </p>
-                </div>
-            </div>
+        <div class="hero-desc">
+          <p><strong data-i18n="hero.nameLabel">Name:</strong> <span data-i18n="hero.nameValue">Anas Abdiwahid Hussein</span></p>
+          <p><strong data-i18n="hero.professionLabel">Profession:</strong> <span data-i18n="hero.professionValue">Full Stack Developer & Multimedia Specialist</span></p>
+          <p data-i18n="hero.p1">I am a passionate Full Stack Developer and Multimedia Specialist with a strong interest in building modern
+            digital solutions. I work across both frontend and backend development, creating efficient, scalable, and
+            user-friendly applications.</p>
+          <p data-i18n="hero.p2">My expertise includes designing and developing web applications, crafting visual identities, and producing
+            creative multimedia content. I combine technical skills with creativity to deliver solutions that are both
+            functional and visually compelling.</p>
+          <p class="hero-subtitle" data-i18n="hero.subtitleSkills">Core Skills & Areas of Expertise</p>
+          <ul class="hero-list">
+            <li data-i18n="hero.skill1">Full Stack Web Development (Frontend & Backend)</li>
+            <li data-i18n="hero.skill2">Web Application Design & Development</li>
+            <li data-i18n="hero.skill3">Logo Design & Visual Branding</li>
+            <li data-i18n="hero.skill4">Multimedia & Creative Digital Projects</li>
+            <li data-i18n="hero.skill5">IT / OIT Projects</li>
+          </ul>
+          <p data-i18n="hero.p3">I have a strong focus on clean design, performance, and user experience. I enjoy solving problems, learning
+            new technologies, and continuously improving my skills in both development and digital media.</p>
+          <p class="hero-subtitle" data-i18n="hero.subtitleEducation">Education</p>
+          <p data-i18n="hero.p4">I am currently a university student at Hormuud University, where I am expanding my knowledge in
+            Information Technology and related fields.</p>
+          <p class="hero-subtitle" data-i18n="hero.subtitleObjective">Professional Objective</p>
+          <p data-i18n="hero.p5">My goal is to grow as a highly skilled developer and creative professional, contributing to innovative
+            technology projects and impactful digital experiences.</p>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="section-container">
-            <h2 class="section-title" id="skills-title">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card animate">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 id="skill-1-title">Web Development</h3>
-                    <p id="skill-1-desc">HTML5, CSS3, JavaScript, PHP, React, Node.js. Building responsive and interactive web applications.</p>
-                </div>
-                
-                <div class="skill-card animate">
-                    <div class="skill-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 id="skill-2-title">Creative Design</h3>
-                    <p id="skill-2-desc">Adobe Creative Suite, UI/UX Design, Graphic Design, Video Editing with Premiere Pro.</p>
-                </div>
-                
-                <div class="skill-card animate">
-                    <div class="skill-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3 id="skill-3-title">Arduino & IoT</h3>
-                    <p id="skill-3-desc">Microcontroller programming, embedded systems, IoT projects, and automation solutions.</p>
-                   
-                </div>
-                
-                <div class="skill-card animate">
-                    <div class="skill-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3 id="skill-4-title">Full Stack</h3>
-                    <p id="skill-4-desc">End-to-end web development, database management, REST APIs, and cloud deployment.</p>
-                </div>
-            </div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" id="contactBtn" data-i18n="hero.btnContact">Contact Me</a>
+          <a href="#portfolio" class="btn btn-outline" data-i18n="hero.btnPortfolio">Portfolio</a>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="section-container">
-            <h2 class="section-title" id="projects-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card animate">
-                    <div class="project-image">
-                        <img src="Screenshot 2026-02-03 144548.png" alt="BuugTabiye">
-                    </div>
-                    <div class="project-content">
-                        <h3 id="project-1-title">BuugTabiye</h3>
-                        <p id="project-1-desc">Educational platform for Somali students providing interactive learning materials and resources.</p>
-                        <div class="project-links">
-                            <a href="https://buugtabiye.netlify.app/" target="_blank" class="project-link" id="project-1-link">
-                                <i class="fas fa-external-link-alt"></i> Visit Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animate">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Eyman Vesion">
-                    </div>
-                    <div class="project-content">
-                        <h3 id="project-2-title">Eyman Vesion</h3>
-                        <p id="project-2-desc">Creative portfolio website showcasing innovative design concepts and development work.</p>
-                        <div class="project-links">
-                            <a href="https://eymanvesion.netlify.app/" target="_blank" class="project-link" id="project-2-link">
-                                <i class="fas fa-external-link-alt"></i> Visit Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card animate">
-                    <div class="project-image">
-                         <img src="QUIZ TIME ✨_Which type of signal is used by most sensors in embedded systems to communicate with microcontrollers__a) Analog_b) Digital_c) Both Analog and Digital_d) Optical.jpg" 
-                         alt="Arduino Quiz" 
-                         style="width: 100%; margin-top: 15px; border-radius: 8px; border: 2px solid var(--secondary);">
-                    </div>
-                    <div class="project-content">
-                        <h3 id="project-3-title">Arduino Projects</h3>
-                        <p id="project-3-desc">Collection of web applications, design works, and IoT projects showcasing diverse skills.</p>
-                        <div class="project-links">
-                            <a href="#contact" class="project-link" id="project-3-link">
-                                <i class="fas fa-envelope"></i> Request Portfolio
-                            </a>
-                        </div>
-                    </div>
-                </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-card">
+          <div class="avatar-wrap">
+            <div class="avatar-blob"></div>
+            <div class="avatar-circle">
+              <img src="sawirkahore.png" alt="Anas portrait" class="avatar-photo" />
             </div>
+          </div>
+          <!-- Floating social icons -->
+          <div class="social-float">
+            <a href="https://wa.me/+252613496943" target="_blank" class="social-btn wa" aria-label="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1AjmvAjtgZ/?mibextid=wwXIfr" target="_blank" class="social-btn fb" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/anas-abdiwahid-hussein-472738262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-btn li" aria-label="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/anasupdyy" target="_blank" class="social-btn gh" aria-label="GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.tiktok.com/@anazz_updyy?_r=1&_t=ZS-946XGN36TGX" target="_blank" class="social-btn tt" aria-label="TikTok"><i
+                class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@anas_abdiwahid" target="_blank" class="social-btn yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+            <a href="https://linktr.ee/anasupdy" target="_blank" class="social-btn lt" aria-label="Linktree"><i
+                class="fas fa-link"></i></a>
+          </div>
+          <!-- Location badge -->
+          <div class="location-badge">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="flag flag-somalia" aria-hidden="true"></span>
+            <span data-i18n="hero.location">Somalia</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-container">
-            <h2 class="section-title" id="contact-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item animate">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4 id="contact-email-title">Email</h4>
-                            <a href="mailto:anasrk85@gmail.com" id="contact-email">anasrk85@gmail.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item animate">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4 id="contact-phone-title">Phone</h4>
-                            <a href="tel:+252613496943" id="contact-phone">+252 613496943</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item animate">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4 id="contact-location-title">Location</h4>
-                            <p id="contact-location">Somalia</p>
-                        </div>
-                    </div>
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap">
+          <div class="about-blob"></div>
+          <div class="about-circle-accent"></div>
+          <div class="about-avatar-card">
+            <img src="sawirr.png" alt="Anas portrait" class="about-photo" />
+          </div>
+        </div>
+        <div class="about-content">
+          <p class="section-subtitle" data-i18n="about.subtitle">Who I Am</p>
+          <h2 class="section-title" data-i18n="about.title">About Me</h2>
+          <p class="about-intro" data-i18n="about.intro">Passionate Full Stack Developer & Multimedia Specialist with a creative approach to
+            crafting intuitive and engaging digital experiences.</p>
+          <div class="skills-bars">
+            <div class="skill-item">
+              <div class="skill-label">
+                <span data-i18n="about.skill1">Full Stack Development</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="95" style="background: linear-gradient(90deg,#e63946,#f4a261)">
                 </div>
-                
-                <div class="contact-form animate">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label" id="name-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label" id="email-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject" class="form-label" id="subject-label">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label" id="message-label">Message</label>
-                            <textarea id="message" name="message" class="form-textarea" required></textarea>
-                        </div>
-                        
-                        <div class="form-status" id="formStatus"></div>
-                        
-                        <button type="submit" class="submit-btn" id="submit-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            <span id="submit-text">Send Message</span>
-                        </button>
-                    </form>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">
+                <span data-i18n="about.skill2">Web Application Design</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="85" style="background: linear-gradient(90deg,#f4a261,#e9c46a)">
                 </div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://wa.me/+252613496943" class="social-link" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.facebook.com/share/163c1X5z5D/" class="social-link" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.tiktok.com/@anazz_updyy" class="social-link" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="#" class="social-link">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-link">
-                    <i class="fab fa-twitter"></i>
-                </a>
+            <div class="skill-item">
+              <div class="skill-label">
+                <span data-i18n="about.skill3">Logo & Visual Branding</span>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="80" style="background: linear-gradient(90deg,#a8dadc,#457b9d)">
+                </div>
+              </div>
             </div>
-            <p class="copyright" id="copyright">
-                © <span id="current-year">2023</span> - <span id="current-month"></span> Anas Abdiwahid. All rights reserved.
-            </p>
+            <div class="skill-item">
+              <div class="skill-label">
+                <span data-i18n="about.skill4">Multimedia & Creative Projects</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill" data-width="90" style="background: linear-gradient(90deg,#4361ee,#3a0ca3)">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-plus">+</span>
+              <p data-i18n="about.stat1">Years Experience</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="50">0</span>
+              <span class="stat-plus">+</span>
+              <p data-i18n="about.stat2">Projects Done</p>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="20">0</span>
+              <span class="stat-plus">K+</span>
+              <p data-i18n="about.stat3">Happy Clients</p>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Translations Database
-        const translations = {
-            en: {
-                // Hero Section
-                "hero-subtitle": "Hello, I'm",
-                "hero-title": "Anas Updy",
-                "hero-description": "A passionate Software Engineer & Creative Developer crafting digital experiences that blend innovation with aesthetics.",
-                "contact-btn": "Get In Touch",
-                "cv-btn": "Download CV",
-                
-                // About Section
-                "about-title": "About Me",
-                "about-text-1": "I'm Anas Abdiwahid, a Computer Science student and software engineer passionate about creating innovative digital solutions. With 3+ years of experience in web development and design.",
-                "about-text-2": "My expertise spans across frontend development, backend systems, creative design, and IoT projects. I believe in building products that are not only functional but also provide exceptional user experiences.",
-                "about-text-3": "Currently pursuing my degree while working on various freelance projects, I'm always eager to take on new challenges and expand my skill set.",
-                
-                // Skills Section
-                "skills-title": "My Skills",
-                "skill-1-title": "Web Development",
-                "skill-1-desc": "HTML5, CSS3, JavaScript, PHP, React, Node.js. Building responsive and interactive web applications.",
-                "skill-2-title": "Creative Design",
-                "skill-2-desc": "Adobe Creative Suite, UI/UX Design, Graphic Design, Video Editing with Premiere Pro.",
-                "skill-3-title": "Arduino & IoT",
-                "skill-3-desc": "Microcontroller programming, embedded systems, IoT projects, and automation solutions.",
-                "skill-4-title": "Full Stack",
-                "skill-4-desc": "End-to-end web development, database management, REST APIs, and cloud deployment.",
-                
-                // Projects Section
-                "projects-title": "Featured Projects",
-                "project-1-title": "BuugTabiye",
-                "project-1-desc": "Educational platform for Somali students providing interactive learning materials and resources.",
-                "project-1-link": "Visit Live",
-                "project-2-title": "Eyman Vesion",
-                "project-2-desc": "Creative portfolio website showcasing innovative design concepts and development work.",
-                "project-2-link": "Visit Live",
-                "project-3-title": "Various Projects",
-                "project-3-desc": "Collection of web applications, design works, and IoT projects showcasing diverse skills.",
-                "project-3-link": "Request Portfolio",
-                
-                // Contact Section
-                "contact-title": "Get In Touch",
-                "contact-email-title": "Email",
-                "contact-email": "anasrk85@gmail.com",
-                "contact-phone-title": "Phone",
-                "contact-phone": "+252 613496943",
-                "contact-location-title": "Location",
-                "contact-location": "Somalia",
-                "name-label": "Name",
-                "email-label": "Email",
-                "subject-label": "Subject",
-                "message-label": "Message",
-                "submit-text": "Send Message",
-                
-                // Footer
-                "copyright": "© 2023 - [MONTH] Anas Updy. All rights reserved."
-            },
-            so: {
-                // Hero Section
-                "hero-subtitle": "Salaan, Aniga waa",
-                "hero-title": "Anas Updy",
-                "hero-description": "Injineer Software & Horumariye Farshaxan oo abuuraya tajribooyinka digital ee isku duba ridaya horumarin iyo qurxoonida.",
-                "contact-btn": "Isku Xiriir",
-                "cv-btn": "Soo Dejiso CV",
-                
-                // About Section
-                "about-title": "Aniga",
-                "about-text-1": "Waxaan ahay Anas Cabdiwahiid, arday Computer Science ah iyo injineer software oo xiiseynaya abuurista xalladaha digital ee cusub. Waan leeyahay 3+ sano khibrad ku saabsan horumarinta webka iyo naqshadeynta.",
-                "about-text-2": "Khibradeydu waxay ku dhex fidsan tahay horumarinta frontend, nidaamada backend, naqshadeynta farshaxan, iyo mashruucyada IoT. Waxaan rumeynayaa dhisidda alaabta aan kaliya wax ku oolayn, balse ay bixiyaan tajribooyinka isticmaale ee gaarka ah.",
-                "about-text-3": "Hadda waxaan ku dhex socdaa shahaadadeyda iyo shaqeynta mashruucyada freelance kala duwan, waxaan had iyo jeer raadinayaa cijibaadaha cusub iyo ballaarinta xirfadeyda.",
-                
-                // Skills Section
-                "skills-title": "Xirfadahayga",
-                "skill-1-title": "Horumarinta Webka",
-                "skill-1-desc": "HTML5, CSS3, JavaScript, PHP, React, Node.js. Dhisidda codsiyada webka is-waafajiya iyo is-dhexgalka leh.",
-                "skill-2-title": "Naqshadeynta Farshaxan",
-                "skill-2-desc": "Adobe Creative Suite, Naqshadeynta UI/UX, Naqshadeynta Sawirka, Tafatiirka Fiidiyowyada iyo Premiere Pro.",
-                "skill-3-title": "Arduino & IoT",
-                "skill-3-desc": "Barmijinta Microcontroller, nidaamyaasha garaacda, mashruucyada IoT, iyo xalladaha otomaatiko.",
-                "skill-4-title": "Full Stack",
-                "skill-4-desc": "Horumarinta webka ilaa dhamaadka, maamulka database, REST APIs, iyo deynta daruurta.",
-                
-                // Projects Section
-                "projects-title": "Mashruucayga Loo Soo Bandhigay",
-                "project-1-title": "BuugTabiye",
-                "project-1-desc": "Platform waxbarasho oo loogu talagalay ardayda Soomaaliyeed oo bixisa qalabka waxbarashada is-dhexgalka leh iyo khayraadka.",
-                "project-1-link": "Booqo Goobta",
-                "project-2-title": "Eyman Vesion",
-                "project-2-desc": "Website portfolio farshaxan oo bandhigaya fikradaha naqshadeynta cusub iyo shaqada horumarinta.",
-                "project-2-link": "Booqo Goobta",
-                "project-3-title": "Mashruucyo Kala Duwan",
-                "project-3-desc": "Ururinta codsiyada webka, shaqooyinka naqshadeynta, iyo mashruucyada IoT ee bandhigaya xirfado kala duwan.",
-                "project-3-link": "Codso Portfolio",
-                
-                // Contact Section
-                "contact-title": "Isku Xiriir",
-                "contact-email-title": "Iimayl",
-                "contact-email": "anasrk85@gmail.com",
-                "contact-phone-title": "Telefoon",
-                "contact-phone": "+252 613496943",
-                "contact-location-title": "Goobta",
-                "contact-location": "Soomaaliya",
-                "name-label": "Magaca",
-                "email-label": "Iimaylka",
-                "subject-label": "Mawduuca",
-                "message-label": "Farriinta",
-                "submit-text": "Dir Farriinta",
-                
-                // Footer
-                "copyright": "© 2023 - [BISHA] Anas Updy. Dhammaan xuquuqdu waa la ilaaliyay."
-            },
-            ar: {
-                // Hero Section
-                "hero-subtitle": "مرحباً، أنا",
-                "hero-title": "أنس أبدي",
-                "hero-description": "مهندس برمجيات ومطور إبداعي شغوف يصمم تجارب رقمية تدمج بين الابتكار والجماليات.",
-                "contact-btn": "تواصل معي",
-                "cv-btn": "تحميل السيرة الذاتية",
-                
-                // About Section
-                "about-title": "معلومات عني",
-                "about-text-1": "أنا أنس عبد الوحيد، طالب علوم حاسوب ومهندس برمجيات شغوف بإنشاء حلول رقمية مبتكرة. لدي خبرة تزيد عن 3 سنوات في تطوير الويب والتصميم.",
-                "about-text-2": "تمتد خبرتي عبر تطوير الواجهات الأمامية، الأنظمة الخلفية، التصميم الإبداعي، ومشاريع إنترنت الأشياء. أؤمن ببناء منتجات لا تكون وظيفية فحسب، بل توفر أيضًا تجارب مستخدم استثنائية.",
-                "about-text-3": "أتابع حالياً دراستي بينما أعمل على مشاريع عمل حر متنوعة، وأنا دائماً حريص على مواجهة تحديات جديدة وتوسيع مجموعة مهاراتي.",
-                
-                // Skills Section
-                "skills-title": "مهاراتي",
-                "skill-1-title": "تطوير الويب",
-                "skill-1-desc": "HTML5, CSS3, JavaScript, PHP, React, Node.js. بناء تطبيقات ويب متجاوبة وتفاعلية.",
-                "skill-2-title": "التصميم الإبداعي",
-                "skill-2-desc": "Adobe Creative Suite, تصميم واجهات المستخدم/تجربة المستخدم, التصميم الجرافيكي, تحرير الفيديو باستخدام Premiere Pro.",
-                "skill-3-title": "Arduino وإنترنت الأشياء",
-                "skill-3-desc": "برمجة المتحكمات الدقيقة, الأنظمة المدمجة, مشاريع إنترنت الأشياء, وحلول الأتمتة.",
-                "skill-4-title": "تطوير كامل",
-                "skill-4-desc": "تطوير الويب من البداية للنهاية, إدارة قواعد البيانات, واجهات برمجة التطبيقات REST, ونشر الحلول السحابية.",
-                
-                // Projects Section
-                "projects-title": "المشاريع المميزة",
-                "project-1-title": "بوغ تبيه",
-                "project-1-desc": "منصة تعليمية للطلاب الصوماليين توفر مواد تعليمية تفاعلية وموارد متنوعة.",
-                "project-1-link": "زيارة الموقع",
-                "project-2-title": "إيمان فيجن",
-                "project-2-desc": "موقع محفظة إبداعي يعرض مفاهيم تصميم مبتكرة وأعمال تطوير.",
-                "project-2-link": "زيارة الموقع",
-                "project-3-title": "مشاريع متنوعة",
-                "project-3-desc": "مجموعة من تطبيقات الويب، أعمال التصميم، ومشاريع إنترنت الأشياء تعرض مهارات متنوعة.",
-                "project-3-link": "طلب المحفظة",
-                
-                // Contact Section
-                "contact-title": "تواصل معي",
-                "contact-email-title": "البريد الإلكتروني",
-                "contact-email": "anasrk85@gmail.com",
-                "contact-phone-title": "الهاتف",
-                "contact-phone": "+252 613496943",
-                "contact-location-title": "الموقع",
-                "contact-location": "الصومال",
-                "name-label": "الاسم",
-                "email-label": "البريد الإلكتروني",
-                "subject-label": "الموضوع",
-                "message-label": "الرسالة",
-                "submit-text": "إرسال الرسالة",
-                
-                // Footer
-                "copyright": "© 2023 - [الشهر] أنس أبدي. جميع الحقوق محفوظة."
-            }
-        };
+  <!-- ========== CV ========== -->
+  <section class="cv" id="cv">
+    <div class="container">
+      <div class="cv-grid">
+        <div class="cv-content">
+          <p class="section-subtitle" data-i18n="cv.subtitle">Curriculum Vitae</p>
+          <h2 class="section-title" data-i18n="cv.title">My CV</h2>
+          <p class="cv-desc" data-i18n="cv.desc">
+            Here is a quick overview of my CV, so you can easily see my education, experience, and
+            most important skills at a glance.
+          </p>
+          <ul class="cv-list">
+            <li><i class="fas fa-check-circle"></i> <span data-i18n="cv.list1">Full Stack Development (Frontend &amp; Backend)</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-i18n="cv.list2">Multimedia &amp; Creative Digital Projects</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-i18n="cv.list3">Web Application Design &amp; Branding</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-i18n="cv.list4">IT / OIT Projects &amp; System Support</span></li>
+          </ul>
+          <div class="cv-actions">
+            <a href="Cv (Anas Abdiwahid).pdf" class="btn btn-primary" download data-i18n="cv.btnDownload">Download CV</a>
+            <a href="#contact" class="btn btn-outline" data-i18n="cv.btnRequest">Request Full CV</a>
+          </div>
+        </div>
+        <div class="cv-preview">
+          <div class="cv-card">
+            <img src="Cv (Anas Abdiwahid) copy.jpg" alt="Anas CV preview" class="cv-img" />
+          </div>
+          <div class="cv-badge"><i class="fas fa-file-lines"></i> <span data-i18n="cv.preview">CV Preview</span></div>
+          <p class="cv-note">
+            <span data-i18n="cv.notePrefix">Please replace</span> <code>cv.png</code> <span data-i18n="cv.noteSuffix">with the official image of your CV.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Get current date
-        function getCurrentDate() {
-            const now = new Date();
-            const months = [
-                'January', 'February', 'March', 'April', 'May', 'June',
-                'July', 'August', 'September', 'October', 'November', 'December'
-            ];
-            
-            const monthsSo = [
-                'Janaayo', 'Febraayo', 'Maarso', 'Abriil', 'Maajo', 'Juun',
-                'Luuliyo', 'Ogosto', 'Sebtembar', 'Oktoobar', 'Nofembar', 'Desembar'
-            ];
-            
-            const monthsAr = [
-                'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
-                'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
-            ];
-            
-            const year = now.getFullYear();
-            const monthIndex = now.getMonth();
-            
-            return {
-                year: year,
-                month: months[monthIndex],
-                monthSo: monthsSo[monthIndex],
-                monthAr: monthsAr[monthIndex]
-            };
-        }
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-subtitle center" data-i18n="services.subtitle">What I Offer</p>
+      <h2 class="section-title center" data-i18n="services.title">My Design Services</h2>
+      <p class="section-desc center" data-i18n="services.desc">Crafting visually engaging interfaces that are both intuitive and user-centered,
+        ensuring a seamless experience.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background:#eef2ff">
+            <i class="fas fa-code" style="color:#4361ee"></i>
+          </div>
+          <h3 data-i18n="services.card1.title">Full Stack Dev</h3>
+          <p data-i18n="services.card1.desc">End-to-end web applications built with modern frameworks. Scalable, fast, and maintainable code.</p>
+          <a href="#contact" class="service-link"><span data-i18n="services.readMore">Read more</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card featured">
+          <div class="service-icon" style="background:#fff0f5">
+            <i class="fas fa-globe" style="color:#e63946"></i>
+          </div>
+          <h3 data-i18n="services.card2.title">Web Application Design</h3>
+          <p data-i18n="services.card2.desc">User-centered designs that are visually engaging and functionally seamless. My approach always puts UX
+            first.</p>
+          <a href="#contact" class="service-link"><span data-i18n="services.readMore">Read more</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#f0fff4">
+            <i class="fas fa-palette" style="color:#2d6a4f"></i>
+          </div>
+          <h3 data-i18n="services.card3.title">Logo & Branding</h3>
+          <p data-i18n="services.card3.desc">Distinctive visual identities and brand systems that communicate your story with clarity and style.</p>
+          <a href="#contact" class="service-link"><span data-i18n="services.readMore">Read more</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#fffbeb">
+            <i class="fas fa-photo-video" style="color:#f4a261"></i>
+          </div>
+          <h3 data-i18n="services.card4.title">Multimedia Projects</h3>
+          <p data-i18n="services.card4.desc">Creative digital content production including graphic design, video, and interactive digital media.</p>
+          <a href="#contact" class="service-link"><span data-i18n="services.readMore">Read more</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#f5f0ff">
+            <i class="fas fa-server" style="color:#7209b7"></i>
+          </div>
+          <h3 data-i18n="services.card5.title">IT / OIT Projects</h3>
+          <p data-i18n="services.card5.desc">Infrastructure setup, system administration, and IT project management with a focus on reliability.</p>
+          <a href="#contact" class="service-link"><span data-i18n="services.readMore">Read more</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:#e8f8ff">
+            <i class="fas fa-mobile-alt" style="color:#0096c7"></i>
+          </div>
+          <h3 data-i18n="services.card6.title">Responsive Design</h3>
+          <p data-i18n="services.card6.desc">Pixel-perfect, mobile-first designs that look great on every screen size and device type.</p>
+          <a href="#contact" class="service-link"><span data-i18n="services.readMore">Read more</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Update copyright with current year and month
-        function updateCopyrightDate() {
-            const date = getCurrentDate();
-            const currentYear = document.getElementById('current-year');
-            const currentMonth = document.getElementById('current-month');
-            
-            if (currentYear) {
-                currentYear.textContent = date.year;
-            }
-            
-            if (currentMonth) {
-                // Get current language
-                const lang = document.documentElement.lang || 'en';
-                
-                switch(lang) {
-                    case 'so':
-                        currentMonth.textContent = date.monthSo;
-                        break;
-                    case 'ar':
-                        currentMonth.textContent = date.monthAr;
-                        break;
-                    default:
-                        currentMonth.textContent = date.month;
-                }
-            }
-        }
+  <!-- ========== PORTFOLIO ========== -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <p class="section-subtitle center" data-i18n="portfolio.subtitle">My Work</p>
+      <h2 class="section-title center" data-i18n="portfolio.title">My Portfolio</h2>
+      <p class="section-desc center" data-i18n="portfolio.desc">Explore a collection of my tech projects, each crafted to deliver seamless,
+        user-centered experiences.</p>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all" data-i18n="portfolio.filter.all">All</button>
+        <button class="filter-tab" data-filter="fullstack" data-i18n="portfolio.filter.fullstack">Full Stack</button>
+        <button class="filter-tab" data-filter="design" data-i18n="portfolio.filter.design">Web Design</button>
+        <button class="filter-tab" data-filter="branding" data-i18n="portfolio.filter.branding">Branding</button>
+        <button class="filter-tab" data-filter="multimedia" data-i18n="portfolio.filter.multimedia">Multimedia</button>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid">
 
-        // Language Change Function
-        function changeLanguage(lang) {
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update all translatable elements
-            for (const [id, text] of Object.entries(translations[lang])) {
-                const element = document.getElementById(id);
-                if (element) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = text;
-                    } else {
-                        // Replace [MONTH] placeholder with actual month
-                        const date = getCurrentDate();
-                        let updatedText = text;
-                        
-                        if (lang === 'so') {
-                            updatedText = text.replace('[BISHA]', date.monthSo);
-                        } else if (lang === 'ar') {
-                            updatedText = text.replace('[الشهر]', date.monthAr);
-                        } else {
-                            updatedText = text.replace('[MONTH]', date.month);
-                        }
-                        
-                        element.textContent = updatedText;
-                    }
-                }
-            }
-            
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
-            
-            // Update copyright date with correct month
-            updateCopyrightDate();
-            
-            // RTL for Arabic
-            if (lang === 'ar') {
-                document.body.style.direction = 'rtl';
-                // Adjust section titles for RTL
-                document.querySelectorAll('.section-title').forEach(title => {
-                    title.style.textAlign = 'right';
-                });
-            } else {
-                document.body.style.direction = 'ltr';
-                document.querySelectorAll('.section-title').forEach(title => {
-                    title.style.textAlign = 'left';
-                });
-            }
-            
-            // Save preference
-            localStorage.setItem('lang', lang);
-        }
+        <!-- 1. Restaurant 4 Season -->
+        <div class="portfolio-item" data-cat="fullstack">
+          <div class="portfolio-img-wrap">
+            <img src="Resturent 4_Season.png" alt="Restaurant 4 Season Management System" class="portfolio-real-img"/>
+            <div class="portfolio-overlay">
+              <div class="overlay-content">
+                <h4 data-i18n="portfolio.item1.title">Restaurant Management System</h4>
+                <p data-i18n="portfolio.item1.desc">4 SEASON &ndash; Full stack web app with admin dashboard, cashier &amp; menu management.</p>
+                <span class="tag" data-i18n="portfolio.tag.fullstack">Full Stack</span>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-label">
+            <span class="p-cat" data-i18n="portfolio.tag.fullstack">Full Stack</span>
+            <h4 data-i18n="portfolio.item1.label">4 SEASON Restaurant System</h4>
+          </div>
+        </div>
 
-        // Initialize language
-        function initLanguage() {
-            const savedLang = localStorage.getItem('lang');
-            const browserLang = navigator.language.slice(0, 2);
-            
-            if (savedLang) {
-                changeLanguage(savedLang);
-            } else if (['en', 'so', 'ar'].includes(browserLang)) {
-                changeLanguage(browserLang);
-            } else {
-                changeLanguage('en');
-            }
-        }
+        <!-- 2. Suuq Furan Marketplace -->
+        <div class="portfolio-item" data-cat="fullstack">
+          <div class="portfolio-img-wrap">
+            <img src="Suuq Furan.png" alt="Suuq Furan Marketplace" class="portfolio-real-img"/>
+            <div class="portfolio-overlay">
+              <div class="overlay-content">
+                <h4 data-i18n="portfolio.item2.title">Suuq Furan Marketplace</h4>
+                <p data-i18n="portfolio.item2.desc">Full-featured online marketplace with Admin, Shop &amp; Customer roles using PHP &amp; MySQL.</p>
+                <span class="tag" data-i18n="portfolio.tag.fullstack">Full Stack</span>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-label">
+            <span class="p-cat" data-i18n="portfolio.tag.fullstack">Full Stack</span>
+            <h4 data-i18n="portfolio.item2.label">Suuq Furan Marketplace</h4>
+          </div>
+        </div>
 
-        // Scroll to section
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+        <!-- 3. Admin Dashboard -->
+        <div class="portfolio-item" data-cat="design">
+          <div class="portfolio-img-wrap">
+            <img src="Dashboad.png" alt="Admin Dashboard UI" class="portfolio-real-img"/>
+            <div class="portfolio-overlay">
+              <div class="overlay-content">
+                <h4 data-i18n="portfolio.item3.title">Admin Dashboard UI</h4>
+                <p data-i18n="portfolio.item3.desc">Clean and modern admin interface with data visualization and management tools.</p>
+                <span class="tag" data-i18n="portfolio.tag.design">Web Design</span>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-label">
+            <span class="p-cat" data-i18n="portfolio.tag.design">Web Design</span>
+            <h4 data-i18n="portfolio.item3.label">Admin Dashboard UI</h4>
+          </div>
+        </div>
 
-        // Update active nav dot
-        function updateActiveNavDot() {
-            const sections = document.querySelectorAll('section');
-            const navDots = document.querySelectorAll('.nav-dot');
-            
-            sections.forEach((section, index) => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 150 && rect.bottom >= 150) {
-                    navDots.forEach(dot => dot.classList.remove('active'));
-                    navDots[index].classList.add('active');
-                }
-            });
-        }
+        <!-- 4. Branding / Poster -->
+        <div class="portfolio-item" data-cat="branding">
+          <div class="portfolio-img-wrap">
+            <img src="Boster.jpg" alt="Brand Poster Design" class="portfolio-real-img"/>
+            <div class="portfolio-overlay">
+              <div class="overlay-content">
+                <h4 data-i18n="portfolio.item4.title">Brand Poster Design</h4>
+                <p data-i18n="portfolio.item4.desc">Creative poster and visual branding design combining typography and strong visual identity.</p>
+                <span class="tag" data-i18n="portfolio.tag.branding">Branding</span>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-label">
+            <span class="p-cat" data-i18n="portfolio.tag.branding">Branding</span>
+            <h4 data-i18n="portfolio.item4.label">Brand Poster Design</h4>
+          </div>
+        </div>
 
-        // Contact form handling
-        function setupContactForm() {
-            const form = document.getElementById('contactForm');
-            const formStatus = document.getElementById('formStatus');
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
-                
-                // Validate form
-                if (!data.name || !data.email || !data.subject || !data.message) {
-                    formStatus.textContent = 'Please fill in all fields';
-                    formStatus.className = 'form-status error';
-                    return;
-                }
-                
-                // Create mailto link
-                const subject = encodeURIComponent(data.subject);
-                const body = encodeURIComponent(
-                    `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}\n\n---\nSent from Anas Updy's Portfolio Website`
-                );
-                
-                // Open email client
-                window.location.href = `mailto:anasrk85@gmail.com?subject=${subject}&body=${body}`;
-                
-                // Show success message
-                formStatus.textContent = 'Email client opened! Please send your message.';
-                formStatus.className = 'form-status success';
-                
-                // Reset form
-                form.reset();
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 5000);
-            });
-        }
+        <!-- 5. Video Editing -->
+        <div class="portfolio-item" data-cat="multimedia">
+          <div class="portfolio-img-wrap portfolio-video-wrap">
+            <video class="portfolio-real-img portfolio-video" autoplay muted loop playsinline preload="metadata">
+              <source src="Vedio_edite.mp4" type="video/mp4"/>
+            </video>
+            <div class="portfolio-video-badge"><i class="fas fa-play-circle"></i> <span data-i18n="portfolio.videoBadge">Video</span></div>
+            <div class="portfolio-overlay">
+              <div class="overlay-content">
+                <h4 data-i18n="portfolio.item5.title">Video Editing Project</h4>
+                <p data-i18n="portfolio.item5.desc">Professional video editing and post-production work showcasing multimedia skills.</p>
+                <span class="tag" data-i18n="portfolio.tag.multimedia">Multimedia</span>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-label">
+            <span class="p-cat" data-i18n="portfolio.tag.multimedia">Multimedia</span>
+            <h4 data-i18n="portfolio.item5.label">Video Editing Project</h4>
+          </div>
+        </div>
 
-        // Initialize animations on scroll
-        function initAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.animate').forEach(el => {
-                observer.observe(el);
-            });
-        }
+      </div>
+    </div>
+  </section>
 
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            // First update copyright date
-            updateCopyrightDate();
-            
-            // Then initialize language (which will also update copyright again)
-            initLanguage();
-            
-            // Setup other features
-            setupContactForm();
-            initAnimations();
-            
-            // Update nav dots on scroll
-            window.addEventListener('scroll', updateActiveNavDot);
-            
-            // Initial update
-            updateActiveNavDot();
-        });
-    </script>
+  <!-- ========== EDUCATION ========== -->
+  <section class="education" id="education">
+    <div class="container">
+      <p class="section-subtitle center" data-i18n="education.subtitle">My Educations</p>
+      <h2 class="section-title center" data-i18n="education.title">Education & Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item left reveal">
+          <div class="timeline-dot"><i class="fas fa-university"></i></div>
+          <div class="timeline-card">
+            <span class="timeline-date" data-i18n="education.item1.date">Oct 7, 2023 – Present</span>
+            <h3 data-i18n="education.item1.title">Faculty of Computer Science</h3>
+            <h4 data-i18n="education.item1.school">Hormuud University</h4>
+            <p data-i18n="education.item1.desc">Started university on Oct 7, 2023 in the Faculty of Computer Science at Hormuud University.</p>
+          </div>
+        </div>
+        <div class="timeline-item right reveal">
+          <div class="timeline-dot"><i class="fas fa-school"></i></div>
+          <div class="timeline-card">
+            <span class="timeline-date" data-i18n="education.item2.date">2014 – 2023</span>
+            <h3 data-i18n="education.item2.title">School Sahal</h3>
+            <h4 data-i18n="education.item2.school">Primary & Secondary Education</h4>
+            <p data-i18n="education.item2.desc">Started school in 2014 and completed School Sahal in 2023.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OBJECTIVE ========== -->
+  <section class="objective">
+    <div class="container">
+      <div class="objective-card">
+        <div class="obj-icon"><i class="fas fa-rocket"></i></div>
+        <h2 data-i18n="objective.title">Professional Objective</h2>
+        <p data-i18n="objective.desc">My goal is to grow as a highly skilled developer and creative professional, contributing to innovative
+          technology projects and impactful digital experiences. I am committed to continuous improvement and delivering
+          excellence in every project.</p>
+        <a href="#contact" class="btn btn-light" data-i18n="objective.btn">Let's Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <p class="section-subtitle center" data-i18n="contact.subtitle">Get In Touch</p>
+      <h2 class="section-title center" data-i18n="contact.title">Contact Me</h2>
+      <p class="section-desc center" data-i18n="contact.desc">Have a project in mind? Let's talk and create something amazing together.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4 data-i18n="contact.emailLabel">Email</h4>
+              <p><a href="mailto:anasrk85@gmail.com" style="color:inherit">anasrk85@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4 data-i18n="contact.locationLabel">Location</h4>
+              <p data-i18n="contact.locationValue">Mogadishu, Somalia</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon"><i class="fas fa-university"></i></div>
+            <div>
+              <h4 data-i18n="contact.universityLabel">University</h4>
+              <p data-i18n="contact.universityValue">Hormuud University</p>
+            </div>
+          </div>
+          <div class="contact-socials">
+            <a href="https://wa.me/+252613496943" target="_blank" class="cs-btn cs-wa" title="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@anazz_updyy?_r=1&_t=ZS-946XGN36TGX" target="_blank" class="cs-btn cs-tt" title="TikTok"><i
+                class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/share/1AjmvAjtgZ/?mibextid=wwXIfr" target="_blank" class="cs-btn cs-fb" title="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/anas-abdiwahid-hussein-472738262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="cs-btn cs-li" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/anasupdyy" target="_blank" class="cs-btn cs-gh" title="GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@anas_abdiwahid" target="_blank" class="cs-btn cs-yt" title="YouTube"><i
+                class="fab fa-youtube"></i></a>
+            <a href="https://linktr.ee/anasupdy" target="_blank" class="cs-btn cs-lt" title="Linktree"><i
+                class="fas fa-link"></i></a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname" data-i18n="contact.form.nameLabel">Full Name</label>
+              <input type="text" id="fname" placeholder="Your name" data-i18n-placeholder="contact.form.namePlaceholder" required />
+            </div>
+            <div class="form-group">
+              <label for="femail" data-i18n="contact.form.emailLabel">Email</label>
+              <input type="email" id="femail" placeholder="your@email.com" data-i18n-placeholder="contact.form.emailPlaceholder" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fsubject" data-i18n="contact.form.subjectLabel">Subject</label>
+            <input type="text" id="fsubject" placeholder="Project idea / Inquiry" data-i18n-placeholder="contact.form.subjectPlaceholder" />
+          </div>
+          <div class="form-group">
+            <label for="fmsg" data-i18n="contact.form.messageLabel">Message</label>
+            <textarea id="fmsg" rows="5" placeholder="Tell me about your project..." data-i18n-placeholder="contact.form.messagePlaceholder"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full-w"><span data-i18n="contact.send">Send Message</span> <i class="fas fa-paper-plane"></i></button>
+          <div class="form-success" id="formSuccess"><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="contact.success">Message sent! I'll get back to you soon.</span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="#home" class="nav-logo footer-logo">
+          <img src="Sawir Logo.png" alt="Anas logo" class="logo-img" />
+          <span class="logo-text">Anas Abdiwahid<span class="accent">.</span></span>
+        </a>
+        <p data-i18n="footer.tagline">Full Stack Developer & Multimedia Specialist</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#cv" data-i18n="nav.cv">CV</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#education" data-i18n="nav.education">Education</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-left">
+          <p>© <span id="copyrightYear">2026</span> <span class="accent">Anas Abdiwahid Hussein</span>. <span data-i18n="footer.rights">All rights reserved.</span></p>
+          <p class="footer-date">
+            <span id="gregorianDate">February 19, 2026</span> • <span id="clockTime">12:00</span>
+          </p>
+          <p><span data-i18n="footer.designed">Designed & Developed with</span> <i class="fas fa-heart" style="color:#e63946"></i></p>
+        </div>
+        <div class="footer-qr">
+          <p class="qr-title" data-i18n="footer.qrTitle">Scan My QR Code</p>
+          <div class="qr-card">
+            <img src="qrcode.jpeg" alt="QR code" class="qr-img" />
+          </div>
+          <p class="qr-note">
+            <span data-i18n="footer.qrNotePrefix">Replace</span> <code>qrcode.jpeg</code> <span data-i18n="footer.qrNoteSuffix">with your real QR image.</span>
+          </p>
+        </div>
+        <p class="footer-hijri"><span data-i18n="footer.hijriLabel">Hijri:</span> <span id="hijriDate">---</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Back to top" data-i18n-aria-label="ui.backToTop"><i class="fas fa-arrow-up"></i></button>
+  <a class="whatsapp-float" href="https://wa.me/+252613496943" target="_blank" aria-label="WhatsApp chat" data-i18n-aria-label="ui.whatsappChat">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
