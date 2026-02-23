@@ -19,14 +19,14 @@ themeToggle.addEventListener('click', () => {
 
 /* ── Language Switcher & i18n ── */
 const langConfig = {
-  en: { locale: 'en-US', dir: 'ltr', typing: ['& Multimedia', '& Web Design', '& IT Projects', '& Branding'] },
-  so: { locale: 'so-SO', dir: 'ltr', typing: ['& Multimedia', '& Naqshad Web', '& Mashaariic IT', '& Branding'] },
+  en: { locale: 'en-US', dir: 'ltr', typing: ['& Multimedia', '& Web Design', '& IOT Projects', '& Branding'] },
+  so: { locale: 'so-SO', dir: 'ltr', typing: ['& Multimedia', '& Naqshad Web', '& Mashaariic IOT', '& Branding'] },
   ar: { locale: 'ar-SA', dir: 'rtl', typing: ['ووسائط متعددة', 'وتصميم ويب', 'ومشاريع تقنية', 'وهوية'] },
-  fr: { locale: 'fr-FR', dir: 'ltr', typing: ['& Multimédia', '& Design Web', '& Projets IT', '& Branding'] },
-  es: { locale: 'es-ES', dir: 'ltr', typing: ['& Multimedia', '& Diseño Web', '& Proyectos TI', '& Branding'] },
-  tr: { locale: 'tr-TR', dir: 'ltr', typing: ['& Multimedya', '& Web Tasarım', '& IT Projeleri', '& Marka'] },
+  fr: { locale: 'fr-FR', dir: 'ltr', typing: ['& Multimédia', '& Design Web', '& Projets IOT', '& Branding'] },
+  es: { locale: 'es-ES', dir: 'ltr', typing: ['& Multimedia', '& Diseño Web', '& Proyectos IOT', '& Branding'] },
+  tr: { locale: 'tr-TR', dir: 'ltr', typing: ['& Multimedya', '& Web Tasarım', '& IOT Projeleri', '& Marka'] },
   zh: { locale: 'zh-CN', dir: 'ltr', typing: ['与多媒体', '与网页设计', '与IT项目', '与品牌设计'] },
-  hi: { locale: 'hi-IN', dir: 'ltr', typing: ['और मल्टीमीडिया', 'और वेब डिज़ाइन', 'और IT प्रोजेक्ट्स', 'और ब्रांडिंग'] }
+  hi: { locale: 'hi-IN', dir: 'ltr', typing: ['और मल्टीमीडिया', 'और वेब डिज़ाइन', 'और IOT प्रोजेक्ट्स', 'और ब्रांडिंग'] }
 };
 
 const translations = {
