@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who is Anas Abdiwahid?</title>
+  <meta name="description" content="Learn more about Anas Abdiwahid Hussein, a Full Stack Developer and Multimedia Specialist from Somalia." />
+  <link rel="icon" type="image/png" href="Sawir Logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: var(--light); }
+    .who-page { min-height: 100vh; }
+    .who-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .who-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .who-nav .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+    }
+    .who-nav .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    }
+    .who-hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f7f9ff 45%, #fdecef 100%);
+      padding: 56px 0 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .who-hero::before,
+    .who-hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: .35;
+      pointer-events: none;
+    }
+    .who-hero::before {
+      width: 280px;
+      height: 280px;
+      background: #4361ee;
+      top: -70px;
+      right: -60px;
+    }
+    .who-hero::after {
+      width: 220px;
+      height: 220px;
+      background: #e63946;
+      left: -60px;
+      bottom: -40px;
+    }
+    .who-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 42px;
+      position: relative;
+      z-index: 1;
+    }
+    .who-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: .83rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+    .who-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+      color: var(--dark);
+    }
+    .who-title span { color: var(--accent); }
+    .who-lead {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      max-width: 560px;
+    }
+    .who-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+    .who-point {
+      background: rgba(255,255,255,.9);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .who-point i { color: var(--primary); margin-top: 3px; }
+    .who-point strong { display: block; font-size: .88rem; color: var(--dark); }
+    .who-point span { color: var(--muted); font-size: .82rem; }
+    .who-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .who-photo-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 14px;
+      box-shadow: 0 22px 55px rgba(67,97,238,.14);
+    }
+    .who-photo-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #cfd8ff, #f8fbff);
+    }
+    .who-photo-wrap img {
+      width: 100%;
+      height: 460px;
+      object-fit: contain;
+      object-position: center;
+      background: #dfe7ff;
+      display: block;
+    }
+    .who-badge {
+      position: absolute;
+      left: -12px;
+      bottom: 18px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      min-width: 190px;
+    }
+    .who-badge .label { color: var(--muted); font-size: .75rem; }
+    .who-badge .value { color: var(--dark); font-weight: 800; font-family: 'Outfit', sans-serif; }
+    .who-section {
+      padding: 28px 0 34px;
+    }
+    .who-cards {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .who-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .who-card h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--dark);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .who-card p { color: var(--muted); margin-bottom: 10px; }
+    .info-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .info-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--light);
+      border: 1px solid var(--border);
+    }
+    .info-row strong {
+      color: var(--dark);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+    .info-row span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .timeline-mini {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .timeline-mini .row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--light);
+      border: 1px solid var(--border);
+    }
+    .timeline-mini .year {
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+    }
+    .timeline-mini h4 {
+      color: var(--dark);
+      font-size: .93rem;
+      margin-bottom: 3px;
+    }
+    .timeline-mini p { font-size: .84rem; margin: 0; }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .skill-tags span {
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .8rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--light);
+      color: var(--dark);
+    }
+    .quote-box {
+      margin-top: 14px;
+      border-left: 4px solid var(--primary);
+      background: linear-gradient(135deg, #eef2ff, #f9fbff);
+      border-radius: 12px;
+      padding: 14px 14px 14px 16px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .contact-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--light);
+      display: grid;
+      gap: 10px;
+    }
+    .contact-box a {
+      color: var(--primary);
+      font-weight: 700;
+      word-break: break-word;
+    }
+    .who-gallery {
+      padding: 8px 0 70px;
+    }
+    .who-gallery-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .gallery-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .gallery-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .gallery-head p {
+      color: var(--muted);
+      max-width: 620px;
+      font-size: .92rem;
+    }
+    .slider-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #dfe7ff;
+      min-height: 280px;
+      height: clamp(340px, 52vw, 560px);
+    }
+    .slider-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .9s ease;
+      pointer-events: none;
+    }
+    .slider-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .slider-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #dfe7ff;
+      display: block;
+      transform: none;
+    }
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,.9);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,.16);
+      z-index: 4;
+      transition: var(--transition);
+    }
+    .slider-arrow:hover {
+      transform: translateY(-50%) scale(1.06);
+      background: #fff;
+      color: var(--primary);
+    }
+    .slider-arrow-prev { left: 12px; }
+    .slider-arrow-next { right: 12px; }
+    .slider-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 18px 18px 16px;
+      background: linear-gradient(180deg, transparent, rgba(13,27,42,.78));
+      color: #fff;
+    }
+    .slider-overlay h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .slider-overlay p {
+      font-size: .84rem;
+      opacity: .92;
+      margin: 0;
+    }
+    .slider-controls {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .slider-dots {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: #c5cfe8;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .slider-dot.active {
+      width: 26px;
+      border-radius: 999px;
+      background: var(--primary);
+    }
+    .slider-meta {
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .who-footer {
+      background: var(--darker);
+      color: rgba(255,255,255,.8);
+      padding: 26px 0;
+    }
+    .who-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .who-footer a { color: #fff; }
+    [data-theme="dark"] .who-nav {
+      background: rgba(15,23,42,.9);
+      border-color: #334155;
+    }
+    [data-theme="dark"] .who-hero {
+      background: linear-gradient(135deg,#13203b 0%, #0f172a 50%, #2a1735 100%);
+    }
+    [data-theme="dark"] .who-point,
+    [data-theme="dark"] .who-badge {
+      background: #1e293b;
+      border-color: #334155;
+    }
+    [data-theme="dark"] .quote-box {
+      background: linear-gradient(135deg, #1b2742, #162237);
+    }
+    [data-theme="dark"] .info-row,
+    [data-theme="dark"] .contact-box {
+      background: #1e293b;
+      border-color: #334155;
+    }
+    [data-theme="dark"] .gallery-card {
+      border-color: #334155;
+    }
+    [data-theme="dark"] .slider-frame {
+      border-color: #334155;
+      background: #1e293b;
+    }
+    [data-theme="dark"] .slider-dot {
+      background: #475569;
+    }
+    [data-theme="dark"] .slider-dot.active {
+      background: var(--primary);
+    }
+    [data-theme="dark"] .slider-arrow {
+      background: rgba(30,41,59,.92);
+      color: #e2e8f0;
+    }
+    [data-theme="dark"] .slider-arrow:hover {
+      background: #1e293b;
+      color: #fff;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .slider-slide { transition: none; }
+    }
+    @media (max-width: 900px) {
+      .who-grid,
+      .who-cards {
+        grid-template-columns: 1fr;
+      }
+      .who-photo-wrap img {
+        height: 380px;
+      }
+      .who-badge {
+        position: static;
+        margin-top: 12px;
+      }
+    }
+    @media (max-width: 640px) {
+      .who-points { grid-template-columns: 1fr; }
+      .who-nav-inner { padding: 12px 16px; }
+      .who-grid, .who-cards { padding-left: 16px; padding-right: 16px; }
+      .who-gallery-inner { padding-left: 16px; padding-right: 16px; }
+      .timeline-mini .row { grid-template-columns: 1fr; }
+      .info-row { grid-template-columns: 1fr; }
+      .slider-arrow {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="who-page">
+    <header class="who-nav">
+      <div class="who-nav-inner">
+        <a href="index.html" class="brand">
+          <img src="Sawir Logo.png" alt="Anas logo" />
+          <span>Anas<span class="accent">.</span></span>
+        </a>
+        <a href="index.html#about" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      </div>
+    </header>
+
+    <section class="who-hero">
+      <div class="who-grid">
+        <div>
+          <div class="who-kicker"><i class="fas fa-user"></i> Personal Profile</div>
+          <h1 class="who-title">Who is <span>Anas Abdiwahid</span>?</h1>
+          <p class="who-lead">
+            Anas Abdiwahid Hussein Warsame is a Full Stack Developer and Multimedia Specialist.
+            He is Somali, born in Mogadishu (Wadajir District), and focuses on building web applications, multimedia work, and IoT / Arduino projects.
+          </p>
+
+          <div class="who-points">
+            <div class="who-point">
+              <i class="fas fa-code"></i>
+              <div>
+                <strong>Full Stack Developer</strong>
+                <span>Frontend and backend web applications</span>
+              </div>
+            </div>
+            <div class="who-point">
+              <i class="fas fa-palette"></i>
+              <div>
+                <strong>Multimedia Specialist</strong>
+                <span>Creative media, design, and content work</span>
+              </div>
+            </div>
+            <div class="who-point">
+              <i class="fas fa-microchip"></i>
+              <div>
+                <strong>IoT & Arduino</strong>
+                <span>Experienced in Arduino projects and practical IoT builds</span>
+              </div>
+            </div>
+            <div class="who-point">
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <strong>Hormuud University</strong>
+                <span>Currently studying Computer Science</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="who-actions">
+            <a href="tel:+252613496943" class="btn btn-primary"><i class="fas fa-phone"></i> +252 613496943</a>
+            <a href="https://wa.me/252613496943" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="who-photo-card">
+          <div class="who-photo-wrap">
+            <img src="sawirkahore.png" alt="Anas Abdiwahid portrait" />
+          </div>
+          <div class="who-badge">
+            <div class="label">Date of Birth</div>
+            <div class="value">January 1, 2004</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="who-section">
+      <div class="who-cards">
+        <article class="who-card">
+          <p class="section-subtitle">Full Information</p>
+          <h2 class="section-title">About Anas (Full Profile)</h2>
+          <p>
+            Below is the complete profile information you requested, written clearly so this page works as a full personal introduction for Anas Abdiwahid.
+          </p>
+
+          <div class="info-list">
+            <div class="info-row">
+              <strong>Full Name</strong>
+              <span>Anas Abdiwahid Hussein Warsame</span>
+            </div>
+            <div class="info-row">
+              <strong>Nationality</strong>
+              <span>Somali</span>
+            </div>
+            <div class="info-row">
+              <strong>Place of Birth</strong>
+              <span>Somalia, Mogadishu, Wadajir District</span>
+            </div>
+            <div class="info-row">
+              <strong>Date of Birth</strong>
+              <span>January 1, 2004</span>
+            </div>
+            <div class="info-row">
+              <strong>School</strong>
+              <span>School Sahal (Mogadishu, Wadajir District)</span>
+            </div>
+            <div class="info-row">
+              <strong>School Graduation Year</strong>
+              <span>2023</span>
+            </div>
+            <div class="info-row">
+              <strong>Current University</strong>
+              <span>Hormuud University</span>
+            </div>
+            <div class="info-row">
+              <strong>Field of Study / Major</strong>
+              <span>Computer Science</span>
+            </div>
+            <div class="info-row">
+              <strong>Profession / Skills</strong>
+              <span>Full Stack Developer, Multimedia Specialist, and IoT / Arduino Project Builder</span>
+            </div>
+            <div class="info-row">
+              <strong>Programming Languages</strong>
+              <span>HTML, CSS, JavaScript, PHP, MySQL (and other web technologies related to Full Stack Development)</span>
+            </div>
+            <div class="info-row">
+              <strong>Contact Number</strong>
+              <span>+252 613496943</span>
+            </div>
+          </div>
+
+          <p>
+            His full name is <strong style="color:var(--dark)">Anas Abdiwahid Hussein Warsame</strong>. He is Somali and was born in
+            <strong style="color:var(--dark)">Mogadishu, Wadajir District, Somalia</strong> on
+            <strong style="color:var(--dark)">January 1, 2004</strong>. He completed School Sahal, located in Mogadishu (Wadajir District), in
+            <strong style="color:var(--dark)">2023</strong>. He is currently studying at <strong style="color:var(--dark)">Hormuud University</strong>,
+            where he is pursuing <strong style="color:var(--dark)">Computer Science</strong>.
+          </p>
+
+          <div class="quote-box">
+            Anas is a creative developer who combines technology, design, multimedia, and IoT to build modern and useful solutions.
+          </div>
+        </article>
+
+        <aside class="who-card">
+          <p class="section-subtitle">Education & Skills</p>
+          <h3>Education Journey</h3>
+          <div class="timeline-mini">
+            <div class="row">
+              <div class="year">2014 - 2023</div>
+              <div>
+                <h4>School Sahal</h4>
+                <p>He completed his school education in 2023. The school is located in Mogadishu, Wadajir District.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="year">2023 - Present</div>
+              <div>
+                <h4>Hormuud University</h4>
+                <p>He is currently studying at Hormuud University, majoring in Computer Science.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:18px;">Programming Languages / Technologies</h3>
+          <div class="skill-tags">
+            <span>HTML / CSS / JS</span>
+            <span>PHP & MySQL</span>
+            <span>Full Stack Web Apps</span>
+            <span>UI / UX Design</span>
+            <span>Logo & Branding</span>
+            <span>Video Editing</span>
+            <span>Arduino / IoT</span>
+          </div>
+
+          <div class="contact-box">
+            <div>
+              <strong style="color:var(--dark); display:block; margin-bottom:4px;">Contact</strong>
+              <span style="color:var(--muted); font-size:.9rem;">You can contact Anas Abdiwahid using this number:</span>
+            </div>
+            <a href="tel:+252613496943">+252 613496943</a>
+            <a href="https://wa.me/252613496943" target="_blank" rel="noopener">WhatsApp Chat</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="who-gallery" aria-label="Anas image gallery">
+      <div class="who-gallery-inner">
+        <div class="gallery-card">
+          <div class="gallery-head">
+            <div>
+              <p class="section-subtitle">Images</p>
+              <h2 class="section-title" style="margin-bottom:6px;">Gallery</h2>
+            </div>
+          </div>
+
+          <div class="slider-frame" id="anasSlider">
+            <div class="slider-slide active">
+              <img src="sawirkahore.png" alt="Anas image 1" />
+              <div class="slider-overlay">
+                <h4>Anas Abdiwahid</h4>
+                <p>Primary profile portrait</p>
+              </div>
+            </div>
+            <div class="slider-slide">
+              <img src="sawirr.png" alt="Anas image 2" />
+              <div class="slider-overlay">
+                <h4>Anas Portrait</h4>
+                <p>Additional personal portrait image</p>
+              </div>
+            </div>
+            <div class="slider-slide">
+              <img src="Dashboad.png" alt="Dashboard project image" />
+              <div class="slider-overlay">
+                <h4>Dashboard Project</h4>
+                <p>Web design / dashboard interface</p>
+              </div>
+            </div>
+            <div class="slider-slide">
+              <img src="sawir2.jpeg" alt="Restaurant system project" />
+              <div class="slider-overlay">
+                <h4>4 Season Restaurant System</h4>
+                <p>Full Stack project example</p>
+              </div>
+            </div>
+            <div class="slider-slide">
+              <img src="sawir5.jpeg" alt="Suuq Furan marketplace project" />
+              <div class="slider-overlay">
+                <h4>Suuq Furan Marketplace</h4>
+                <p>Marketplace system project</p>
+              </div>
+            </div>
+
+            <button class="slider-arrow slider-arrow-prev" id="anasSliderPrev" type="button" aria-label="Previous slide">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button class="slider-arrow slider-arrow-next" id="anasSliderNext" type="button" aria-label="Next slide">
+              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="slider-controls">
+            <div class="slider-dots" id="anasSliderDots" aria-label="Slider navigation">
+              <button class="slider-dot active" type="button" aria-label="Slide 1"></button>
+              <button class="slider-dot" type="button" aria-label="Slide 2"></button>
+              <button class="slider-dot" type="button" aria-label="Slide 3"></button>
+              <button class="slider-dot" type="button" aria-label="Slide 4"></button>
+              <button class="slider-dot" type="button" aria-label="Slide 5"></button>
+            </div>
+            <div class="slider-meta" id="anasSliderMeta">1 / 5</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="who-footer">
+      <div class="who-footer-inner">
+        <p>&copy; <span id="year"></span> Anas Abdiwahid Hussein</p>
+        <div>
+          <a href="index.html">Home</a> |
+          <a href="index.html#about">About</a> |
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const slides = Array.from(document.querySelectorAll('#anasSlider .slider-slide'));
+    const dots = Array.from(document.querySelectorAll('#anasSliderDots .slider-dot'));
+    const meta = document.getElementById('anasSliderMeta');
+    const sliderPrev = document.getElementById('anasSliderPrev');
+    const sliderNext = document.getElementById('anasSliderNext');
+    let currentSlide = 0;
+    let sliderTimer;
+
+    const customSliderImages = [
+      { src: 'sawirkahore.png', alt: 'Anas image 1', title: 'Anas Abdiwahid', desc: 'Personal image (Anas Abdiwahid Images)' },
+      { src: 'sawirr.png', alt: 'Anas image 2', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' },
+      { src: 'sawir2.jpeg', alt: 'Anas image 3', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' },
+      { src: 'Sawir4.jpeg', alt: 'Anas image 4', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' },
+      { src: 'sawir5.jpeg', alt: 'Anas image 5', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' }
+    ];
+
+    customSliderImages.forEach((item, index) => {
+      const slide = slides[index];
+      if (!slide) return;
+
+      const img = slide.querySelector('img');
+      const title = slide.querySelector('.slider-overlay h4');
+      const desc = slide.querySelector('.slider-overlay p');
+
+      if (img) {
+        img.src = item.src;
+        img.alt = item.alt;
+      }
+      if (title) title.textContent = item.title;
+      if (desc) desc.textContent = item.desc;
+    });
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+        dot.setAttribute('aria-pressed', i === currentSlide ? 'true' : 'false');
+      });
+
+      if (meta) meta.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        restartSlider();
+      });
+    });
+
+    if (sliderPrev) {
+      sliderPrev.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+        restartSlider();
+      });
+    }
+
+    if (sliderNext) {
+      sliderNext.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+        restartSlider();
+      });
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        showSlide(currentSlide - 1);
+        restartSlider();
+      } else if (event.key === 'ArrowRight') {
+        showSlide(currentSlide + 1);
+        restartSlider();
+      }
+    });
+
+    function startSlider() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      sliderTimer = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 3500);
+    }
+
+    function restartSlider() {
+      clearInterval(sliderTimer);
+      startSlider();
+    }
+
+    showSlide(0);
+    startSlider();
+  </script>
+</body>
+</html>
