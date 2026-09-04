@@ -591,23 +591,35 @@ function updateActiveNav() {
 const hamburger = document.getElementById('hamburger');
 const navLinksEl = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', () => {
-  navLinksEl.classList.toggle('open');
-  // Add mobile CTA inside nav if not already there
-  if (!navLinksEl.querySelector('.nav-cta')) {
-    const cta = document.createElement('a');
-    cta.href = '#contact';
-    cta.className = 'btn btn-primary nav-cta mobile-show';
-    cta.dataset.i18n = 'nav.cta';
-    cta.textContent = t('nav.cta');
-    navLinksEl.appendChild(cta);
-  }
-});
+function setMobileMenu(isOpen) {
+  if (!hamburger || !navLinksEl) return;
 
-// Close menu on link click
-navLinksEl.addEventListener('click', e => {
-  if (e.target.tagName === 'A') navLinksEl.classList.remove('open');
-});
+  navLinksEl.classList.toggle('open', isOpen);
+  hamburger.classList.toggle('active', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  document.body.classList.toggle('mobile-menu-open', isOpen);
+}
+
+if (hamburger && navLinksEl) {
+  hamburger.addEventListener('click', () => {
+    setMobileMenu(!navLinksEl.classList.contains('open'));
+  });
+
+  // Close the navigation once a destination is selected.
+  navLinksEl.addEventListener('click', e => {
+    if (e.target.closest('a')) setMobileMenu(false);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setMobileMenu(false);
+  });
+
+  // Do not leave the page scroll-locked after rotating or resizing the device.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) setMobileMenu(false);
+  }
+  );
+}
 
 /* ── Back to top ── */
 backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

@@ -2877,21 +2877,34 @@ img {
     flex-direction: column;
     padding: 24px 20px;
     gap: 16px;
+    margin: 0;
+    list-style: none;
     border-bottom: 1px solid var(--border-subtle);
-    transform: translateY(-150%);
-    transition: transform 0.35s ease;
+    transform: translateY(-110%);
+    transition: transform 0.35s ease, visibility 0.35s ease;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1001;
   }
   
   .nav-links.open {
     transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
   }
   
   .hamburger {
     display: flex;
+    position: relative;
+    z-index: 1002;
   }
   
   .nav-cta {
     display: none;
+  }
+
+  body.mobile-menu-open {
+    overflow: hidden;
   }
   
   .form-row-2 {
