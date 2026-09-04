@@ -2867,6 +2867,31 @@ img {
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .nav-logo {
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .nav-logo .logo-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-logo .logo-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.8px;
+  }
+
+  .nav-right {
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
   .nav-links {
     position: fixed;
     top: 60px;
@@ -3193,6 +3218,13 @@ img {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Keep the hamburger inside narrow phone screens; theme control remains available on wider layouts. */
+  .theme-toggle {
+    display: none;
   }
 }
 
