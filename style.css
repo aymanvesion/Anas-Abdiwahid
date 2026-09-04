@@ -1256,6 +1256,28 @@ img {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
+  /* Let posters use the full phone width; arrows float above the artwork instead of reducing its size. */
+  #panel-posters .compact-slider-wrapper {
+    display: block;
+    padding: 0 14px;
+  }
+
+  #panel-posters .panel-slider-window {
+    padding: 10px 0;
+  }
+
+  #panel-posters .panel-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    transform: translateY(-50%);
+  }
+
+  #panel-posters .panel-arrow.prev { left: 4px; }
+  #panel-posters .panel-arrow.next { right: 4px; }
 }
 
 .panel-arrow {
