@@ -181,8 +181,7 @@ const translations = {
     "contact.send": "Send via WhatsApp",
     "contact.sending": "Opening WhatsApp...",
     "contact.success": "Message prepared! Opening WhatsApp...",
-    "footer.rights": "All rights reserved.",
-    "footer.qrTitle": "Scan WhatsApp QR"
+    "footer.rights": "All rights reserved."
   },
   "so": {
     "page.title": "Anas Abdiwahid Hussein Warsame | Portfolio & Xog Nololeed",
@@ -308,8 +307,7 @@ const translations = {
     "contact.send": "Ku Dir WhatsApp",
     "contact.sending": "WhatsApp ayaa la furayaa...",
     "contact.success": "Fariinta waa la diyaariyay! WhatsApp ayaa kuu furmaya...",
-    "footer.rights": "Dhammaan xuquuqda way dhowran yihiin.",
-    "footer.qrTitle": "Iskaan Garee WhatsApp QR"
+    "footer.rights": "Dhammaan xuquuqda way dhowran yihiin."
   },
   "ar": {
     "page.title": "أنس عبد الواحد حسين ورسمه | معرض الأعمال والسيرة الذاتية",
@@ -435,8 +433,7 @@ const translations = {
     "contact.send": "إرسال عبر واتساب",
     "contact.sending": "جارٍ فتح واتساب...",
     "contact.success": "تم تجهيز الرسالة! جارٍ التحويل إلى واتساب...",
-    "footer.rights": "جميع الحقوق محفوظة.",
-    "footer.qrTitle": "امسح رمز QR للواتساب"
+    "footer.rights": "جميع الحقوق محفوظة."
   }
 };
 
