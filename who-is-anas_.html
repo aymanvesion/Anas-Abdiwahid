@@ -1,29 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Who is Anas Abdiwahid?</title>
-  <meta name="description" content="Learn more about Anas Abdiwahid Hussein, a Full Stack Developer and Multimedia Specialist from Somalia." />
+  <title>Who is Anas Abdiwahid Hussein Warsame? | Official Biography</title>
+  <meta name="description" content="Biography and portfolio background of Anas Abdiwahid Hussein Warsame - 4th Year Computer Science Student at Hormuud University & Software Developer." />
   <link rel="icon" type="image/png" href="Sawir Logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { background: var(--light); }
-    .who-page { min-height: 100vh; }
+    /* ── High-Contrast & Harmonized Theme Variables ── */
+    :root {
+      --who-bg: #040a17;
+      --who-bg-alt: #081427;
+      --who-card: #0d1d36;
+      --who-card-hover: #122647;
+      --who-card-inner: rgba(16, 35, 65, 0.75);
+      --who-border: rgba(56, 189, 248, 0.18);
+      --who-border-active: rgba(56, 189, 248, 0.45);
+      --who-text-main: #f8fafc;
+      --who-text-muted: #94a3b8;
+      --who-text-dim: #64748b;
+      --who-primary: #0070f3;
+      --who-accent: #38bdf8;
+      --who-accent-cyan: #00f0ff;
+      --who-badge-bg: rgba(0, 112, 243, 0.18);
+      --who-badge-text: #38bdf8;
+      --who-nav-bg: rgba(4, 10, 23, 0.88);
+      --who-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme="light"] {
+      --who-bg: #f4f7fc;
+      --who-bg-alt: #e9f0fb;
+      --who-card: #ffffff;
+      --who-card-hover: #f8fafc;
+      --who-card-inner: #f1f5f9;
+      --who-border: rgba(15, 23, 42, 0.12);
+      --who-border-active: rgba(0, 112, 243, 0.35);
+      --who-text-main: #0b132b;
+      --who-text-muted: #334155;
+      --who-text-dim: #64748b;
+      --who-primary: #0060df;
+      --who-accent: #0284c7;
+      --who-accent-cyan: #0891b2;
+      --who-badge-bg: rgba(2, 132, 199, 0.12);
+      --who-badge-text: #0369a1;
+      --who-nav-bg: rgba(255, 255, 255, 0.92);
+      --who-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    body {
+      background: var(--who-bg) !important;
+      color: var(--who-text-main) !important;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Navigation ── */
     .who-nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      background: var(--who-nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--who-border);
     }
     .who-nav-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 14px 24px;
       display: flex;
@@ -31,298 +83,554 @@
       justify-content: space-between;
       gap: 16px;
     }
-    .who-nav .brand {
+    .who-brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--who-text-main);
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
+      font-size: 1.2rem;
     }
-    .who-nav .brand img {
-      width: 38px;
-      height: 38px;
+    .who-brand img {
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
       object-fit: cover;
-      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+      box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+      border: 1px solid var(--who-border);
     }
-    .who-hero {
-      background: linear-gradient(135deg, #eef2ff 0%, #f7f9ff 45%, #fdecef 100%);
-      padding: 56px 0 30px;
-      position: relative;
-      overflow: hidden;
+    .who-brand span.dot {
+      color: var(--who-accent);
     }
-    .who-hero::before,
-    .who-hero::after {
-      content: "";
-      position: absolute;
+    .who-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .theme-toggle-btn {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      filter: blur(50px);
-      opacity: .35;
-      pointer-events: none;
+      border: 1px solid var(--who-border);
+      background: var(--who-card);
+      color: var(--who-text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.25s ease;
     }
-    .who-hero::before {
-      width: 280px;
-      height: 280px;
-      background: #4361ee;
-      top: -70px;
-      right: -60px;
+    .theme-toggle-btn:hover {
+      border-color: var(--who-accent);
+      transform: scale(1.05);
+      color: var(--who-accent);
     }
-    .who-hero::after {
-      width: 220px;
-      height: 220px;
-      background: #e63946;
-      left: -60px;
-      bottom: -40px;
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--who-card);
+      color: var(--who-text-main);
+      border: 1px solid var(--who-border);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
     }
-    .who-grid {
-      max-width: 1100px;
+    .btn-back:hover {
+      background: var(--who-primary);
+      color: #ffffff;
+      border-color: var(--who-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 112, 243, 0.35);
+    }
+
+    /* ── Hero Section ── */
+    .who-hero {
+      position: relative;
+      padding: 60px 0 40px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--who-border);
+      background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 10% 80%, rgba(0, 112, 243, 0.08) 0%, transparent 60%);
+    }
+    .who-container {
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
+    }
+    .who-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
-      gap: 42px;
-      position: relative;
-      z-index: 1;
+      gap: 48px;
     }
     .who-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #fff;
-      border: 1px solid var(--border);
+      background: var(--who-badge-bg);
+      border: 1px solid var(--who-border-active);
       border-radius: 999px;
-      padding: 7px 14px;
-      font-size: .83rem;
+      padding: 6px 16px;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 14px;
-      box-shadow: var(--shadow);
+      color: var(--who-badge-text);
+      margin-bottom: 18px;
     }
     .who-title {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.3rem);
-      line-height: 1.08;
-      margin-bottom: 14px;
-      color: var(--dark);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--who-text-main);
+      margin-bottom: 16px;
     }
-    .who-title span { color: var(--accent); }
+    .who-title span.highlight {
+      background: linear-gradient(135deg, #38bdf8 0%, #0070f3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .who-lead {
-      color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 18px;
-      max-width: 560px;
+      color: var(--who-text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 620px;
     }
+    .who-lead strong {
+      color: var(--who-text-main);
+      font-weight: 700;
+    }
+
+    /* ── 4 Feature Grid Cards ── */
     .who-points {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 18px 0 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
     }
     .who-point {
-      background: rgba(255,255,255,.9);
-      border: 1px solid var(--border);
+      background: var(--who-card);
+      border: 1px solid var(--who-border);
       border-radius: 14px;
-      padding: 12px 14px;
-      box-shadow: var(--shadow);
+      padding: 14px 16px;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: flex-start;
+      transition: all 0.25s ease;
     }
-    .who-point i { color: var(--primary); margin-top: 3px; }
-    .who-point strong { display: block; font-size: .88rem; color: var(--dark); }
-    .who-point span { color: var(--muted); font-size: .82rem; }
-    .who-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .who-point:hover {
+      border-color: var(--who-border-active);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .who-point-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--who-badge-bg);
+      color: var(--who-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .who-point-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--who-text-main);
+      margin-bottom: 2px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .who-point-text span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--who-text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── Action Buttons ── */
+    .who-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .btn-action-primary {
+      background: linear-gradient(135deg, #0070f3 0%, #0051bb 100%);
+      color: #ffffff;
+      border: 1px solid #0070f3;
+      box-shadow: 0 6px 20px rgba(0, 112, 243, 0.4);
+    }
+    .btn-action-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 112, 243, 0.55);
+      color: #ffffff;
+    }
+    .btn-action-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      border: 1px solid #25D366;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+    }
+    .btn-action-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      color: #ffffff;
+    }
+    .btn-action-outline {
+      background: var(--who-card);
+      color: var(--who-text-main);
+      border: 1px solid var(--who-border);
+    }
+    .btn-action-outline:hover {
+      border-color: var(--who-accent);
+      color: var(--who-accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Photo Card ── */
     .who-photo-card {
       position: relative;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 14px;
-      box-shadow: 0 22px 55px rgba(67,97,238,.14);
+      background: var(--who-card);
+      border: 1px solid var(--who-border);
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: var(--who-shadow);
     }
     .who-photo-wrap {
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
-      background: linear-gradient(160deg, #cfd8ff, #f8fbff);
+      background: radial-gradient(circle, #102344 0%, #081427 100%);
+      border: 1px solid var(--who-border);
+    }
+    [data-theme="light"] .who-photo-wrap {
+      background: radial-gradient(circle, #dfe7ff 0%, #eef2ff 100%);
     }
     .who-photo-wrap img {
       width: 100%;
-      height: 460px;
+      height: 480px;
       object-fit: contain;
-      object-position: center;
-      background: #dfe7ff;
+      object-position: center bottom;
       display: block;
+      transition: transform 0.4s ease;
     }
-    .who-badge {
+    .who-photo-card:hover .who-photo-wrap img {
+      transform: scale(1.02);
+    }
+    .who-badge-overlay {
       position: absolute;
-      left: -12px;
-      bottom: 18px;
-      background: #fff;
+      left: -10px;
+      bottom: 24px;
+      background: var(--who-card);
+      border: 1px solid var(--who-border-active);
       border-radius: 16px;
-      padding: 12px 14px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-      min-width: 190px;
+      padding: 12px 18px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .who-badge .label { color: var(--muted); font-size: .75rem; }
-    .who-badge .value { color: var(--dark); font-weight: 800; font-family: 'Outfit', sans-serif; }
-    .who-section {
-      padding: 28px 0 34px;
+    .who-badge-overlay .badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0070f3, #38bdf8);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
     }
-    .who-cards {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .who-badge-overlay .badge-info .lbl {
+      font-size: 0.75rem;
+      color: var(--who-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .who-badge-overlay .badge-info .val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--who-text-main);
+    }
+
+    /* ── Main Details Grid Section ── */
+    .who-details-section {
+      padding: 60px 0;
+    }
+    .who-details-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 24px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
       align-items: start;
     }
-    .who-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: var(--shadow);
+    .details-card {
+      background: var(--who-card);
+      border: 1px solid var(--who-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--who-shadow);
     }
-    .who-card h3 {
+    .section-kicker {
+      color: var(--who-accent);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .section-heading {
       font-family: 'Outfit', sans-serif;
-      color: var(--dark);
-      margin-bottom: 10px;
-      font-size: 1.2rem;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--who-text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .who-card p { color: var(--muted); margin-bottom: 10px; }
-    .info-list {
+    .section-heading i {
+      color: var(--who-accent);
+      font-size: 1.4rem;
+    }
+    .details-p {
+      color: var(--who-text-muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .details-p strong {
+      color: var(--who-text-main);
+    }
+
+    /* ── Info Rows (Table Style) ── */
+    .info-table {
       display: grid;
       gap: 10px;
-      margin-top: 10px;
+      margin: 24px 0;
     }
     .info-row {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: var(--light);
-      border: 1px solid var(--border);
-    }
-    .info-row strong {
-      color: var(--dark);
-      font-size: .88rem;
-      font-weight: 700;
-    }
-    .info-row span {
-      color: var(--muted);
-      font-size: .9rem;
-    }
-    .timeline-mini {
-      display: grid;
-      gap: 12px;
-      margin-top: 8px;
-    }
-    .timeline-mini .row {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 12px;
-      border-radius: 14px;
-      background: var(--light);
-      border: 1px solid var(--border);
-    }
-    .timeline-mini .year {
-      font-weight: 800;
-      color: var(--primary);
-      font-family: 'Outfit', sans-serif;
-    }
-    .timeline-mini h4 {
-      color: var(--dark);
-      font-size: .93rem;
-      margin-bottom: 3px;
-    }
-    .timeline-mini p { font-size: .84rem; margin: 0; }
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .skill-tags span {
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: .8rem;
-      font-weight: 600;
-      border: 1px solid var(--border);
-      background: var(--light);
-      color: var(--dark);
-    }
-    .quote-box {
-      margin-top: 14px;
-      border-left: 4px solid var(--primary);
-      background: linear-gradient(135deg, #eef2ff, #f9fbff);
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      padding: 12px 16px;
+      background: var(--who-card-inner);
+      border: 1px solid var(--who-border);
       border-radius: 12px;
-      padding: 14px 14px 14px 16px;
-      color: var(--text);
-      font-weight: 500;
+      align-items: center;
     }
-    .contact-box {
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: var(--light);
-      display: grid;
-      gap: 10px;
-    }
-    .contact-box a {
-      color: var(--primary);
+    .info-row .info-label {
+      font-size: 0.88rem;
       font-weight: 700;
+      color: var(--who-accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-row .info-val {
+      font-size: 0.93rem;
+      color: var(--who-text-main);
+      font-weight: 500;
       word-break: break-word;
     }
-    .who-gallery {
-      padding: 8px 0 70px;
+
+    /* ── Quote & Vision Box ── */
+    .vision-box {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(0, 112, 243, 0.12), rgba(56, 189, 248, 0.08));
+      border: 1px solid var(--who-border-active);
+      border-left: 4px solid var(--who-primary);
+      border-radius: 16px;
     }
-    .who-gallery-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .gallery-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      padding: 20px;
-    }
-    .gallery-head {
+    .vision-box h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      color: var(--who-text-main);
+      margin-bottom: 8px;
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
     }
-    .gallery-head p {
-      color: var(--muted);
-      max-width: 620px;
-      font-size: .92rem;
+    .vision-box p {
+      color: var(--who-text-muted);
+      font-size: 0.95rem;
+      margin: 0 0 10px;
+      line-height: 1.6;
+    }
+    .vision-quote {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--who-accent);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* ── Timeline Rows ── */
+    .timeline-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--who-card-inner);
+      border: 1px solid var(--who-border);
+      border-radius: 14px;
+      align-items: start;
+    }
+    .timeline-badge {
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: var(--who-badge-bg);
+      color: var(--who-accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      white-space: nowrap;
+    }
+    .timeline-info h5 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.98rem;
+      color: var(--who-text-main);
+      margin: 0 0 4px;
+    }
+    .timeline-info p {
+      font-size: 0.84rem;
+      color: var(--who-text-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* ── Skill Pill Tags ── */
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .skill-pill {
+      background: var(--who-card-inner);
+      border: 1px solid var(--who-border);
+      color: var(--who-text-main);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .skill-pill:hover {
+      border-color: var(--who-accent);
+      background: var(--who-badge-bg);
+      color: var(--who-accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Direct Contact Box ── */
+    .direct-contact-card {
+      margin-top: 24px;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--who-card-inner), rgba(0, 112, 243, 0.08));
+      border: 1px solid var(--who-border-active);
+      border-radius: 16px;
+    }
+    .direct-contact-card h5 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      color: var(--who-text-main);
+      margin: 0 0 6px;
+    }
+    .direct-contact-card p {
+      font-size: 0.85rem;
+      color: var(--who-text-muted);
+      margin: 0 0 14px;
+    }
+    .contact-links {
+      display: grid;
+      gap: 8px;
+    }
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--who-card);
+      border: 1px solid var(--who-border);
+      border-radius: 10px;
+      color: var(--who-text-main);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      word-break: break-all;
+    }
+    .contact-link-item i {
+      color: var(--who-accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-link-item:hover {
+      border-color: var(--who-accent);
+      background: var(--who-badge-bg);
+      color: var(--who-accent);
+      transform: translateX(4px);
+    }
+
+    /* ── Image Gallery Slider ── */
+    .who-gallery-section {
+      padding: 20px 0 70px;
+    }
+    .slider-card {
+      background: var(--who-card);
+      border: 1px solid var(--who-border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--who-shadow);
+      max-width: 680px;
+      margin: 0 auto;
     }
     .slider-frame {
       position: relative;
       border-radius: 18px;
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: #dfe7ff;
-      min-height: 280px;
-      height: clamp(340px, 52vw, 560px);
+      border: 1px solid var(--who-border);
+      background: #020617;
+      height: clamp(250px, 36vw, 380px);
     }
     .slider-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity .9s ease;
+      transition: opacity 0.8s ease;
       pointer-events: none;
     }
     .slider-slide.active {
@@ -334,430 +642,486 @@
       height: 100%;
       object-fit: contain;
       object-position: center;
-      background: #dfe7ff;
       display: block;
-      transform: none;
     }
-    .slider-arrow {
+    .slider-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 16px 20px;
+      background: linear-gradient(180deg, transparent 0%, rgba(4, 10, 23, 0.94) 100%);
+      color: #ffffff;
+    }
+    .slider-overlay h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 0 0 3px;
+    }
+    .slider-overlay p {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .slider-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      border: none;
-      background: rgba(255,255,255,.9);
-      color: var(--dark);
+      border: 1px solid var(--who-border-active);
+      background: rgba(13, 29, 54, 0.85);
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,.16);
-      z-index: 4;
-      transition: var(--transition);
+      z-index: 10;
+      transition: all 0.25s ease;
     }
-    .slider-arrow:hover {
-      transform: translateY(-50%) scale(1.06);
-      background: #fff;
-      color: var(--primary);
+    .slider-btn:hover {
+      background: var(--who-primary);
+      transform: translateY(-50%) scale(1.08);
+      border-color: var(--who-primary);
     }
-    .slider-arrow-prev { left: 12px; }
-    .slider-arrow-next { right: 12px; }
-    .slider-overlay {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 18px 18px 16px;
-      background: linear-gradient(180deg, transparent, rgba(13,27,42,.78));
-      color: #fff;
-    }
-    .slider-overlay h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .slider-overlay p {
-      font-size: .84rem;
-      opacity: .92;
-      margin: 0;
-    }
-    .slider-controls {
-      margin-top: 12px;
+    .slider-btn.prev { left: 14px; }
+    .slider-btn.next { right: 14px; }
+
+    .slider-nav {
+      margin-top: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 16px;
     }
     .slider-dots {
-      display: inline-flex;
+      display: flex;
       gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
     }
     .slider-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       border: none;
-      background: #c5cfe8;
+      background: var(--who-border-active);
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.3s ease;
     }
     .slider-dot.active {
-      width: 26px;
+      width: 28px;
       border-radius: 999px;
-      background: var(--primary);
+      background: var(--who-accent);
     }
-    .slider-meta {
-      color: var(--muted);
-      font-size: .85rem;
-      font-weight: 600;
+    .slider-counter {
+      color: var(--who-text-muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
     }
+
+    /* ── Footer ── */
     .who-footer {
-      background: var(--darker);
-      color: rgba(255,255,255,.8);
-      padding: 26px 0;
+      border-top: 1px solid var(--who-border);
+      background: var(--who-bg-alt);
+      padding: 24px 0;
+      color: var(--who-text-muted);
+      font-size: 0.9rem;
     }
     .who-footer-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
     }
-    .who-footer a { color: #fff; }
-    [data-theme="dark"] .who-nav {
-      background: rgba(15,23,42,.9);
-      border-color: #334155;
+    .who-footer a {
+      color: var(--who-accent);
+      text-decoration: none;
+      font-weight: 600;
     }
-    [data-theme="dark"] .who-hero {
-      background: linear-gradient(135deg,#13203b 0%, #0f172a 50%, #2a1735 100%);
+    .who-footer a:hover {
+      text-decoration: underline;
     }
-    [data-theme="dark"] .who-point,
-    [data-theme="dark"] .who-badge {
-      background: #1e293b;
-      border-color: #334155;
-    }
-    [data-theme="dark"] .quote-box {
-      background: linear-gradient(135deg, #1b2742, #162237);
-    }
-    [data-theme="dark"] .info-row,
-    [data-theme="dark"] .contact-box {
-      background: #1e293b;
-      border-color: #334155;
-    }
-    [data-theme="dark"] .gallery-card {
-      border-color: #334155;
-    }
-    [data-theme="dark"] .slider-frame {
-      border-color: #334155;
-      background: #1e293b;
-    }
-    [data-theme="dark"] .slider-dot {
-      background: #475569;
-    }
-    [data-theme="dark"] .slider-dot.active {
-      background: var(--primary);
-    }
-    [data-theme="dark"] .slider-arrow {
-      background: rgba(30,41,59,.92);
-      color: #e2e8f0;
-    }
-    [data-theme="dark"] .slider-arrow:hover {
-      background: #1e293b;
-      color: #fff;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .slider-slide { transition: none; }
-    }
-    @media (max-width: 900px) {
-      .who-grid,
-      .who-cards {
+
+    /* ── Responsive Queries ── */
+    @media (max-width: 960px) {
+      .who-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .who-details-grid {
         grid-template-columns: 1fr;
       }
       .who-photo-wrap img {
-        height: 380px;
+        height: 400px;
       }
-      .who-badge {
+      .who-badge-overlay {
         position: static;
-        margin-top: 12px;
+        margin-top: 14px;
       }
     }
     @media (max-width: 640px) {
-      .who-points { grid-template-columns: 1fr; }
-      .who-nav-inner { padding: 12px 16px; }
-      .who-grid, .who-cards { padding-left: 16px; padding-right: 16px; }
-      .who-gallery-inner { padding-left: 16px; padding-right: 16px; }
-      .timeline-mini .row { grid-template-columns: 1fr; }
-      .info-row { grid-template-columns: 1fr; }
-      .slider-arrow {
-        width: 40px;
-        height: 40px;
+      .who-points {
+        grid-template-columns: 1fr;
+      }
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+      .who-actions {
+        flex-direction: column;
+      }
+      .btn-action {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="who-page">
+    <!-- Header / Navbar -->
     <header class="who-nav">
       <div class="who-nav-inner">
-        <a href="index.html" class="brand">
-          <img src="Sawir Logo.png" alt="Anas logo" />
-          <span>Anas<span class="accent">.</span></span>
+        <a href="index.html" class="who-brand">
+          <img src="Sawir Logo.png" alt="Anas Logo" />
+          <span>Anas<span class="dot">.</span></span>
         </a>
-        <a href="index.html#about" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        <div class="who-nav-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <a href="index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+          </a>
+        </div>
       </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="who-hero">
-      <div class="who-grid">
-        <div>
-          <div class="who-kicker"><i class="fas fa-user"></i> Personal Profile</div>
-          <h1 class="who-title">Who is <span>Anas Abdiwahid</span>?</h1>
-          <p class="who-lead">
-            Anas Abdiwahid Hussein Warsame is a Full Stack Developer and Multimedia Specialist.
-            He is Somali, born in Mogadishu (Wadajir District), and focuses on building web applications, multimedia work, and IoT / Arduino projects.
-          </p>
+      <div class="who-container">
+        <div class="who-grid">
+          <div>
+            <div class="who-kicker">
+              <i class="fas fa-user-graduate"></i> Official Biography
+            </div>
+            <h1 class="who-title">
+              Who is <span class="highlight">Anas Abdiwahid</span>?
+            </h1>
+            <p class="who-lead">
+              I am <strong>Anas Abdiwahid Hussein Warsame</strong>, a passionate Computer Science student, Software Developer, and Technology Enthusiast from Mogadishu, Somalia. I was born on <strong>1 January 2004</strong> in Mogadishu, and I am currently a <strong>4th-year Computer Science student at Hormuud University</strong>.
+            </p>
 
-          <div class="who-points">
-            <div class="who-point">
-              <i class="fas fa-code"></i>
-              <div>
-                <strong>Full Stack Developer</strong>
-                <span>Frontend and backend web applications</span>
+            <!-- 4 Highlight Cards -->
+            <div class="who-points">
+              <div class="who-point">
+                <div class="who-point-icon">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="who-point-text">
+                  <strong>Software Developer</strong>
+                  <span>Full-Stack web &amp; mobile development</span>
+                </div>
+              </div>
+
+              <div class="who-point">
+                <div class="who-point-icon">
+                  <i class="fas fa-microchip"></i>
+                </div>
+                <div class="who-point-text">
+                  <strong>IoT &amp; Arduino Specialist</strong>
+                  <span>Sensors, RFID, relays, and smart hardware</span>
+                </div>
+              </div>
+
+              <div class="who-point">
+                <div class="who-point-icon">
+                  <i class="fas fa-photo-film"></i>
+                </div>
+                <div class="who-point-text">
+                  <strong>Full Multimedia</strong>
+                  <span>Branding, graphic design &amp; video editing</span>
+                </div>
+              </div>
+
+              <div class="who-point">
+                <div class="who-point-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="who-point-text">
+                  <strong>Hormuud University</strong>
+                  <span>4th-Year Computer Science Student</span>
+                </div>
               </div>
             </div>
-            <div class="who-point">
-              <i class="fas fa-palette"></i>
-              <div>
-                <strong>Multimedia Specialist</strong>
-                <span>Creative media, design, and content work</span>
-              </div>
-            </div>
-            <div class="who-point">
-              <i class="fas fa-microchip"></i>
-              <div>
-                <strong>IoT & Arduino</strong>
-                <span>Experienced in Arduino projects and practical IoT builds</span>
-              </div>
-            </div>
-            <div class="who-point">
-              <i class="fas fa-graduation-cap"></i>
-              <div>
-                <strong>Hormuud University</strong>
-                <span>Currently studying Computer Science</span>
-              </div>
+
+            <!-- Action Buttons -->
+            <div class="who-actions">
+              <a href="tel:+252616256534" class="btn-action btn-action-primary">
+                <i class="fas fa-phone"></i> +252 616 256 534
+              </a>
+              <a href="https://wa.me/252616256534" target="_blank" rel="noopener" class="btn-action btn-action-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a href="mailto:anasabdiwahidhussein@gmail.com" class="btn-action btn-action-outline">
+                <i class="fas fa-envelope"></i> Email Me
+              </a>
             </div>
           </div>
 
-          <div class="who-actions">
-            <a href="tel:+252613496943" class="btn btn-primary"><i class="fas fa-phone"></i> +252 613496943</a>
-            <a href="https://wa.me/252613496943" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-          </div>
-        </div>
-
-        <div class="who-photo-card">
-          <div class="who-photo-wrap">
-            <img src="sawirkahore.png" alt="Anas Abdiwahid portrait" />
-          </div>
-          <div class="who-badge">
-            <div class="label">Date of Birth</div>
-            <div class="value">January 1, 2004</div>
+          <!-- Photo Profile Card -->
+          <div class="who-photo-card">
+            <div class="who-photo-wrap">
+              <img src="sawirkahore.png" alt="Anas Abdiwahid Hussein Warsame Portrait" />
+            </div>
+            <div class="who-badge-overlay">
+              <div class="badge-icon">
+                <i class="fas fa-birthday-cake"></i>
+              </div>
+              <div class="badge-info">
+                <div class="lbl">Born</div>
+                <div class="val">1 January 2004</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="who-section">
-      <div class="who-cards">
-        <article class="who-card">
-          <p class="section-subtitle">Full Information</p>
-          <h2 class="section-title">About Anas (Full Profile)</h2>
-          <p>
-            Below is the complete profile information you requested, written clearly so this page works as a full personal introduction for Anas Abdiwahid.
-          </p>
+    <!-- Detailed Information & Tables Section -->
+    <section class="who-details-section">
+      <div class="who-container">
+        <div class="who-details-grid">
+          <!-- Left Column: Biography, Table, Vision -->
+          <article class="details-card">
+            <span class="section-kicker">Biography &amp; Background</span>
+            <h2 class="section-heading">
+              <i class="fas fa-user-tie"></i> About Me &amp; Vision
+            </h2>
+            <p class="details-p">
+              My journey in technology started with a strong curiosity about computers and software. Over time, that curiosity developed into a passion for <strong>creating websites, software systems, digital platforms, and technology-based projects</strong>. I enjoy turning ideas into functional, user-friendly, and reliable digital solutions.
+            </p>
 
-          <div class="info-list">
-            <div class="info-row">
-              <strong>Full Name</strong>
-              <span>Anas Abdiwahid Hussein Warsame</span>
-            </div>
-            <div class="info-row">
-              <strong>Nationality</strong>
-              <span>Somali</span>
-            </div>
-            <div class="info-row">
-              <strong>Place of Birth</strong>
-              <span>Somalia, Mogadishu, Wadajir District</span>
-            </div>
-            <div class="info-row">
-              <strong>Date of Birth</strong>
-              <span>January 1, 2004</span>
-            </div>
-            <div class="info-row">
-              <strong>School</strong>
-              <span>School Sahal (Mogadishu, Wadajir District)</span>
-            </div>
-            <div class="info-row">
-              <strong>School Graduation Year</strong>
-              <span>2023</span>
-            </div>
-            <div class="info-row">
-              <strong>Current University</strong>
-              <span>Hormuud University</span>
-            </div>
-            <div class="info-row">
-              <strong>Field of Study / Major</strong>
-              <span>Computer Science</span>
-            </div>
-            <div class="info-row">
-              <strong>Profession / Skills</strong>
-              <span>Full Stack Developer, Multimedia Specialist, and IoT / Arduino Project Builder</span>
-            </div>
-            <div class="info-row">
-              <strong>Programming Languages</strong>
-              <span>HTML, CSS, JavaScript, PHP, MySQL (and other web technologies related to Full Stack Development)</span>
-            </div>
-            <div class="info-row">
-              <strong>Contact Number</strong>
-              <span>+252 613496943</span>
-            </div>
-          </div>
-
-          <p>
-            His full name is <strong style="color:var(--dark)">Anas Abdiwahid Hussein Warsame</strong>. He is Somali and was born in
-            <strong style="color:var(--dark)">Mogadishu, Wadajir District, Somalia</strong> on
-            <strong style="color:var(--dark)">January 1, 2004</strong>. He completed School Sahal, located in Mogadishu (Wadajir District), in
-            <strong style="color:var(--dark)">2023</strong>. He is currently studying at <strong style="color:var(--dark)">Hormuud University</strong>,
-            where he is pursuing <strong style="color:var(--dark)">Computer Science</strong>.
-          </p>
-
-          <div class="quote-box">
-            Anas is a creative developer who combines technology, design, multimedia, and IoT to build modern and useful solutions.
-          </div>
-        </article>
-
-        <aside class="who-card">
-          <p class="section-subtitle">Education & Skills</p>
-          <h3>Education Journey</h3>
-          <div class="timeline-mini">
-            <div class="row">
-              <div class="year">2014 - 2023</div>
-              <div>
-                <h4>School Sahal</h4>
-                <p>He completed his school education in 2023. The school is located in Mogadishu, Wadajir District.</p>
+            <!-- Table of Profile Details -->
+            <div class="info-table">
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-id-card"></i> Full Name</div>
+                <div class="info-val"><strong>Anas Abdiwahid Hussein Warsame</strong></div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-calendar-alt"></i> Date of Birth</div>
+                <div class="info-val">1 January 2004</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-map-marker-alt"></i> Place of Birth</div>
+                <div class="info-val">Mogadishu, Somalia</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-graduation-cap"></i> Field of Study</div>
+                <div class="info-val">Computer Science</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-university"></i> University &amp; Level</div>
+                <div class="info-val"><strong>Hormuud University (4th Year Student)</strong></div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-school"></i> Primary &amp; High School</div>
+                <div class="info-val">Sahal School (Primary &amp; Secondary Education)</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-briefcase"></i> Profession</div>
+                <div class="info-val">Software Developer &amp; Computer Science Student</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-code-branch"></i> Specializations</div>
+                <div class="info-val">Web Development, Software Engineering, Multimedia &amp; IoT</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-layer-group"></i> Technologies</div>
+                <div class="info-val">HTML, CSS, JavaScript, PHP, SQL/MySQL, React, C, C++, C#, Python, Flutter</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-phone-alt"></i> Phone / WhatsApp</div>
+                <div class="info-val">+252 616 256 534</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label"><i class="fas fa-envelope"></i> Email Address</div>
+                <div class="info-val">anasabdiwahidhussein@gmail.com</div>
               </div>
             </div>
-            <div class="row">
-              <div class="year">2023 - Present</div>
-              <div>
-                <h4>Hormuud University</h4>
-                <p>He is currently studying at Hormuud University, majoring in Computer Science.</p>
+
+            <!-- Vision Statement -->
+            <div class="vision-box">
+              <h4><i class="fas fa-globe-africa"></i> My Vision &amp; Philosophy</h4>
+              <p>
+                My goal is to become a highly skilled <strong>Software Engineer and Technology Professional</strong> capable of designing and developing innovative solutions that make a meaningful impact in Somalia and globally.
+              </p>
+              <p>
+                I believe technology is not only about writing code; it is about <strong>solving problems, creating opportunities, connecting people, and improving everyday life</strong>.
+              </p>
+              <div class="vision-quote">
+                ✨ “I don't just learn technology — I build with it.”
               </div>
             </div>
-          </div>
+          </article>
 
-          <h3 style="margin-top:18px;">Programming Languages / Technologies</h3>
-          <div class="skill-tags">
-            <span>HTML / CSS / JS</span>
-            <span>PHP & MySQL</span>
-            <span>Full Stack Web Apps</span>
-            <span>UI / UX Design</span>
-            <span>Logo & Branding</span>
-            <span>Video Editing</span>
-            <span>Arduino / IoT</span>
-          </div>
-
-          <div class="contact-box">
-            <div>
-              <strong style="color:var(--dark); display:block; margin-bottom:4px;">Contact</strong>
-              <span style="color:var(--muted); font-size:.9rem;">You can contact Anas Abdiwahid using this number:</span>
+          <!-- Right Column: Education Timeline, Real Projects, Skills, Contact -->
+          <aside class="details-card">
+            <span class="section-kicker">Academic &amp; Projects</span>
+            <h2 class="section-heading">
+              <i class="fas fa-route"></i> Education Journey
+            </h2>
+            <div class="timeline-stack">
+              <div class="timeline-item">
+                <div class="timeline-badge">2014 - 2023</div>
+                <div class="timeline-info">
+                  <h5>Sahal School</h5>
+                  <p>Completed primary and secondary education with excellence.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-badge">2023 - Present</div>
+                <div class="timeline-info">
+                  <h5>Hormuud University</h5>
+                  <p>Faculty of Computer Science — Currently advancing in 4th Year.</p>
+                </div>
+              </div>
             </div>
-            <a href="tel:+252613496943">+252 613496943</a>
-            <a href="https://wa.me/252613496943" target="_blank" rel="noopener">WhatsApp Chat</a>
-          </div>
-        </aside>
+
+            <h3 style="font-family:'Outfit',sans-serif; font-size:1.25rem; margin:24px 0 12px; color:var(--who-text-main); display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-rocket" style="color:var(--who-accent);"></i> Notable Real Projects &amp; IoT
+            </h3>
+            <div class="timeline-stack">
+              <div class="timeline-item">
+                <div class="timeline-badge"><i class="fas fa-book-open"></i> App</div>
+                <div class="timeline-info">
+                  <h5>BuugTabiye</h5>
+                  <p>Digital book library platform for intuitive access and educational content.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-badge"><i class="fas fa-university"></i> Portal</div>
+                <div class="timeline-info">
+                  <h5>NTW — Hormuud University</h5>
+                  <p>Digital technology initiative and training platform for university students.</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-badge"><i class="fas fa-microchip"></i> IoT</div>
+                <div class="timeline-info">
+                  <h5>IoT &amp; Arduino Hardware</h5>
+                  <p>Sensors, RFID modules, relays, servo motors, automated control circuits.</p>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="font-family:'Outfit',sans-serif; font-size:1.25rem; margin:24px 0 12px; color:var(--who-text-main); display:flex; align-items:center; gap:8px;">
+              <i class="fas fa-tools" style="color:var(--who-accent);"></i> Technical Skills
+            </h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fab fa-html5"></i> HTML</span>
+              <span class="skill-pill"><i class="fab fa-css3-alt"></i> CSS</span>
+              <span class="skill-pill"><i class="fab fa-js"></i> JavaScript</span>
+              <span class="skill-pill"><i class="fab fa-php"></i> PHP</span>
+              <span class="skill-pill"><i class="fas fa-database"></i> SQL / MySQL</span>
+              <span class="skill-pill"><i class="fab fa-react"></i> React</span>
+              <span class="skill-pill"><i class="fas fa-code"></i> C / C++ / C#</span>
+              <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
+              <span class="skill-pill"><i class="fas fa-mobile-alt"></i> Flutter</span>
+              <span class="skill-pill"><i class="fas fa-microchip"></i> IoT &amp; Arduino</span>
+              <span class="skill-pill"><i class="fas fa-photo-video"></i> Full Multimedia</span>
+            </div>
+
+            <!-- Direct Contact Card -->
+            <div class="direct-contact-card">
+              <h5>Direct Contact &amp; Inquiries</h5>
+              <p>Reach out directly for software development, design, or collaboration:</p>
+              <div class="contact-links">
+                <a href="tel:+252616256534" class="contact-link-item">
+                  <i class="fas fa-phone"></i> +252 616 256 534
+                </a>
+                <a href="https://wa.me/252616256534" target="_blank" rel="noopener" class="contact-link-item">
+                  <i class="fab fa-whatsapp"></i> Chat on WhatsApp (+252 616 256 534)
+                </a>
+                <a href="mailto:anasabdiwahidhussein@gmail.com" class="contact-link-item">
+                  <i class="fas fa-envelope"></i> anasabdiwahidhussein@gmail.com
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <section class="who-gallery" aria-label="Anas image gallery">
-      <div class="who-gallery-inner">
-        <div class="gallery-card">
-          <div class="gallery-head">
+    <!-- Image Gallery Carousel -->
+    <section class="who-gallery-section" aria-label="Photo Gallery">
+      <div class="who-container">
+        <div class="slider-card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
             <div>
-              <p class="section-subtitle">Images</p>
-              <h2 class="section-title" style="margin-bottom:6px;">Gallery</h2>
+              <span class="section-kicker">Photo Gallery</span>
+              <h2 class="section-heading" style="margin-bottom:0;"><i class="fas fa-images"></i> Visual Highlights</h2>
             </div>
           </div>
 
           <div class="slider-frame" id="anasSlider">
             <div class="slider-slide active">
-              <img src="sawirkahore.png" alt="Anas image 1" />
+              <img src="sawirkahore.png" alt="Anas Abdiwahid Hussein Warsame portrait" />
+              <div class="slider-overlay">
+                <h4>Anas Abdiwahid Hussein Warsame</h4>
+                <p>Software Developer &amp; 4th Year Computer Science Student</p>
+              </div>
+            </div>
+            <div class="slider-slide">
+              <img src="sawirr.png" alt="Anas Abdiwahid Portrait" />
               <div class="slider-overlay">
                 <h4>Anas Abdiwahid</h4>
-                <p>Primary profile portrait</p>
+                <p>Professional Portrait</p>
               </div>
             </div>
             <div class="slider-slide">
-              <img src="sawirr.png" alt="Anas image 2" />
+              <img src="Anas Abdiwahid Hussein Warsame.png" alt="Anas Abdiwahid Official Photo" />
               <div class="slider-overlay">
-                <h4>Anas Portrait</h4>
-                <p>Additional personal portrait image</p>
-              </div>
-            </div>
-            <div class="slider-slide">
-              <img src="Dashboad.png" alt="Dashboard project image" />
-              <div class="slider-overlay">
-                <h4>Dashboard Project</h4>
-                <p>Web design / dashboard interface</p>
-              </div>
-            </div>
-            <div class="slider-slide">
-              <img src="sawir2.jpeg" alt="Restaurant system project" />
-              <div class="slider-overlay">
-                <h4>4 Season Restaurant System</h4>
-                <p>Full Stack project example</p>
-              </div>
-            </div>
-            <div class="slider-slide">
-              <img src="sawir5.jpeg" alt="Suuq Furan marketplace project" />
-              <div class="slider-overlay">
-                <h4>Suuq Furan Marketplace</h4>
-                <p>Marketplace system project</p>
+                <h4>Anas Abdiwahid Hussein Warsame</h4>
+                <p>Official Profile Photo</p>
               </div>
             </div>
 
-            <button class="slider-arrow slider-arrow-prev" id="anasSliderPrev" type="button" aria-label="Previous slide">
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            <button class="slider-btn prev" id="anasSliderPrev" type="button" aria-label="Previous image">
+              <i class="fas fa-chevron-left"></i>
             </button>
-            <button class="slider-arrow slider-arrow-next" id="anasSliderNext" type="button" aria-label="Next slide">
-              <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            <button class="slider-btn next" id="anasSliderNext" type="button" aria-label="Next image">
+              <i class="fas fa-chevron-right"></i>
             </button>
           </div>
 
-          <div class="slider-controls">
-            <div class="slider-dots" id="anasSliderDots" aria-label="Slider navigation">
+          <div class="slider-nav">
+            <div class="slider-dots" id="anasSliderDots">
               <button class="slider-dot active" type="button" aria-label="Slide 1"></button>
               <button class="slider-dot" type="button" aria-label="Slide 2"></button>
               <button class="slider-dot" type="button" aria-label="Slide 3"></button>
-              <button class="slider-dot" type="button" aria-label="Slide 4"></button>
-              <button class="slider-dot" type="button" aria-label="Slide 5"></button>
             </div>
-            <div class="slider-meta" id="anasSliderMeta">1 / 5</div>
+            <div class="slider-counter" id="anasSliderMeta">1 / 3</div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="who-footer">
       <div class="who-footer-inner">
-        <p>&copy; <span id="year"></span> Anas Abdiwahid Hussein</p>
-        <div>
-          <a href="index.html">Home</a> |
-          <a href="index.html#about">About</a> |
+        <p>&copy; <span id="year"></span> Anas Abdiwahid Hussein Warsame. All rights reserved.</p>
+        <div style="display:flex; gap:16px;">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#portfolio">Portfolio</a>
           <a href="index.html#contact">Contact</a>
         </div>
       </div>
@@ -765,8 +1129,38 @@
   </div>
 
   <script>
+    // Set Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Dark / Light Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = htmlEl.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon(next);
+      });
+    }
+
+    function updateThemeIcon(theme) {
+      if (!themeIcon) return;
+      if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
+
+    // Slider Logic
     const slides = Array.from(document.querySelectorAll('#anasSlider .slider-slide'));
     const dots = Array.from(document.querySelectorAll('#anasSliderDots .slider-dot'));
     const meta = document.getElementById('anasSliderMeta');
@@ -774,30 +1168,6 @@
     const sliderNext = document.getElementById('anasSliderNext');
     let currentSlide = 0;
     let sliderTimer;
-
-    const customSliderImages = [
-      { src: 'sawirkahore.png', alt: 'Anas image 1', title: 'Anas Abdiwahid', desc: 'Personal image (Anas Abdiwahid Images)' },
-      { src: 'sawirr.png', alt: 'Anas image 2', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' },
-      { src: 'sawir2.jpeg', alt: 'Anas image 3', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' },
-      { src: 'Sawir4.jpeg', alt: 'Anas image 4', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' },
-      { src: 'sawir5.jpeg', alt: 'Anas image 5', title: 'Anas Portrait', desc: 'Personal image (Anas Abdiwahid Images)' }
-    ];
-
-    customSliderImages.forEach((item, index) => {
-      const slide = slides[index];
-      if (!slide) return;
-
-      const img = slide.querySelector('img');
-      const title = slide.querySelector('.slider-overlay h4');
-      const desc = slide.querySelector('.slider-overlay p');
-
-      if (img) {
-        img.src = item.src;
-        img.alt = item.alt;
-      }
-      if (title) title.textContent = item.title;
-      if (desc) desc.textContent = item.desc;
-    });
 
     function showSlide(index) {
       currentSlide = (index + slides.length) % slides.length;
@@ -808,10 +1178,9 @@
 
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
-        dot.setAttribute('aria-pressed', i === currentSlide ? 'true' : 'false');
       });
 
-      if (meta) meta.textContent = `${currentSlide + 1} / ${slides.length}`;
+      if (meta) meta.textContent = (currentSlide + 1) + ' / ' + slides.length;
     }
 
     dots.forEach((dot, index) => {
@@ -835,21 +1204,20 @@
       });
     }
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
         showSlide(currentSlide - 1);
         restartSlider();
-      } else if (event.key === 'ArrowRight') {
+      } else if (e.key === 'ArrowRight') {
         showSlide(currentSlide + 1);
         restartSlider();
       }
     });
 
     function startSlider() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       sliderTimer = setInterval(() => {
         showSlide(currentSlide + 1);
-      }, 3500);
+      }, 4000);
     }
 
     function restartSlider() {
