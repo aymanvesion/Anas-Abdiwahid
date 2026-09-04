@@ -683,12 +683,24 @@ img {
 }
 
 .social-pill-btn:hover {
-  background: var(--primary);
-  border-color: var(--primary);
   color: #ffffff;
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 16px var(--primary-glow);
 }
+
+/* Official social-network colors keep every icon easy to recognise. */
+.social-whatsapp { color: #25d366; border-color: rgba(37, 211, 102, 0.38); }
+.social-facebook { color: #1877f2; border-color: rgba(24, 119, 242, 0.38); }
+.social-linkedin { color: #0a66c2; border-color: rgba(10, 102, 194, 0.42); }
+.social-github { color: #f8fafc; border-color: rgba(248, 250, 252, 0.34); }
+.social-instagram { color: #e4405f; border-color: rgba(228, 64, 95, 0.42); }
+.social-tiktok { color: #25f4ee; border-color: rgba(37, 244, 238, 0.4); text-shadow: 1px 1px #fe2c55; }
+
+.social-whatsapp:hover { background: #25d366; border-color: #25d366; box-shadow: 0 6px 16px rgba(37, 211, 102, 0.36); }
+.social-facebook:hover { background: #1877f2; border-color: #1877f2; box-shadow: 0 6px 16px rgba(24, 119, 242, 0.36); }
+.social-linkedin:hover { background: #0a66c2; border-color: #0a66c2; box-shadow: 0 6px 16px rgba(10, 102, 194, 0.36); }
+.social-github:hover { background: #24292f; border-color: #24292f; box-shadow: 0 6px 16px rgba(36, 41, 47, 0.4); }
+.social-instagram:hover { background: linear-gradient(135deg, #833ab4, #fd1d1d 52%, #fcb045); border-color: #e4405f; box-shadow: 0 6px 16px rgba(228, 64, 95, 0.38); }
+.social-tiktok:hover { background: #010101; border-color: #25f4ee; box-shadow: 0 6px 16px rgba(37, 244, 238, 0.28); }
 
 /* Hero Right: Cutout Photo with Concentric Rings & 3D Glowing Orbs */
 .hero-visual-wrap {
