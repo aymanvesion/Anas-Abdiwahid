@@ -702,6 +702,29 @@ img {
 .social-instagram:hover { background: linear-gradient(135deg, #833ab4, #fd1d1d 52%, #fcb045); border-color: #e4405f; box-shadow: 0 6px 16px rgba(228, 64, 95, 0.38); }
 .social-tiktok:hover { background: #010101; border-color: #25f4ee; box-shadow: 0 6px 16px rgba(37, 244, 238, 0.28); }
 
+/* Light Theme Social Icon Contrast Fixes */
+[data-theme="light"] .social-github {
+  color: #1f2328;
+  border-color: rgba(31, 35, 40, 0.25);
+}
+[data-theme="light"] .social-github:hover {
+  background: #1f2328;
+  color: #ffffff;
+  border-color: #1f2328;
+  box-shadow: 0 6px 16px rgba(31, 35, 40, 0.35);
+}
+[data-theme="light"] .social-tiktok {
+  color: #010101;
+  border-color: rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+[data-theme="light"] .social-tiktok:hover {
+  background: #010101;
+  color: #ffffff;
+  border-color: #010101;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
 /* Hero Right: Cutout Photo with Concentric Rings & 3D Glowing Orbs */
 .hero-visual-wrap {
   position: relative;
