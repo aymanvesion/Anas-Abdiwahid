@@ -2149,22 +2149,24 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  border-radius: 50%;
-  width: 110px;
-  height: 110px;
-  padding: 15px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(56, 189, 248, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  background: transparent;
+  border-radius: 0;
+  width: 90px;
+  height: 90px;
+  padding: 0;
+  box-shadow: none;
+  border: none;
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  overflow: hidden;
 }
 
 .brand-logo-circle img {
-  max-width: 88%;
-  max-height: 88%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  transition: transform 0.35s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 .brand-logo-label {
@@ -2182,13 +2184,14 @@ img {
 }
 
 .brand-logo-item:hover .brand-logo-circle {
-  transform: translateY(-6px) scale(1.08);
-  box-shadow: 0 14px 32px rgba(0, 112, 243, 0.4), 0 0 26px rgba(56, 189, 248, 0.7);
-  border-color: #38bdf8;
+  transform: translateY(-5px);
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .brand-logo-item:hover .brand-logo-circle img {
   transform: scale(1.12);
+  filter: drop-shadow(0 6px 18px rgba(56, 189, 248, 0.7));
 }
 
 .brand-logo-item:hover .brand-logo-label {
@@ -2207,14 +2210,15 @@ img {
     gap: 8px;
   }
   .brand-logo-circle {
-    width: clamp(74px, 21vw, 90px);
-    height: clamp(74px, 21vw, 90px);
-    padding: 11px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(56, 189, 248, 0.35);
+    width: clamp(65px, 18vw, 80px);
+    height: clamp(65px, 18vw, 80px);
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
   }
   .brand-logo-circle img {
-    max-width: 86%;
-    max-height: 86%;
+    max-width: 100%;
+    max-height: 100%;
   }
   .brand-logo-label {
     font-size: clamp(0.74rem, 2.4vw, 0.84rem);
@@ -2228,9 +2232,11 @@ img {
     gap: 8px;
   }
   .brand-logo-circle {
-    width: 68px;
-    height: 68px;
-    padding: 8px;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
   }
   .brand-logo-label {
     font-size: 0.72rem;
