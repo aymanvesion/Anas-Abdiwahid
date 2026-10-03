@@ -2132,7 +2132,7 @@ img {
   gap: clamp(24px, 4vw, 56px);
   flex-wrap: wrap;
   margin: 28px auto 0;
-  max-width: 780px;
+  max-width: 950px;
   padding: 28px 44px;
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.78) 0%, rgba(8, 28, 54, 0.68) 100%);
   backdrop-filter: blur(20px);
@@ -2244,7 +2244,7 @@ img {
 @media (max-width: 768px) {
   .brand-logos-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     max-width: 100%;
     margin: 20px auto 0;
     gap: 10px;
@@ -2265,9 +2265,10 @@ img {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .brand-logos-row {
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
     padding: 14px 8px;
   }
   .brand-logo-circle {

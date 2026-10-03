@@ -880,6 +880,14 @@ $ltUrl = $settings['linktree_url'] ?? 'https://linktr.ee/anasupdy';
           </div>
           <span class="brand-logo-label">Buug Tabiye</span>
         </a>
+
+        <!-- 4. HORN AI -->
+        <a href="https://www.hornai.org/" target="_blank" rel="noopener noreferrer" class="brand-logo-item" title="HORN AI (Open Site)">
+          <div class="brand-logo-circle">
+            <img src="Horn_AI_Logo.png" alt="HORN AI Official Logo" />
+          </div>
+          <span class="brand-logo-label">HORN AI</span>
+        </a>
       </div>
     </div>
   </section>
