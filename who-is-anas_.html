@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="footer.css" />
   <style>
     /* ── High-Contrast & Harmonized Theme Variables ── */
     :root {
@@ -782,6 +783,49 @@
         justify-content: center;
       }
     }
+
+    /* ── Same header look as the main site: animated logo + menu links ── */
+    .who-brand-anim .logo-gif { margin-inline-start: 0; }
+    .who-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-inline: auto;
+    }
+    .who-links a {
+      position: relative;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: var(--who-text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 4px 0;
+      transition: color 0.2s ease;
+    }
+    .who-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--who-accent);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .who-links a:hover { color: var(--who-text-main); }
+    .who-links a:hover::after { transform: scaleX(1); }
+    @media (max-width: 1150px) {
+      .who-links { display: none; }      /* phones/tablets: logo + theme + Back to Portfolio */
+    }
+    .btn-back { white-space: nowrap; }
+    @media (max-width: 520px) {
+      .who-nav-inner { padding: 10px 14px; }
+      .btn-back { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 50%; }
+      .btn-back-text { display: none; }          /* phone: arrow-only button */
+      .who-brand-anim .logo-gif { width: 210px; margin: -10px 0 -10px -14px; }
+    }
   </style>
 </head>
 <body>
@@ -789,16 +833,24 @@
     <!-- Header / Navbar -->
     <header class="who-nav">
       <div class="who-nav-inner">
-        <a href="index.html" class="who-brand">
-          <img src="Sawir Logo.png" alt="Anas Logo" />
-          <span>Anas<span class="dot">.</span></span>
+        <a href="index.html" class="nav-logo-anim who-brand-anim" aria-label="Anas Abdiwahid – home">
+          <img src="logo-animated.gif" alt="Anas Abdiwahid animated logo" class="logo-gif" width="900" height="245" />
         </a>
+        <nav class="who-links" aria-label="Main">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About Me</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#certificates">Certificates</a>
+          <a href="index.html#cv">CV</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
         <div class="who-nav-actions">
           <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
             <i class="fas fa-moon"></i>
           </button>
-          <a href="index.html" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Back to Portfolio
+          <a href="index.html" class="btn-back" aria-label="Back to Portfolio" title="Back to Portfolio">
+            <i class="fas fa-arrow-left"></i> <span class="btn-back-text">Back to Portfolio</span>
           </a>
         </div>
       </div>
@@ -1115,22 +1167,96 @@
     </section>
 
     <!-- Footer -->
-    <footer class="who-footer">
-      <div class="who-footer-inner">
-        <p>&copy; <span id="year"></span> Anas Abdiwahid Hussein Warsame. All rights reserved.</p>
-        <div style="display:flex; gap:16px;">
-          <a href="index.html">Home</a>
-          <a href="index.html#about">About</a>
-          <a href="index.html#portfolio">Portfolio</a>
-          <a href="index.html#contact">Contact</a>
+    <footer class="fx-footer">
+      <div class="container fx-top">
+        <div class="fx-cta">
+          <h2 class="fx-cta-title">Let's build something great.</h2>
+          <p class="fx-cta-desc">Have an idea for a website, app or brand? I'd love to hear about it and help you get started.</p>
+          <div class="fx-cta-actions">
+            <a href="https://wa.me/252616256534" target="_blank" rel="noopener noreferrer" class="fx-btn fx-btn-dark">
+              <i class="fab fa-whatsapp"></i> <span>Let's Chat</span>
+            </a>
+            <a href="mailto:anasabdiwahidhussein@gmail.com" class="fx-btn fx-btn-ghost">
+              <i class="fas fa-envelope"></i> <span>Send an email</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="fx-art" aria-hidden="true">
+          <svg class="fx-hole" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+            <polygon points="200,18 236,62 290,30 300,96 366,92 340,150 392,196 336,232 368,296 300,300 296,370 236,336 200,388 160,338 100,372 98,304 30,300 62,236 8,196 60,152 34,92 100,96 110,30 164,64" />
+            <polyline class="fx-crack" points="236,62 250,20 268,8" />
+            <polyline class="fx-crack" points="366,92 384,70 396,74" />
+            <polyline class="fx-crack" points="34,92 14,70 4,78" />
+            <polyline class="fx-crack" points="100,372 84,392" />
+            <polyline class="fx-crack" points="336,232 372,240 390,232" />
+          </svg>
+          <img class="fx-person" src="sawirkahore.png" alt="" />
+          <span class="fx-rock r1"></span><span class="fx-rock r2"></span><span class="fx-rock r3"></span>
+          <span class="fx-rock r4"></span><span class="fx-rock r5"></span><span class="fx-rock r6"></span>
+          <span class="fx-dot d1"></span><span class="fx-dot d2"></span><span class="fx-dot d3"></span>
+        </div>
+      </div>
+
+      <div class="fx-body">
+        <div class="container">
+          <div class="fx-brand-row">
+            <a href="index.html" class="fx-logo fx-logo-anim" aria-label="Anas Abdiwahid – home">
+              <img src="logo-animated.gif" alt="Anas Abdiwahid animated logo" width="900" height="245" loading="lazy" />
+            </a>
+
+            <nav class="fx-links" aria-label="Footer">
+              <a href="index.html#home">Home</a>
+              <a href="index.html#about">About</a>
+              <a href="index.html#projects">Projects</a>
+              <a href="index.html#services">Services</a>
+              <a href="index.html#cv">CV</a>
+              <a href="index.html#contact">Contact</a>
+              <a href="who-is-anas_.html">Who Is Anas</a>
+            </nav>
+
+            <div class="fx-social">
+              <a href="https://wa.me/252616256534" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.facebook.com/share/1AjmvAjtgZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.linkedin.com/in/anas-abdiwahid-472738262" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com/anasabdiwahid" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://www.instagram.com/anas_abdiwahid1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@anas_abdiwahid" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="fx-bottom">
+            <div>
+              <p>© <span id="copyrightYear">2026</span> <strong>Anas Abdiwahid Hussein Warsame</strong>. All rights reserved.</p>
+              <p class="fx-dates">
+                <i class="far fa-calendar"></i> <span id="gregorianDate">2026</span> • <i class="far fa-clock"></i> <span id="clockTime">12:00</span> • Hijri: <span id="hijriDate">---</span>
+              </p>
+            </div>
+            <span class="fx-place"><i class="fas fa-location-dot"></i> <span>Mogadishu, Somalia</span></span>
+          </div>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
-    // Set Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Footer: year, date, live clock and Hijri date
+    (function () {
+      const $ = id => document.getElementById(id);
+      const greg = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      const time = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+      let hijri = null;
+      try { hijri = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', { year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) { }
+      function tick() {
+        const now = new Date();
+        if ($('copyrightYear')) $('copyrightYear').textContent = now.getFullYear();
+        if ($('gregorianDate')) $('gregorianDate').textContent = greg.format(now);
+        if ($('clockTime')) $('clockTime').textContent = time.format(now);
+        if ($('hijriDate') && hijri) $('hijriDate').textContent = hijri.format(now);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
 
     // Dark / Light Mode Toggle
     const themeToggle = document.getElementById('themeToggle');
