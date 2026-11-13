@@ -3557,6 +3557,23 @@ img {
 }
 
 /* =========================================================
+   NAVBAR ANIMATED LOGO (logo-animated.gif, 900×245 canvas,
+   icon centred → expands into the "anas abdiwahid" banner)
+   ========================================================= */
+.nav-logo-anim { flex-shrink: 0; line-height: 0; }
+.nav-logo-anim .logo-gif {
+  display: block;
+  width: 260px;
+  max-width: none;
+  height: auto;
+  margin: -12px 0 -12px 12px;   /* trim top/bottom, nudge a bit to the right */
+}
+@media (max-width: 768px) {
+  .nav-logo-anim .logo-gif { width: 190px; margin: -8px 0 -8px 10px; }
+}
+[dir="rtl"] .nav-logo-anim .logo-gif { margin: -12px 12px -12px 0; }
+
+/* =========================================================
    COMPACT NAVBAR — script.js adds html.nav-compact when the
    menu links don't fit on one line (e.g. long Somali words)
    ========================================================= */
