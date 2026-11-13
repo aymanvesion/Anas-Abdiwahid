@@ -172,6 +172,22 @@
   transition: transform 0.25s ease;
 }
 .fx-logo:hover img { transform: translateY(-2px) rotate(-3deg); }
+
+/* Animated GIF logo (icon → "anas abdiwahid" banner). The GIF canvas is
+   900×245 with the icon centred, so it is shown wide; the GIF itself
+   carries the name, no extra text needed. */
+.fx-logo-anim img {
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  margin-inline-start: -12px;     /* the GIF has ~12px of empty space on its left at this size */
+}
+.fx-logo-anim:hover img { transform: none; }
+@media (max-width: 900px) {
+  .fx-logo-anim img { width: 280px; margin-inline-start: 0; }
+}
 .fx-accent { color: var(--fx-yellow); }
 .fx-links { display: flex; flex-wrap: wrap; gap: 10px 26px; }
 .fx-links a {
