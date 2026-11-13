@@ -260,7 +260,7 @@ img {
 }
 
 .nav-container {
-  max-width: 1240px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
@@ -299,9 +299,9 @@ img {
 .nav-logo .logo-img {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 50%;
   object-fit: contain;
-  filter: drop-shadow(0 2px 10px rgba(0, 112, 243, 0.5));
+  filter: drop-shadow(0 2px 8px rgba(240, 158, 20, 0.45));
   flex-shrink: 0;
 }
 
@@ -330,7 +330,7 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: nowrap;
 }
 
@@ -339,7 +339,7 @@ img {
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   position: relative;
   padding: 4px 0;
   white-space: nowrap;
@@ -3554,6 +3554,52 @@ img {
   background: linear-gradient(135deg, #1ebe5d, #0d7367) !important;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5) !important;
   transform: translateY(-2px);
+}
+
+/* =========================================================
+   COMPACT NAVBAR — script.js adds html.nav-compact when the
+   menu links don't fit on one line (e.g. long Somali words)
+   ========================================================= */
+html.nav-compact .nav-links {
+  position: fixed;
+  top: var(--nav-h, 64px);
+  left: 0;
+  width: 100%;
+  background: rgba(4, 10, 23, 0.96);
+  backdrop-filter: blur(14px);
+  flex-direction: column;
+  padding: 24px 20px;
+  gap: 16px;
+  margin: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--border-subtle);
+  transform: translateY(-110%);
+  transition: transform 0.35s ease, visibility 0.35s ease;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1001;
+}
+html.nav-compact .nav-links.open {
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+html.nav-compact .hamburger {
+  display: flex;
+  position: relative;
+  z-index: 1002;
+}
+
+/* Dropdown menu readable in light mode (phone + compact menu) */
+[data-theme="light"].nav-compact .nav-links {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+@media (max-width: 768px) {
+  [data-theme="light"] .nav-links {
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
 }
 
 

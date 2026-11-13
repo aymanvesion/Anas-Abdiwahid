@@ -6,8 +6,8 @@
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 
-// Load saved theme, default to dark to match the modern mockup
-const savedTheme = localStorage.getItem('theme') || 'dark';
+// Load saved theme; light by default, dark only when the visitor chooses it
+const savedTheme = localStorage.getItem('theme') || 'light';
 html.setAttribute('data-theme', savedTheme);
 
 if (themeToggle) {
@@ -181,7 +181,14 @@ const translations = {
     "contact.send": "Send via WhatsApp",
     "contact.sending": "Opening WhatsApp...",
     "contact.success": "Message prepared! Opening WhatsApp...",
-    "footer.rights": "All rights reserved."
+    "footer.rights": "All rights reserved.",
+    "footer.ctaTitle": "Let's build something great.",
+    "footer.ctaDesc": "Have an idea for a website, app or brand? I'd love to hear about it and help you get started.",
+    "footer.ctaBtn": "Let's Chat",
+    "footer.ctaEmail": "Send an email",
+    "footer.whoIs": "Who Is Anas",
+    "footer.hijri": "Hijri",
+    "footer.backTop": "Back to top"
   },
   "so": {
     "page.title": "Anas Abdiwahid Hussein Warsame | Portfolio & Xog Nololeed",
@@ -307,7 +314,14 @@ const translations = {
     "contact.send": "Ku Dir WhatsApp",
     "contact.sending": "WhatsApp ayaa la furayaa...",
     "contact.success": "Fariinta waa la diyaariyay! WhatsApp ayaa kuu furmaya...",
-    "footer.rights": "Dhammaan xuquuqda way dhowran yihiin."
+    "footer.rights": "Dhammaan xuquuqda way dhowran yihiin.",
+    "footer.ctaTitle": "Aan wada dhisno wax weyn.",
+    "footer.ctaDesc": "Ma haysaa fikrad website, app ama brand? Waan jeclaan lahaa inaan maqlo, kuna caawiyo inaad bilowdo.",
+    "footer.ctaBtn": "Aan wada sheekeysano",
+    "footer.ctaEmail": "Email ii soo dir",
+    "footer.whoIs": "Waa kuma Anas",
+    "footer.hijri": "Hijri",
+    "footer.backTop": "Ku noqo kor"
   },
   "ar": {
     "page.title": "أنس عبد الواحد حسين ورسمه | معرض الأعمال والسيرة الذاتية",
@@ -433,7 +447,14 @@ const translations = {
     "contact.send": "إرسال عبر واتساب",
     "contact.sending": "جارٍ فتح واتساب...",
     "contact.success": "تم تجهيز الرسالة! جارٍ التحويل إلى واتساب...",
-    "footer.rights": "جميع الحقوق محفوظة."
+    "footer.rights": "جميع الحقوق محفوظة.",
+    "footer.ctaTitle": "لنبنِ شيئاً رائعاً معاً.",
+    "footer.ctaDesc": "هل لديك فكرة لموقع أو تطبيق أو هوية تجارية؟ يسعدني أن أسمع عنها وأساعدك على البدء.",
+    "footer.ctaBtn": "لنتحدث",
+    "footer.ctaEmail": "أرسل بريداً",
+    "footer.whoIs": "من هو أنس",
+    "footer.hijri": "هجري",
+    "footer.backTop": "العودة للأعلى"
   }
 };
 
@@ -613,10 +634,28 @@ if (hamburger && navLinksEl) {
 
   // Do not leave the page scroll-locked after rotating or resizing the device.
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) setMobileMenu(false);
+    updateNavCompact();
+    if (window.innerWidth > 768 && !document.documentElement.classList.contains('nav-compact')) setMobileMenu(false);
   }
   );
 }
+
+/* ── Compact navbar: use the ☰ menu whenever the links don't fit on one line
+      (long Somali/Arabic words, or medium-size screens) ── */
+function updateNavCompact() {
+  const root = document.documentElement;
+  const container = document.querySelector('.nav-container');
+  const bar = document.getElementById('navbar');
+  if (!container) return;
+  root.classList.remove('nav-compact');
+  const tooWide = window.innerWidth > 768 && container.scrollWidth > container.clientWidth + 1;
+  root.classList.toggle('nav-compact', tooWide);
+  if (bar) root.style.setProperty('--nav-h', bar.offsetHeight + 'px');
+}
+updateNavCompact();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateNavCompact);
+window.addEventListener('load', updateNavCompact);
+new MutationObserver(updateNavCompact).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
 /* ── Back to top ── */
 backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

@@ -51,7 +51,7 @@ $cvPreview = !empty($settings['cv_preview_image']) ? $settings['cv_preview_image
 
 $fbUrl = $settings['facebook_url'] ?? 'https://www.facebook.com/share/1AjmvAjtgZ/?mibextid=wwXIfr';
 $liUrl = $settings['linkedin_url'] ?? 'https://www.linkedin.com/in/anas-abdiwahid-hussein-472738262';
-$ghUrl = $settings['github_url'] ?? 'https://github.com/anasupdyy';
+$ghUrl = $settings['github_url'] ?? 'https://github.com/anasabdiwahid';
 $ttUrl = $settings['tiktok_url'] ?? 'https://www.tiktok.com/@anazz_updyy';
 $ytUrl = $settings['youtube_url'] ?? 'https://www.youtube.com/@anas_abdiwahid';
 $ltUrl = $settings['linktree_url'] ?? 'https://linktr.ee/anasupdy';
@@ -338,15 +338,15 @@ $ltUrl = $settings['linktree_url'] ?? 'https://linktr.ee/anasupdy';
               <div class="panel-slider-track" id="track-systems">
                 <!-- System 1: 4 SEASON Restaurant -->
                 <div class="project-card-modern">
-                  <a href="https://github.com/anasupdyy" target="_blank" class="project-thumb-container">
+                  <a href="https://github.com/anasabdiwahid" target="_blank" class="project-thumb-container">
                     <img src="Resturent 4_Season.png" alt="4 SEASON Restaurant System" />
                   </a>
                   <div class="project-card-body">
                     <div class="project-card-info">
-                      <h4 class="project-card-title"><a href="https://github.com/anasupdyy" target="_blank">4 SEASON Restaurant</a></h4>
+                      <h4 class="project-card-title"><a href="https://github.com/anasabdiwahid" target="_blank">4 SEASON Restaurant</a></h4>
                       <span class="project-card-tags">Local POS • Full Stack</span>
                     </div>
-                    <a href="https://github.com/anasupdyy" target="_blank" class="project-action-circle" title="View details">
+                    <a href="https://github.com/anasabdiwahid" target="_blank" class="project-action-circle" title="View details">
                       <i class="fas fa-arrow-up-right-from-square"></i>
                     </a>
                   </div>
@@ -354,15 +354,15 @@ $ltUrl = $settings['linktree_url'] ?? 'https://linktr.ee/anasupdy';
 
                 <!-- System 2: Suuq Furan E-Commerce -->
                 <div class="project-card-modern">
-                  <a href="https://github.com/anasupdyy" target="_blank" class="project-thumb-container">
+                  <a href="https://github.com/anasabdiwahid" target="_blank" class="project-thumb-container">
                     <img src="Suuq Furan.png" alt="Suuq Furan E-Commerce Platform" />
                   </a>
                   <div class="project-card-body">
                     <div class="project-card-info">
-                      <h4 class="project-card-title"><a href="https://github.com/anasupdyy" target="_blank">Suuq Furan Platform</a></h4>
+                      <h4 class="project-card-title"><a href="https://github.com/anasabdiwahid" target="_blank">Suuq Furan Platform</a></h4>
                       <span class="project-card-tags">Local Web App • Store</span>
                     </div>
-                    <a href="https://github.com/anasupdyy" target="_blank" class="project-action-circle" title="View details">
+                    <a href="https://github.com/anasabdiwahid" target="_blank" class="project-action-circle" title="View details">
                       <i class="fas fa-arrow-up-right-from-square"></i>
                     </a>
                   </div>
@@ -370,15 +370,15 @@ $ltUrl = $settings['linktree_url'] ?? 'https://linktr.ee/anasupdy';
 
                 <!-- System 3: Admin Dashboard -->
                 <div class="project-card-modern">
-                  <a href="https://github.com/anasupdyy" target="_blank" class="project-thumb-container">
+                  <a href="https://github.com/anasabdiwahid" target="_blank" class="project-thumb-container">
                     <img src="Dashboad.png" alt="Analytics Admin Dashboard" />
                   </a>
                   <div class="project-card-body">
                     <div class="project-card-info">
-                      <h4 class="project-card-title"><a href="https://github.com/anasupdyy" target="_blank">Analytics Dashboard</a></h4>
+                      <h4 class="project-card-title"><a href="https://github.com/anasabdiwahid" target="_blank">Analytics Dashboard</a></h4>
                       <span class="project-card-tags">UI/UX • Admin Metrics</span>
                     </div>
-                    <a href="https://github.com/anasupdyy" target="_blank" class="project-action-circle" title="View details">
+                    <a href="https://github.com/anasabdiwahid" target="_blank" class="project-action-circle" title="View details">
                       <i class="fas fa-arrow-up-right-from-square"></i>
                     </a>
                   </div>

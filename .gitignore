@@ -1,0 +1,11 @@
+# Secrets — never publish (Gmail app password lives here)
+config/smtp.php
+
+# Local backups
+Sawir Logo - old.png
+
+# OS / editor junk
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/

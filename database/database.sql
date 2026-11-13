@@ -108,7 +108,7 @@ INSERT INTO `site_settings` (`setting_key`, `setting_value`) VALUES
 ('cv_preview_image', 'cv-Anas-Abdiwahid.jpg'),
 ('facebook_url', 'https://www.facebook.com/share/1AjmvAjtgZ/?mibextid=wwXIfr'),
 ('linkedin_url', 'https://www.linkedin.com/in/anas-abdiwahid-hussein-472738262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'),
-('github_url', 'https://github.com/anasupdyy'),
+('github_url', 'https://github.com/anasabdiwahid'),
 ('tiktok_url', 'https://www.tiktok.com/@anazz_updyy?_r=1&_t=ZS-946XGN36TGX'),
 ('youtube_url', 'https://www.youtube.com/@anas_abdiwahid'),
 ('linktree_url', 'https://linktr.ee/anasupdy')
