@@ -164,7 +164,14 @@
   text-decoration: none;
   width: fit-content;
 }
-.fx-logo img { width: 44px; height: 44px; border-radius: 50%; }
+.fx-logo img {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;       /* app-icon style rounded square */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14), 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease;
+}
+.fx-logo:hover img { transform: translateY(-2px) rotate(-3deg); }
 .fx-accent { color: var(--fx-yellow); }
 .fx-links { display: flex; flex-wrap: wrap; gap: 10px 26px; }
 .fx-links a {
